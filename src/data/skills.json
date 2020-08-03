@@ -1,0 +1,58 @@
+[
+  {
+    "text": "Javascript",
+    "percentage": 80
+  },
+  {
+    "text": "Typescript",
+    "percentage": 80
+  },
+  {
+    "text": "NodeJS",
+    "percentage": 80
+  },
+  {
+    "text": "PHP",
+    "percentage": 80
+  },
+  {
+    "text": "Symfony",
+    "percentage": 80
+  },
+  {
+    "text": "Testing",
+    "percentage": 80
+  },
+  {
+    "text": "DDD",
+    "percentage": 80
+  },
+  {
+    "text": "Scrum",
+    "percentage": 80
+  },
+  {
+    "text": "React",
+    "percentage": 60
+  },
+  {
+    "text": "HTML",
+    "percentage": 60
+  },
+  {
+    "text": "CSS",
+    "percentage": 60
+  },
+  {
+    "text": "webPerf",
+    "percentage": 60
+  },
+  {
+    "text": "Docker",
+    "percentage": 60
+  },
+  {
+    "text": "AWS",
+    "percentage": 40
+  }
+]

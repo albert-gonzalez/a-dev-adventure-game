@@ -1,0 +1,127 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "home.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/albert/Documents/objects.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "/home/albert/Documents/room.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 878,
+                "y": 509
+            }
+        },
+        "/home/albert/Documents/room.tmx#room": {
+            "scaleInDock": 1
+        },
+        "/home/albert/Documents/room.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "albert.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "home.tmx": {
+            "scale": 2,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 560,
+                "y": 815.75
+            }
+        },
+        "home.tmx#albert": {
+            "scaleInDock": 1
+        },
+        "home.tmx#noe": {
+            "scaleInDock": 1
+        },
+        "home.tmx#room": {
+            "scaleInDock": 1
+        },
+        "home2.tmx": {
+            "scale": 2,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 784,
+                "y": 338.25
+            }
+        },
+        "home2.tmx#albert": {
+            "scaleInDock": 1
+        },
+        "home2.tmx#noe": {
+            "scaleInDock": 1
+        },
+        "objects.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "room.tmx": {
+            "scale": 2.499147727272727,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160.05456405592818,
+                "y": 159.45435944071843
+            }
+        },
+        "room.tmx#albert": {
+            "scaleInDock": 1
+        },
+        "room.tmx#objects": {
+            "scaleInDock": 1
+        },
+        "room.tmx#room": {
+            "scaleInDock": 1
+        },
+        "room.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        }
+    },
+    "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
+    "map.height": 30,
+    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": null,
+    "map.tileHeight": 32,
+    "map.tileWidth": 32,
+    "map.width": 30,
+    "openFiles": [
+        "home.tmx"
+    ],
+    "project": "rpcv.tiled-project",
+    "property.type": "string",
+    "recentFiles": [
+        "home.tmx",
+        "room.tsx",
+        "home2.tmx",
+        "room.tmx",
+        "/home/albert/Documents/objects.tsx",
+        "albert.tsx",
+        "objects.tsx",
+        "/home/albert/Documents/room.tsx",
+        "/home/albert/Documents/room.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    }
+}

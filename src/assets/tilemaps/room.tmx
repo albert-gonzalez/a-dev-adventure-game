@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="28">
+ <editorsettings>
+  <export target="room.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="albert" tilewidth="32" tileheight="64" tilecount="12" columns="3" objectalignment="topleft">
+  <image source="../sprites/albert.png" width="96" height="256"/>
+ </tileset>
+ <tileset firstgid="13" name="room" tilewidth="32" tileheight="32" tilecount="286" columns="11" objectalignment="topleft">
+  <image source="room.png" width="352" height="832"/>
+  <tile id="14">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="18">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="22">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="23">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="24">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="25">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="26">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="28">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="29">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="33">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="34">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="35">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="36">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+    <object id="2" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="37">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="40">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="47">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+    <object id="2" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="48">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="51">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="59">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="60">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="61">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="62">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="278">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="299" name="objects" tilewidth="32" tileheight="32" tilecount="352" columns="8" objectalignment="topleft">
+  <image source="objects.png" width="256" height="1408"/>
+  <tile id="19">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="20">
+   <objectgroup draworder="index" id="2">
+    <object id="2" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="27">
+   <objectgroup draworder="index" id="2">
+    <object id="2" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="28">
+   <objectgroup draworder="index" id="2">
+    <object id="2" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="66">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="74">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.131568" y="0.263182" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer id="1" name="ground" width="10" height="10">
+  <data encoding="csv">
+17,18,18,18,18,18,18,18,19,20,
+18,18,28,29,29,29,29,58,29,31,
+18,0,39,40,40,40,40,69,40,42,
+18,18,50,52,52,52,52,52,52,42,
+18,18,50,63,63,63,63,63,63,42,
+28,280,27,63,63,63,63,63,63,42,
+39,291,38,63,63,63,63,63,63,42,
+18,63,63,63,63,63,63,63,63,42,
+61,63,63,63,63,63,63,63,63,64,
+72,73,73,73,74,74,73,73,74,75
+</data>
+ </layer>
+ <objectgroup id="6" name="objects">
+  <object id="14" name="albert" gid="1" x="190.87" y="127.632" width="32" height="64"/>
+  <object id="21" name="wardrobeAction" x="223.178" y="126.789" width="64" height="32"/>
+  <object id="24" gid="0" x="224" y="96" width="32" height="32"/>
+  <object id="25" gid="0" x="256" y="96" width="32" height="32"/>
+  <object id="26" gid="0" x="224" y="64" width="32" height="32"/>
+  <object id="27" gid="0" x="256" y="64" width="32" height="32"/>
+ </objectgroup>
+</map>

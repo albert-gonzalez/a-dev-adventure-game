@@ -1,0 +1,22 @@
+[
+  {
+    "titleKey": "mailtrackTitle",
+    "datesKey": "mailtrackDates",
+    "descriptionKey": "mailtrackDescription"
+  },
+  {
+    "titleKey": "atrapaloLeadTitle",
+    "datesKey": "atrapaloLeadDates",
+    "descriptionKey": "atrapaloLeadDescription"
+  },
+  {
+    "titleKey": "atrapaloBackendTitle",
+    "datesKey": "atrapaloBackendDates",
+    "descriptionKey": "atrapaloBackendDescription"
+  },
+  {
+    "titleKey": "carverTitle",
+    "datesKey": "carverDates",
+    "descriptionKey": "carverDescription"
+  }
+]

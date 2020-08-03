@@ -1,0 +1,19 @@
+{
+  "wardrobe_1": "Loco!",
+  "wardrobe_2": "Ho!",
+  "about": "About",
+  "skills": "Skills",
+  "items": "Items",
+  "experience": "Experiencia →",
+  "projects": "Proyectos →",
+  "name": "Nombre:",
+  "age": "Edad:",
+  "quantity": "Cantidad:",
+  "aboutMe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida ipsum quis pretium interdum. \n\n\nDonec suscipit ornare quam vel cursus. In suscipit lobortis porta. Cras viverra, sapien in tincidunt bibendum, eros dolor luctus magna, vel elementum metus libero non libero. Sed congue massa eleifend, eleifend felis et, efficitur sem.",
+  "webPerf": "Perf. Web",
+  "mailtrackTitle": "Fullstack Engineer at Mailtrack",
+  "mailtrackDates": "Julio 2018 - Actualidad",
+  "mailtrackDescription": "Bla bla bla blablabla bla bla bla blabla. Bla bla bla blablabla bla bla bla blabla. Bla bla bla blablabla bla bla bla blabla. ",
+  "bathroom_fail_1": "Antes de poder ducharme, ¡necesito coger algo de ropa!"
+
+}
