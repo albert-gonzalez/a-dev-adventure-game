@@ -39,6 +39,6 @@ const state: GameState = {
   },
 };
 
-export const getState = () => {
+export const getState = (): GameState => {
   return state;
 };
