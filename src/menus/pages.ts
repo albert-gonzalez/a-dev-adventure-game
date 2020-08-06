@@ -3,7 +3,6 @@ import {
   MENU_BOX_FONT_SIZE_M,
   MENU_BOX_FONT_SIZE_S,
   MENU_BOX_FONT_TITLE_COLOR,
-  MENU_BOX_LINE_WIDTH,
   MENU_BOX_MARGIN,
   MENU_PAGE_MARGIN_X,
   MENU_PAGE_MARGIN_Y,
@@ -16,6 +15,7 @@ import { createBar } from "./bar";
 import { INVENTORY_UPDATED_EVENT } from "../inventory/current";
 import { getState } from "../state/state";
 import experience from "../data/experience.json";
+import projects from "../data/projects.json";
 import skills from "../data/skills.json";
 import { MENU_DEPTH } from "../scenes/common/constants";
 import { HP_UPDATED_EVENT, updateHP } from "../characters/main/state";
@@ -196,6 +196,48 @@ export const createExperiencePage = (
       currentY += descriptionText.height + 50;
 
       return [titleText, datesText, descriptionText];
+    })
+  );
+
+  return container;
+};
+
+export const createProjectsPage = (
+  scene: Phaser.Scene,
+  box: Phaser.GameObjects.Graphics
+) => {
+  const container = createPageContainer(scene, box);
+  const textWidth =
+    scene.cameras.main.width - MENU_VERTICAL_SEPARATOR_X - MENU_BOX_MARGIN * 4;
+
+  let currentY = 0;
+  container.add(
+    projects.flatMap((project) => {
+      const titleText = createMenuText({
+        scene,
+        textKey: project.titleKey,
+        x: 0,
+        y: currentY,
+        visible: true,
+        width: textWidth,
+        color: MENU_BOX_FONT_TITLE_COLOR,
+      });
+
+      currentY += titleText.height + 20;
+
+      const descriptionText = createMenuText({
+        scene,
+        textKey: project.descriptionKey,
+        x: 0,
+        y: currentY,
+        fontSize: MENU_BOX_FONT_SIZE_M,
+        visible: true,
+        width: textWidth,
+      });
+
+      currentY += descriptionText.height + 50;
+
+      return [titleText, descriptionText];
     })
   );
 

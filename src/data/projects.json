@@ -1,0 +1,14 @@
+[
+  {
+    "titleKey": "nsbTitle",
+    "descriptionKey": "nsbDescription"
+  },
+  {
+    "titleKey": "easytimerTitle",
+    "descriptionKey": "easytimerDescription"
+  },
+  {
+    "titleKey": "gameTitle",
+    "descriptionKey": "gameDescription"
+  }
+]

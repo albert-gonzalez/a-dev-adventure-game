@@ -19,6 +19,7 @@
   "shelves_4": "Aquí hi ha figuretes i fotos",
   "noe_desktop": "L'escriptori de Noe. No tinc poder aquí.",
   "albert_desktop": "El meu escriptori. Aquí passo moltes hores! El meu portàtil de la feina és aquí, l'agafo, que el necessito per poder treballar a la oficina.",
+  "albert_desktop_fail": "El meu escriptori. Aquí passo moltes hores! El meu portàtil de la feina és aquí, però abans de poder agafar-ho, m'he de dutxar.",
   "albert_desktop_2": "El meu escriptori. Aquí passo moltes hores!",
   "tv": "La TV! Aquí es on veien sèries i pel·licules. I per suposat, també hi jugo a videojocs.",
   "couch": "Què bé que s'hi està al sofà! Però ara no tinc temps de seure!",
@@ -44,5 +45,24 @@
   "webPerf": "Perf. Web",
   "mailtrackTitle": "Fullstack Engineer at Mailtrack",
   "mailtrackDates": "Juliol 2018 - Actualitat",
-  "mailtrackDescription": "El principal producte de Mailtrack és una extensió de Google Chrome que permet fer tracking de emails a Gmail. Per una banda treballo en els serveis de backend, desenvolupats en PHP y NodeJS. Per altra banda treballo a la extensió, desenvolupada en Typescript, CSS i HTML. També faig algunes tasques de sistemes, com configurar Docker o serveis a AWS"
+  "mailtrackDescription": "El principal producte de Mailtrack és una extensió de Google Chrome que permet fer tracking de emails a Gmail. Per una banda treballo en els serveis de backend, desenvolupats en PHP y NodeJS. Per altra banda treballo a la extensió, desenvolupada en Typescript, CSS i HTML. També faig algunes tasques de sistemes, com configurar Docker o serveis a AWS",
+  "atrapaloLeadTitle": "Lead Frontend Developer at Atrápalo",
+  "atrapaloLeadDates": "Juliol 2017 - Juny 2018",
+  "atrapaloLeadDescription": "Tech Lead a l'equip de Frontend de la companyia. Les meves funcions eren per una part gestionar l'equip i per altra guiar i desenvolupar l'arquitectura frontend de la web.",
+  "atrapaloBackendTitle": "Software Developer at Atrápalo",
+  "atrapaloBackendDates": "Gener 2014 - Juliol 2017",
+  "atrapaloBackendDescription": "Desenvolupador PHP en un complexe sisteme amb multiples tecnologies: RabbitMQ, Elastic, MySQL, Redis entre d'altres. La aplicació ha sigut desenvolupada seguint bones pràctiques de Clean Code i arquitecturada amb DDD.",
+  "lcfibTitle": "Becari - Developer at LCFIB",
+  "lcfibDates": "Setembre 2008 - Juliol 2010",
+  "lcfibDescription": "Aquí vaig treballar amb diferents tecnologies. Per una banda, vaig desenvolupar amb J2EE a diferentes projectes. També vaig treballar amb Oracle Forms i Oracle Reports. Per última, vaig treballar amb PHP i MySQL al portal de vídeos de la FIB",
+  "carverTitle": "J2EE Developer at Carver Advanced Systems",
+  "carverDates": "Setembre 2010 - Gener 2014",
+  "carverDescription": "Desenvolupador J2EE i Oracle SQL fent una aplicació d'assegurances. La aplicació gestionava i tarifava assegurances de diferents àmbits.",
+  "nsbTitle": "NoSoloBits Site",
+  "nsbDescription": "NoSoloBits és una plana web dedicada a jocs retro. La part backend està feta amb PHP i MySQL. La part frontend està feta amb HTML, JS i SASS, compilat amb Webpack.",
+  "easytimerTitle": "Easytimer.js",
+  "easytimerDescription": "Easytimer.js és una petita utilitat feta amb JS que permet gestionar de forma fàcil un cronòmetre i una compte enrere.",
+  "gameTitle": "Aquest Videojoc!",
+  "gameDescription": "El videojoc al que estas jugant ara mateix. M'he sortit de la meva zona de confort per a fer-ho, ja que no sóc dissenyador de videojocs. El resultat ha sigut un joc senzill i curtet, però crec que igualment és una bona carta de presentació. Li he posat molta il·lusió, espero que us agradi!"
+
 }

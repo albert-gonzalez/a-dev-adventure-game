@@ -1,26 +1,27 @@
 export interface Item {
   key: string;
   name: string;
-  description: string;
 }
 
 interface ItemRepository {
   [key: string]: Item;
 }
 
+export const CLOTHES_KEY = "clothes";
+export const COFFEE_CUP_KEY = "coffee_cup";
+export const NOTEBOOK_KEY = "notebook";
+
 const itemRepository: ItemRepository = {
-  clothes: {
-    key: "clothes",
+  [CLOTHES_KEY]: {
+    key: CLOTHES_KEY,
     name: "Some fancy clothes",
-    description: "bla bla",
   },
-  coffee_cup: {
-    key: "coffee_cup",
+  [COFFEE_CUP_KEY]: {
+    key: COFFEE_CUP_KEY,
     name: "Some fancy clothes",
-    description: "bla bla",
   },
-  notebook: {
-    key: "notebook",
+  [NOTEBOOK_KEY]: {
+    key: NOTEBOOK_KEY,
     name: "Notebook",
   },
 };

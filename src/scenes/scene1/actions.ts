@@ -8,6 +8,7 @@ import {
 import { DOWN, LEFT, UP } from "../../characters/main/control";
 import { updateHP } from "../../characters/main/state";
 import { SHOWER_EVENT } from "./events";
+import { CLOTHES_KEY, NOTEBOOK_KEY } from "../../inventory/itemRepository";
 
 export const actions: SceneActions = {
   wardrobe: {
@@ -47,7 +48,7 @@ export const actions: SceneActions = {
       {
         texts: [{ text: "bathroom_1" }],
         textsFailure: [{ text: "bathroom_fail_1" }],
-        condition: (state: GameState) => "clothes" in state.inventory,
+        condition: (state: GameState) => CLOTHES_KEY in state.inventory,
         updateState: (state: GameState) => updateHP(state, 25),
         cutScene: createShowerCutScene(),
       },
@@ -130,6 +131,8 @@ export const actions: SceneActions = {
     states: [
       {
         texts: [{ text: "door" }],
+        textsFailure: [{ text: "door_fail" }],
+        condition: (state: GameState) => NOTEBOOK_KEY in state.inventory,
       },
     ],
   },

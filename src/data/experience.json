@@ -18,5 +18,10 @@
     "titleKey": "carverTitle",
     "datesKey": "carverDates",
     "descriptionKey": "carverDescription"
+  },
+  {
+    "titleKey": "lcfibTitle",
+    "datesKey": "lcfibDates",
+    "descriptionKey": "lcfibDescription"
   }
 ]

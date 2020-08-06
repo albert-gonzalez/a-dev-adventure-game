@@ -16,6 +16,7 @@ import {
   createAboutPage,
   createExperiencePage,
   createItemsPage,
+  createProjectsPage,
   createSkillsPage,
 } from "./pages";
 import { createMenuText } from "./texts";
@@ -43,7 +44,7 @@ const menuOptionsConfig = () => [
   },
   {
     textKey: "projects",
-    pageCreationFunction: createItemsPage,
+    pageCreationFunction: createProjectsPage,
     interactive: true,
   },
   {
