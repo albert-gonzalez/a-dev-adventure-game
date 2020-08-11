@@ -8,7 +8,7 @@ import {
   RIGHT_DIRECTION,
   UP,
   UP_DIRECTION,
-} from "../../main/control";
+} from "../../../input/input";
 import { SceneAction } from "../../../scenes/common/actions";
 
 export const ANIMATION_STILL_LEFT = `still-${LEFT}`;

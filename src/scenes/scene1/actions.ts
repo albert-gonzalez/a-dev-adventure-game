@@ -5,7 +5,7 @@ import {
   createShowerCutScene,
   noteBookCutscene,
 } from "./cutScenes";
-import { DOWN, LEFT, UP } from "../../characters/main/control";
+import { DOWN, LEFT, UP } from "../../input/input";
 import { updateHP } from "../../characters/main/state";
 import { SHOWER_EVENT } from "./events";
 import { CLOTHES_KEY, NOTEBOOK_KEY } from "../../inventory/itemRepository";

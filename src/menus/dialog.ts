@@ -4,13 +4,12 @@ import {
   MENU_BOX_FILL_ALPHA,
   MENU_BOX_FILL_COLOR,
   MENU_BOX_FONT_FAMILY,
+  MENU_BOX_FONT_LINE_SPACING_SMALL,
   MENU_BOX_FONT_SIZE_L,
   MENU_BOX_LINE_ALPHA,
   MENU_BOX_LINE_COLOR,
   MENU_BOX_LINE_WIDTH,
 } from "./style";
-import { objectActivationDirectionMatchesAnimation } from "../characters/common/animation/animation";
-import { findPropertyByName } from "../gameObjects/properties";
 import {
   DialogText,
   getAction,
@@ -18,10 +17,7 @@ import {
   increaseCurrentActionState,
   isLastState,
 } from "../scenes/common/actions";
-import { actions, currentActionStates } from "../scenes/scene1/actions";
-import { addItem } from "../inventory/current";
 import { GameState, getState } from "../state/state";
-import { getItemFromRepository } from "../inventory/itemRepository";
 import { MENU_DEPTH } from "../scenes/common/constants";
 import { getText } from "../i18n/i18n";
 
@@ -160,6 +156,7 @@ const createDialogBoxText = (
     {
       fontFamily: MENU_BOX_FONT_FAMILY,
       fontSize: MENU_BOX_FONT_SIZE_L,
+      lineSpacing: MENU_BOX_FONT_LINE_SPACING_SMALL,
     }
   );
 

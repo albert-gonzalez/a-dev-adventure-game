@@ -41,7 +41,7 @@ export const createMenuText = ({
   }
   textObject.setText(textKey ? getText(textKey) : text);
   textObject.setScrollFactor(0, 0);
-  textObject.setShadow(2, 2, "#000");
+  textObject.setShadow(1, 1, "#000");
   textObject.setVisible(visible);
   textObject.setDepth(MENU_DEPTH);
 

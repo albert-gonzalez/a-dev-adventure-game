@@ -76,7 +76,7 @@ export const actionCallback = (
 ) => {
   const scene = state.scene.phaser as Phaser.Scene;
   const cutScene = state.cutScene;
-  const isActionButtonJustPressed = state.controls.isActionJustPressed;
+  const isActionButtonJustPressed = state.input.isActionJustPressed;
   const dialog = state.dialog as Dialog;
 
   if (

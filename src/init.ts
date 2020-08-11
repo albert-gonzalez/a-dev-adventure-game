@@ -1,12 +1,10 @@
 import "phaser";
 
 import { init } from "./i18n/i18n";
-import { preload, create, update } from "./scenes/scene1/scene";
+import { titleSceneConfig } from "./scenes/title/titleSceneConfig";
+import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
 
-export const TILE_HEIGHT = 32;
-export const TILE_WIDTH = 32;
-
-const config = {
+const gameConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
@@ -14,21 +12,24 @@ const config = {
   physics: {
     default: "arcade",
   },
-  audio: {
-    disableWebAudio: true,
-  },
-  scene: {
-    preload,
-    create,
-    update,
-  },
   scale: {
     parent: "game",
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
+  input: {
+    activePointers: 2,
+  },
 };
+
+export const TILE_HEIGHT = 32;
+export const TILE_WIDTH = 32;
 
 init();
 
-const game = new Phaser.Game(config);
+const game = new Phaser.Game({
+  ...gameConfig,
+  scene: titleSceneConfig,
+});
+
+game.scene.add(SCENE_1_KEY, scene1Config);

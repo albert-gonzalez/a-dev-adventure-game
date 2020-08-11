@@ -18,8 +18,17 @@ export interface GameState {
   };
   albert: AlbertState;
   dialog?: Dialog;
-  controls: {
+  input: {
     isActionJustPressed: boolean;
+    touch: {
+      action: boolean;
+      up: boolean;
+      down: boolean;
+      left: boolean;
+      right: boolean;
+      toggleSound: boolean;
+      menu: boolean;
+    };
   };
 }
 
@@ -29,8 +38,17 @@ const state: GameState = {
     hp: 50,
     animationPrefix: "",
   },
-  controls: {
+  input: {
     isActionJustPressed: false,
+    touch: {
+      action: false,
+      up: false,
+      down: false,
+      right: false,
+      left: false,
+      toggleSound: false,
+      menu: false,
+    },
   },
   scene: {
     objects: {},

@@ -1,3 +1,5 @@
+import { FONT_FAMILY } from "../scenes/common/constants";
+
 export const MENU_BOX_LINE_WIDTH = 4;
 export const MENU_BOX_LINE_COLOR = 0xffffff;
 export const MENU_BOX_LINE_ALPHA = 1;
@@ -7,11 +9,12 @@ export const MENU_BOX_FILL_ALPHA = 0.9;
 
 export const MENU_BOX_MARGIN = 20;
 
-export const MENU_BOX_FONT_FAMILY = "PressStart2P";
+export const MENU_BOX_FONT_FAMILY = FONT_FAMILY;
 export const MENU_BOX_FONT_SIZE_L = 18;
 export const MENU_BOX_FONT_SIZE_M = 16;
 export const MENU_BOX_FONT_SIZE_S = 14;
 export const MENU_BOX_FONT_LINE_SPACING = 10;
+export const MENU_BOX_FONT_LINE_SPACING_SMALL = 5;
 export const MENU_BOX_FONT_TITLE_COLOR = "#ddaa55";
 export const MENU_BOX_FONT_GRAY_COLOR = "#aaa";
 export const MENU_BOX_FONT_SELECTED_OPTION_COLOR = MENU_BOX_FONT_TITLE_COLOR;

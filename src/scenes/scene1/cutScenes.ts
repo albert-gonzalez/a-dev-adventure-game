@@ -5,12 +5,14 @@ import {
   LEFT_DIRECTION,
   MOVEMENT_SPEED_SLOW,
   updateCharacterVelocity,
-} from "../../characters/main/control";
-import { FOREGROUND_DEPTH } from "../common/constants";
+} from "../../input/input";
+import { FOREGROUND_DEPTH, MUSIC_VOLUME } from "../common/constants";
 import { COBI_KEY, NOE_KEY } from "./characters";
 import { ALBERT_KEY } from "../common/characters";
 import { DialogText } from "../common/actions";
 import { SHOWER_EVENT } from "./events";
+import { addFadeOut } from "../common/transitionEffect";
+import { HOME_MUSIC } from "./audio";
 
 export const createShowerCutScene = () => {
   let finished = false;
@@ -118,7 +120,7 @@ export const noteBookCutscene = (state: GameState) => {
 };
 
 export const createInitialCutscene = () => {
-  let blackFadeOut: Phaser.GameObjects.Graphics;
+  let continueFadeOut: () => boolean;
   let csState = 0;
   return (state: GameState): boolean => {
     const scene = state.scene.phaser as Phaser.Scene;
@@ -126,15 +128,7 @@ export const createInitialCutscene = () => {
     if (csState === 0) {
       const graphics = scene.add.graphics();
       graphics.fillStyle(0);
-      blackFadeOut = graphics.fillRect(
-        0,
-        0,
-        scene.cameras.main.width,
-        scene.cameras.main.height
-      );
-
-      blackFadeOut.setScrollFactor(0, 0);
-      blackFadeOut.setDepth(FOREGROUND_DEPTH);
+      continueFadeOut = addFadeOut(scene);
 
       state.dialog?.showDialogBox([
         { who: NOE_KEY, text: "wake_up_freeman" },
@@ -148,7 +142,7 @@ export const createInitialCutscene = () => {
     }
 
     if (csState === 1) {
-      scene.sound.play("home", { loop: true, volume: 0.1 });
+      scene.sound.play(HOME_MUSIC, { loop: true, volume: MUSIC_VOLUME });
 
       csState++;
 
@@ -156,9 +150,9 @@ export const createInitialCutscene = () => {
     }
 
     if (csState === 2) {
-      blackFadeOut.alpha -= 0.005;
-      if (blackFadeOut.alpha === 0) {
-        blackFadeOut.destroy(true);
+      const fadeOutFinished = continueFadeOut();
+
+      if (fadeOutFinished) {
         csState++;
       }
 

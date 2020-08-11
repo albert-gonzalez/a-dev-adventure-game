@@ -21,10 +21,15 @@ import {
 } from "./pages";
 import { createMenuText } from "./texts";
 import {
+  isDownButtonJustPressed,
   isDownButtonPressed,
+  isLeftButtonPressed,
+  isRightButtonPressed,
+  isUpButtonJustPressed,
   isUpButtonPressed,
-} from "../characters/main/control";
+} from "../input/input";
 import { MENU_DEPTH } from "../scenes/common/constants";
+import { GameState } from "../state/state";
 
 const menuOptionsConfig = () => [
   {
@@ -97,6 +102,7 @@ export const createMenu = (scene: Phaser.Scene): Menu => {
     },
 
     hide() {
+      this.deactivateCurrentOption();
       menuBox.setVisible(false);
       hideTextOptions(textOptions);
       selectedOption = 0;
@@ -171,37 +177,43 @@ export const controlMenu = (
   scene: Phaser.Scene,
   menu: Menu,
   isDownEscapeJustPressed: boolean,
-  isActionButtonJustPressed: boolean
+  isActionButtonJustPressed: boolean,
+  state: GameState
 ) => {
   menu.show();
   const cursors = scene.input.keyboard.createCursorKeys();
 
+  if (isDownEscapeJustPressed) {
+    menu.hide();
+
+    return;
+  }
+
   if (menu.isCurrentOptionActive()) {
-    if (isDownEscapeJustPressed && menu.isCurrentOptionActive()) {
+    if (isLeftButtonPressed(cursors, state)) {
       menu.deactivateCurrentOption();
     }
 
-    if (cursors.up?.isDown) {
+    if (isUpButtonPressed(cursors, state)) {
       menu.scrollPageUp();
     }
 
-    if (cursors.down?.isDown) {
+    if (isDownButtonPressed(cursors, state)) {
       menu.scrollPageDown();
     }
   } else {
-    if (isDownEscapeJustPressed) {
-      menu.hide();
-    }
-
-    if (isUpButtonPressed(scene)) {
+    if (isUpButtonJustPressed(scene, state)) {
       menu.selectPreviousOption();
     }
 
-    if (isDownButtonPressed(scene)) {
+    if (isDownButtonJustPressed(scene, state)) {
       menu.selectNextOption();
     }
 
-    if (isActionButtonJustPressed && menu.isCurrentOptionInteractive()) {
+    if (
+      menu.isCurrentOptionInteractive() &&
+      (isActionButtonJustPressed || isRightButtonPressed(cursors, state))
+    ) {
       menu.activateCurrentOption();
     }
   }

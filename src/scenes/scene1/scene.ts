@@ -12,10 +12,11 @@ import {
 import { createObjectsFromMap } from "../../tileSets/objects";
 import {
   getCharacterDirections,
-  isActionButtonPressed,
-  isDownEscapePressed,
+  isActionButtonJustPressed,
+  isMenuButtonJustPressed,
+  isToggleSoundButtonJustPressed,
   updateCharacterVelocity,
-} from "../../characters/main/control";
+} from "../../input/input";
 
 import { TILE_HEIGHT } from "../../init";
 import { getState } from "../../state/state";
@@ -31,6 +32,7 @@ import { createImageObjects, loadImages } from "./images";
 import { createMap, loadMap } from "./map";
 import { loadAudio } from "./audio";
 import { actionCallback } from "../common/actions";
+import { createTouchButtons } from "../../input/touchInput";
 
 let dialog: Dialog;
 let menu: Menu;
@@ -87,13 +89,12 @@ export function create(this: Phaser.Scene): void {
   insertDynamicObjectsIntoScene(map, getState(), getObjects());
   insertCharactersIntoScene(map, getState(), getCharacters());
 
-  this.cameras.main.startFollow(sleepyAlbert, false);
-  this.cameras.main.roundPixels = true;
+  this.cameras.main.startFollow(sleepyAlbert, true);
 
   menu = createMenu(this);
 
   getState().dialog = createDialogBox(this);
-
+  createTouchButtons(this, getState());
   //document.addEventListener("pointerup", () => this.scale.startFullscreen());
 }
 
@@ -101,13 +102,13 @@ export function update(this: Phaser.Scene): void {
   let directionX = 0,
     directionY = 0;
 
-  const isDownEscapeJustPressed = isDownEscapePressed(this);
   const state = getState();
+  const isDownEscapeJustPressed = isMenuButtonJustPressed(this, state);
   const albertSprite = getState().albert.sprite as Phaser.GameObjects.Sprite;
   const albertAnimationPrefix = getState().albert.animationPrefix;
   const dialog = state.dialog as Dialog;
-  const isActionButtonJustPressed = isActionButtonPressed(this);
-  state.controls.isActionJustPressed = isActionButtonJustPressed;
+  const actionButtonJustPressed = isActionButtonJustPressed(this, state);
+  state.input.isActionJustPressed = actionButtonJustPressed;
 
   groundCanvas.clear();
   groundCanvas.draw([ground, objects]);
@@ -116,8 +117,12 @@ export function update(this: Phaser.Scene): void {
   foregroundCanvas.clear();
   foregroundCanvas.draw(foreground);
 
+  if (isToggleSoundButtonJustPressed(this, state)) {
+    this.sound.mute = !this.sound.mute;
+  }
+
   if (dialog.isDialogOpen()) {
-    controlDialog(dialog, isActionButtonJustPressed);
+    controlDialog(dialog, actionButtonJustPressed);
     updateAnimation(albertSprite, 0, 0, albertAnimationPrefix);
     updateCharacterVelocity(albertSprite, 0, 0);
 
@@ -135,7 +140,13 @@ export function update(this: Phaser.Scene): void {
   }
 
   if (menu.isMenuOpen()) {
-    controlMenu(this, menu, isDownEscapeJustPressed, isActionButtonJustPressed);
+    controlMenu(
+      this,
+      menu,
+      isDownEscapeJustPressed,
+      actionButtonJustPressed,
+      state
+    );
     updateAnimation(albertSprite, 0, 0, albertAnimationPrefix);
     updateCharacterVelocity(albertSprite, 0, 0);
 
@@ -146,7 +157,7 @@ export function update(this: Phaser.Scene): void {
     menu.show();
   }
 
-  ({ directionX, directionY } = getCharacterDirections(this));
+  ({ directionX, directionY } = getCharacterDirections(this, state));
 
   updateAnimation(albertSprite, directionX, directionY, albertAnimationPrefix);
   updateCharacterVelocity(albertSprite, directionX, directionY);
