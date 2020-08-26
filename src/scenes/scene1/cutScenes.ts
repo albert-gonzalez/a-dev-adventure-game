@@ -13,6 +13,7 @@ import { DialogText } from "../common/actions";
 import { SHOWER_EVENT } from "./events";
 import { addFadeOut } from "../common/transitionEffect";
 import { HOME_MUSIC } from "./audio";
+import { STEAM_KEY } from "../common/images";
 
 export const createShowerCutScene = () => {
   let finished = false;
@@ -22,11 +23,11 @@ export const createShowerCutScene = () => {
   return (state: GameState) => {
     if (!timeout) {
       const scene = state.scene.phaser as Phaser.Scene;
-      const particles = scene.add.particles("steam");
+      const particles = scene.add.particles(STEAM_KEY);
       state.scene.events[SHOWER_EVENT] = true;
 
       const emitter = particles.createEmitter({
-        x: 574,
+        x: 384,
         y: 240,
         lifespan: 1500,
         speed: { min: 50, max: 100 },
@@ -81,10 +82,10 @@ export const createCoffeeCutScene = (afterTexts: DialogText[]) => {
   return (state: GameState) => {
     if (!timeout) {
       const scene = state.scene.phaser as Phaser.Scene;
-      const particles = scene.add.particles("steam");
+      const particles = scene.add.particles(STEAM_KEY);
 
       const emitter = particles.createEmitter({
-        x: 560,
+        x: 370,
         y: 765,
         lifespan: 200,
         speed: { min: 50, max: 100 },
@@ -115,7 +116,7 @@ export const createCoffeeCutScene = (afterTexts: DialogText[]) => {
 };
 
 export const noteBookCutscene = (state: GameState) => {
-  state.scene.objects["albert_notebook"].destroy(true);
+  state.scene.objectSprites["albert_notebook"].destroy(true);
   return true;
 };
 
@@ -169,8 +170,8 @@ export const createInitialCutscene = () => {
     }
 
     if (csState === 4) {
-      const noeSprite = state.scene.characters[NOE_KEY];
-      const cobiSprite = state.scene.characters[COBI_KEY];
+      const noeSprite = state.scene.characterSprites[NOE_KEY];
+      const cobiSprite = state.scene.characterSprites[COBI_KEY];
       updateAnimation(noeSprite, LEFT_DIRECTION, 0, NOE_KEY);
       updateAnimation(cobiSprite, LEFT_DIRECTION, 0, COBI_KEY);
       updateCharacterVelocity(
@@ -186,15 +187,15 @@ export const createInitialCutscene = () => {
         MOVEMENT_SPEED_SLOW
       );
 
-      if (noeSprite.x <= 550) {
+      if (noeSprite.x <= 360) {
         csState++;
       }
       return false;
     }
 
     if (csState === 5) {
-      const noeSprite = state.scene.characters[NOE_KEY];
-      const cobiSprite = state.scene.characters[COBI_KEY];
+      const noeSprite = state.scene.characterSprites[NOE_KEY];
+      const cobiSprite = state.scene.characterSprites[COBI_KEY];
 
       updateAnimation(noeSprite, 0, DOWN_DIRECTION, NOE_KEY);
       updateCharacterVelocity(
@@ -204,7 +205,7 @@ export const createInitialCutscene = () => {
         MOVEMENT_SPEED_SLOW
       );
 
-      if (cobiSprite.x <= 550) {
+      if (cobiSprite.x <= 360) {
         csState++;
       }
 
@@ -212,8 +213,8 @@ export const createInitialCutscene = () => {
     }
 
     if (csState === 6) {
-      const noeSprite = state.scene.characters[NOE_KEY];
-      const cobiSprite = state.scene.characters[COBI_KEY];
+      const noeSprite = state.scene.characterSprites[NOE_KEY];
+      const cobiSprite = state.scene.characterSprites[COBI_KEY];
 
       updateAnimation(noeSprite, 0, DOWN_DIRECTION, NOE_KEY);
       updateCharacterVelocity(
@@ -230,10 +231,10 @@ export const createInitialCutscene = () => {
         MOVEMENT_SPEED_SLOW
       );
 
-      if (cobiSprite.y >= 550) {
+      if (cobiSprite.y >= 650) {
         state.dialog?.showDialogBox([{ who: ALBERT_KEY, text: "prepare" }]);
-        delete state.scene.characters[NOE_KEY];
-        delete state.scene.characters[COBI_KEY];
+        delete state.scene.characterSprites[NOE_KEY];
+        delete state.scene.characterSprites[COBI_KEY];
         noeSprite.destroy(true);
         cobiSprite.destroy(true);
         csState++;

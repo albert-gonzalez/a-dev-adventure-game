@@ -1,10 +1,11 @@
 import { FONT_FAMILY } from "../scenes/common/constants";
 
-export const MENU_BOX_LINE_WIDTH = 4;
+export const MENU_BOX_LINE_WIDTH = 3;
 export const MENU_BOX_LINE_COLOR = 0xffffff;
 export const MENU_BOX_LINE_ALPHA = 1;
 
-export const MENU_BOX_FILL_COLOR = 0x003388;
+export const MENU_BOX_FILL_COLOR_TOP = 0x003388;
+export const MENU_BOX_FILL_COLOR_BOTTOM = 0x001020;
 export const MENU_BOX_FILL_ALPHA = 0.9;
 
 export const MENU_BOX_MARGIN = 20;

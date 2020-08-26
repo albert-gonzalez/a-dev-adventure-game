@@ -117,32 +117,41 @@ export const createCharacterAnimations = (
 };
 
 export const updateAnimation = (
-  albert: Phaser.GameObjects.Sprite,
+  character: Phaser.GameObjects.Sprite,
   directionX: number,
   directionY: number,
-  animationPrefix = ""
+  animationPrefix = "",
+  forceStill = false
 ) => {
   let animToPlay;
 
   if (!directionY && !directionX) {
     const transition =
       TRANSITION_TO_STILL[
-        albert.anims.getCurrentKey().replace(animationPrefix, "")
+        character.anims.getCurrentKey().replace(animationPrefix, "")
       ];
 
     if (transition) {
-      albert.anims.play(`${animationPrefix}${transition}`, true);
+      character.anims.play(`${animationPrefix}${transition}`, true);
     }
   }
 
   if (directionY) {
-    animToPlay = `${animationPrefix}${TRANSITION_TO_MOVE_Y[directionY]}`;
+    let transition = TRANSITION_TO_MOVE_Y[directionY];
+    if (forceStill) {
+      transition = TRANSITION_TO_STILL[transition];
+    }
+    animToPlay = `${animationPrefix}${transition}`;
   } else if (directionX) {
-    animToPlay = `${animationPrefix}${TRANSITION_TO_MOVE_X[directionX]}`;
+    let transition = TRANSITION_TO_MOVE_X[directionX];
+    if (forceStill) {
+      transition = TRANSITION_TO_STILL[transition];
+    }
+    animToPlay = `${animationPrefix}${transition}`;
   }
 
   if (animToPlay) {
-    albert.anims.play(animToPlay, true);
+    character.anims.play(animToPlay, true);
   }
 };
 
@@ -150,7 +159,7 @@ export const objectActivationDirectionMatchesAnimation = (
   albert: Phaser.GameObjects.Sprite,
   sceneAction: SceneAction
 ) => {
-  return sceneAction.activationDirections.some((direction) =>
+  return sceneAction.activationDirections?.some((direction) =>
     albert.anims.getCurrentKey().includes(direction)
   );
 };

@@ -1,4 +1,4 @@
-import { CurrentActionStates, SceneActions } from "../common/actions";
+import { SceneActions } from "../common/actions";
 import { GameState } from "../../state/state";
 import {
   createCoffeeCutScene,
@@ -10,7 +10,7 @@ import { updateHP } from "../../characters/main/state";
 import { SHOWER_EVENT } from "./events";
 import { CLOTHES_KEY, NOTEBOOK_KEY } from "../../inventory/itemRepository";
 
-export const actions: SceneActions = {
+const actions: SceneActions = {
   wardrobe: {
     activationDirections: [DOWN],
     states: [
@@ -175,4 +175,4 @@ export const actions: SceneActions = {
   },
 };
 
-export const currentActionStates: CurrentActionStates = {};
+export const getActions = () => actions;

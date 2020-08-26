@@ -28,7 +28,7 @@ export function create(this: Phaser.Scene) {
   addBackground(this);
   this.time.delayedCall(START_DELAY, async () => {
     const titleText = addTitleText(this);
-    await writeText(titleText, "Dev's\nAdvetnure", this);
+    await writeText(titleText, "A Dev's\nAdvetnure", this);
     await deleteLetters(titleText, 5, this);
     await writeText(titleText, "nture", this);
 

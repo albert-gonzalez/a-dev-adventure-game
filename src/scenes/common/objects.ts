@@ -6,7 +6,7 @@ const DYNAMIC_OBJECT_LAYER = "dynamicObjects";
 export interface DynamicObjectInfo {
   objectId: string;
   frame: number;
-  tilemapKey: string;
+  tileMapKey: string;
   depth?: number;
 }
 
@@ -16,18 +16,24 @@ export const insertDynamicObjectsIntoScene = (
   objects: DynamicObjectInfo[]
 ) => {
   objects.forEach((object) => {
-    state.scene.objects[object.objectId] = createObjectsFromMap(
+    state.scene.objectSprites[object.objectId] = createObjectsFromMap(
       map,
       DYNAMIC_OBJECT_LAYER,
       object.objectId,
       {
         frame: object.frame,
-        key: object.tilemapKey,
-      }
+        key: object.tileMapKey,
+      },
+      undefined,
+      transformObject(object)
     )[0];
-
-    if (object.depth) {
-      state.scene.objects[object.objectId].setDepth(object.depth);
-    }
   });
+};
+
+const transformObject = (object: DynamicObjectInfo) => {
+  return (sprite: Phaser.GameObjects.Sprite) => {
+    if (object.depth) {
+      sprite.setDepth(object.depth);
+    }
+  };
 };

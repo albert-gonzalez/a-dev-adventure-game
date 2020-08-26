@@ -1,12 +1,26 @@
 import { GameState } from "../../state/state";
 import { findPropertyByName } from "../../gameObjects/properties";
-import { actions, currentActionStates } from "../scene1/actions";
-import { objectActivationDirectionMatchesAnimation } from "../../characters/common/animation/animation";
+import {
+  objectActivationDirectionMatchesAnimation,
+  updateAnimation,
+} from "../../characters/common/animation/animation";
 import { addItem } from "../../inventory/current";
 import { getItemFromRepository } from "../../inventory/itemRepository";
 import { Dialog } from "../../menus/dialog";
+import { DOWN, LEFT, RIGHT, UP } from "../../input/input";
+import { lookAtMainCharacter } from "./characters";
 
 type ActivationDirection = "up" | "down" | "left" | "right";
+
+export type ActionCallback = (
+  object: Phaser.GameObjects.GameObject,
+  anotherObject: Phaser.GameObjects.GameObject
+) => void;
+
+export interface ColliderWithCallback {
+  object: Phaser.GameObjects.GameObject[] | Phaser.Tilemaps.StaticTilemapLayer;
+  callback?: ActionCallback;
+}
 
 export interface DialogText {
   who?: string;
@@ -23,9 +37,10 @@ interface ActionState {
 }
 
 export interface SceneAction {
-  activationDirections: ActivationDirection[];
+  activationDirections?: ActivationDirection[];
   states: ActionState[];
   removeAfterLastState?: boolean;
+  characterKey?: string;
 }
 
 export interface CurrentActionStates {
@@ -70,21 +85,18 @@ export const isLastState = (
   !actions[key] || actions[key].states.length - 1 === currentActionStates[key];
 
 export const actionCallback = (
-  albert: Phaser.GameObjects.GameObject,
-  object: Phaser.GameObjects.GameObject,
+  albert: Phaser.GameObjects.Sprite,
+  object: Phaser.GameObjects.Sprite,
   state: GameState
 ) => {
   const scene = state.scene.phaser as Phaser.Scene;
   const cutScene = state.cutScene;
   const isActionButtonJustPressed = state.input.isActionJustPressed;
   const dialog = state.dialog as Dialog;
+  const actions = state.scene.actions;
+  const currentActionStates = state.scene.currentActionStates;
 
-  if (
-    cutScene ||
-    !isActionButtonJustPressed ||
-    dialog.isDialogOpen() ||
-    dialog.isDialogBusy()
-  ) {
+  if (cutScene || dialog.isDialogOpen() || dialog.isDialogBusy()) {
     return;
   }
   const actionKey = findPropertyByName(object, "action").value;
@@ -97,11 +109,13 @@ export const actionCallback = (
     return;
   }
 
+  const actionCharacter =
+    sceneAction.characterKey &&
+    state.scene.characterSprites[sceneAction.characterKey];
+
   if (
-    !objectActivationDirectionMatchesAnimation(
-      albert as Phaser.GameObjects.Sprite,
-      sceneAction
-    )
+    !isActionButtonJustPressed ||
+    !isActivationDirectionCorrect(albert, object)
   ) {
     return;
   }
@@ -114,6 +128,23 @@ export const actionCallback = (
 
   if (!sceneActionState) {
     return;
+  }
+
+  if (actionCharacter) {
+    lookAtMainCharacter(
+      albert,
+      actionCharacter,
+      sceneAction.characterKey as string
+    );
+
+    sceneActionState.cutScene = (state) => {
+      actionCharacter.setFrame(
+        state.scene.charactersData[sceneAction.characterKey as string]
+          .frame as number
+      );
+
+      return true;
+    };
   }
 
   const isCurrentStateTheLast = isLastState(
@@ -144,4 +175,28 @@ export const actionCallback = (
   if (isCurrentStateTheLast && sceneAction.removeAfterLastState) {
     object.destroy(true);
   }
+};
+
+const isActivationDirectionCorrect = (
+  mainCharacter: Phaser.GameObjects.Sprite,
+  action: Phaser.GameObjects.Sprite
+) => {
+  const charBody = mainCharacter.body as Phaser.Physics.Arcade.Body;
+  const actionBody = action.body as Phaser.Physics.Arcade.Body;
+  const xDiff = charBody.center.x - actionBody.center.x;
+  const yDiff = charBody.center.y - actionBody.center.y;
+  let activationDirection;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    activationDirection = xDiff > 0 ? LEFT : RIGHT;
+  } else {
+    activationDirection = yDiff > 0 ? UP : DOWN;
+  }
+
+  return mainCharacter.anims.getCurrentKey().includes(activationDirection);
+};
+
+export const transformAction = (object: Phaser.GameObjects.Sprite) => {
+  object.setVisible(false);
+  object.y += (object.body as Phaser.Physics.Arcade.Body).height;
 };

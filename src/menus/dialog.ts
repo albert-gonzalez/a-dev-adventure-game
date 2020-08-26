@@ -2,7 +2,8 @@ import "phaser";
 
 import {
   MENU_BOX_FILL_ALPHA,
-  MENU_BOX_FILL_COLOR,
+  MENU_BOX_FILL_COLOR_BOTTOM,
+  MENU_BOX_FILL_COLOR_TOP,
   MENU_BOX_FONT_FAMILY,
   MENU_BOX_FONT_LINE_SPACING_SMALL,
   MENU_BOX_FONT_SIZE_L,
@@ -10,13 +11,7 @@ import {
   MENU_BOX_LINE_COLOR,
   MENU_BOX_LINE_WIDTH,
 } from "./style";
-import {
-  DialogText,
-  getAction,
-  getCurrentActionState,
-  increaseCurrentActionState,
-  isLastState,
-} from "../scenes/common/actions";
+import { DialogText } from "../scenes/common/actions";
 import { GameState, getState } from "../state/state";
 import { MENU_DEPTH } from "../scenes/common/constants";
 import { getText } from "../i18n/i18n";
@@ -72,7 +67,7 @@ export const createDialogBox = (scene: Phaser.Scene): Dialog => {
 
     showNextMessageOrHideDialogBox() {
       dialogBusy = true;
-      setTimeout(() => (dialogBusy = false), 500);
+      setTimeout(() => (dialogBusy = false), 100);
       scene.sound.play("select");
 
       if (currentMessages.length) {
@@ -118,6 +113,16 @@ const formatDialogText = (text?: DialogText) => {
 
 const createDialogBoxRectangle = (scene: Phaser.Scene) => {
   const graphics = scene.add.graphics();
+  const width = scene.cameras.main.width - MENU_BOX_MARGIN * 2;
+  graphics.fillGradientStyle(
+    MENU_BOX_FILL_COLOR_TOP,
+    MENU_BOX_FILL_COLOR_TOP,
+    MENU_BOX_FILL_COLOR_BOTTOM,
+    MENU_BOX_FILL_COLOR_BOTTOM,
+    MENU_BOX_FILL_ALPHA
+  );
+
+  graphics.fillRect(0, 0, width, MENU_BOX_HEIGHT);
 
   graphics.lineStyle(
     MENU_BOX_LINE_WIDTH,
@@ -125,17 +130,9 @@ const createDialogBoxRectangle = (scene: Phaser.Scene) => {
     MENU_BOX_LINE_ALPHA
   );
 
-  const dialogBox = graphics.strokeRoundedRect(
-    0,
-    0,
-    scene.cameras.main.width - MENU_BOX_MARGIN * 2,
-    MENU_BOX_HEIGHT
-  );
+  const dialogBox = graphics.strokeRoundedRect(0, 0, width, MENU_BOX_HEIGHT, 4);
 
   dialogBox.setScrollFactor(0, 0);
-
-  graphics.fillStyle(MENU_BOX_FILL_COLOR, MENU_BOX_FILL_ALPHA);
-  dialogBox.fill();
 
   dialogBox.visible = false;
   dialogBox.scaleY = 0;

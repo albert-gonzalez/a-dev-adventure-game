@@ -19,6 +19,7 @@ import projects from "../data/projects.json";
 import skills from "../data/skills.json";
 import { MENU_DEPTH } from "../scenes/common/constants";
 import { HP_UPDATED_EVENT, updateHP } from "../characters/main/state";
+import { PORTRAIT_KEY } from "../scenes/common/images";
 
 const createPageContainer = (
   scene: Phaser.Scene,
@@ -86,7 +87,7 @@ export const createAboutPage = (
       visible: true,
       fontSize: MENU_BOX_FONT_SIZE_S,
     }),
-    scene.add.sprite(250, 0, "portrait").setOrigin(0, 0),
+    scene.add.sprite(250, 0, PORTRAIT_KEY).setOrigin(0, 0),
 
     createMenuText({
       scene,

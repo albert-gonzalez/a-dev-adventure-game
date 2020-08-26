@@ -1,5 +1,9 @@
 import "phaser";
 import { findPropertyByName } from "../gameObjects/properties";
+import {
+  STANDING_NPC_BOUNDING_BOX_HEIGHT,
+  STANDING_NPC_BOUNDING_BOX_OFFSET,
+} from "../scenes/common/characters";
 
 export interface TileSetGameObjectConfig
   extends Phaser.Types.GameObjects.GameObjectConfig {
@@ -12,17 +16,13 @@ export const createObjectsFromMap = (
   layerName: string,
   objectId: string | number,
   spriteConfig: TileSetGameObjectConfig = {},
-  bodyType?: number
+  bodyType?: number,
+  transformationFn?: (object: Phaser.GameObjects.Sprite) => void
 ) => {
   const objects = map.createFromObjects(layerName, objectId, spriteConfig);
   map.scene.physics.world.enable(objects, bodyType);
 
-  objects.forEach((object) => {
-    if (findPropertyByName(object, "action")) {
-      object.setVisible(false);
-      object.y += (object.body as Phaser.Physics.Arcade.Body).height;
-    }
-  });
+  transformationFn && objects.forEach(transformationFn);
 
   return objects;
 };

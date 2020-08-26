@@ -1,7 +1,8 @@
 import "phaser";
 import {
   MENU_BOX_FILL_ALPHA,
-  MENU_BOX_FILL_COLOR,
+  MENU_BOX_FILL_COLOR_BOTTOM,
+  MENU_BOX_FILL_COLOR_TOP,
   MENU_BOX_FONT_ACTIVATED_OPTION_COLOR,
   MENU_BOX_FONT_SELECTED_OPTION_COLOR,
   MENU_BOX_LINE_ALPHA,
@@ -221,18 +222,22 @@ export const controlMenu = (
 
 const createMenuBoxRectangle = (scene: Phaser.Scene) => {
   const graphics = createGraphicsToolWithLineStyle(scene);
+  const width = scene.cameras.main.width - MENU_BOX_MARGIN * 2;
+  const height = scene.cameras.main.height - MENU_BOX_MARGIN * 2;
 
-  const dialogBox = graphics.strokeRoundedRect(
-    0,
-    0,
-    scene.cameras.main.width - MENU_BOX_MARGIN * 2,
-    scene.cameras.main.height - MENU_BOX_MARGIN * 2
+  graphics.fillGradientStyle(
+    MENU_BOX_FILL_COLOR_TOP,
+    MENU_BOX_FILL_COLOR_TOP,
+    MENU_BOX_FILL_COLOR_BOTTOM,
+    MENU_BOX_FILL_COLOR_BOTTOM,
+    MENU_BOX_FILL_ALPHA
   );
 
-  dialogBox.setScrollFactor(0, 0);
+  graphics.fillRect(0, 0, width, height);
 
-  graphics.fillStyle(MENU_BOX_FILL_COLOR, MENU_BOX_FILL_ALPHA);
-  dialogBox.fill();
+  const dialogBox = graphics.strokeRoundedRect(0, 0, width, height, 4);
+
+  dialogBox.setScrollFactor(0, 0);
 
   graphics.lineBetween(
     MENU_VERTICAL_SEPARATOR_X,

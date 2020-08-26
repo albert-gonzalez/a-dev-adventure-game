@@ -3,14 +3,14 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "home.tmx",
+    "activeFile": "office.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 2
         },
         "/home/albert/Documents/objects.tsx": {
             "dynamicWrapping": false,
@@ -37,11 +37,11 @@
             "scaleInEditor": 1.5
         },
         "home.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 486.66666666666663,
-                "y": 522
+                "x": 384,
+                "y": 479.66666666666663
             }
         },
         "home.tmx#albert": {
@@ -75,15 +75,21 @@
             "scaleInEditor": 1
         },
         "office.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 774,
-                "y": 721
+                "x": 610.6666666666665,
+                "y": 263.33333333333326
             }
         },
-        "office.tmx#room": {
+        "office.tmx#albert": {
             "scaleInDock": 1
+        },
+        "office.tmx#boss": {
+            "scaleInDock": 1
+        },
+        "office.tmx#room": {
+            "scaleInDock": 0.75
         },
         "room.tmx": {
             "scale": 2.499147727272727,
@@ -116,12 +122,14 @@
     "map.tileWidth": 32,
     "map.width": 30,
     "openFiles": [
-        "home.tmx"
+        "home.tmx",
+        "office.tmx"
     ],
     "project": "rpcv.tiled-project",
-    "property.type": "string",
+    "property.type": "bool",
     "recentFiles": [
         "home.tmx",
+        "office.tmx",
         "room.tsx",
         "home2.tmx",
         "room.tmx",
@@ -135,7 +143,7 @@
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 32,
+        "height": 64,
         "width": 32
     }
 }

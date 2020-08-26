@@ -1,14 +1,16 @@
-import roomJson from "url:../../assets/tilemaps/home.json";
-import { FOREGROUND_DEPTH, MIDDLE_GROUND_DEPTH } from "../common/constants";
+import { FOREGROUND_DEPTH, MIDDLE_GROUND_DEPTH } from "./constants";
 
-const MAP_KEY = "map";
+export interface SceneMap {
+  key: string;
+  data: string;
+}
 
-export const loadMap = (scene: Phaser.Scene) => {
-  scene.load.tilemapTiledJSON(MAP_KEY, roomJson);
+export const loadMap = (scene: Phaser.Scene, { key, data }: SceneMap) => {
+  scene.load.tilemapTiledJSON(key, data);
 };
 
-export const createMap = (scene: Phaser.Scene) => {
-  const map = scene.make.tilemap({ key: MAP_KEY });
+export const createMap = (key: string, scene: Phaser.Scene) => {
+  const map = scene.make.tilemap({ key });
   const groundCanvas = scene.add.renderTexture(
     0,
     0,

@@ -1,5 +1,7 @@
 import { Inventory } from "../inventory/current";
 import { Dialog } from "../menus/dialog";
+import { CurrentActionStates, SceneActions } from "../scenes/common/actions";
+import { SpriteSheet } from "../scenes/common/images";
 
 interface AlbertState {
   hp: number;
@@ -12,9 +14,12 @@ export interface GameState {
   cutScene?: (state: GameState) => boolean;
   scene: {
     phaser?: Phaser.Scene;
-    objects: { [key: string]: Phaser.GameObjects.Sprite };
-    characters: { [key: string]: Phaser.GameObjects.Sprite };
+    objectSprites: { [key: string]: Phaser.GameObjects.Sprite };
+    characterSprites: { [key: string]: Phaser.GameObjects.Sprite };
+    charactersData: { [key: string]: SpriteSheet };
     events: { [key: string]: boolean };
+    actions: SceneActions;
+    currentActionStates: CurrentActionStates;
   };
   albert: AlbertState;
   dialog?: Dialog;
@@ -51,9 +56,12 @@ const state: GameState = {
     },
   },
   scene: {
-    objects: {},
-    characters: {},
+    objectSprites: {},
+    characterSprites: {},
     events: {},
+    actions: {},
+    currentActionStates: {},
+    charactersData: {},
   },
 };
 

@@ -1,18 +1,19 @@
-import { FOREGROUND_DEPTH, MIDDLE_GROUND_DEPTH } from "../common/constants";
+import { MIDDLE_GROUND_DEPTH } from "../common/constants";
+import { DynamicObjectInfo } from "../common/objects";
 
 const NOTEBOOK_KEY = "albert_notebook";
 
-const objects = [
+const objects: DynamicObjectInfo[] = [
   {
     objectId: NOTEBOOK_KEY,
     frame: 150,
-    tilemapKey: "objects",
+    tileMapKey: "objects",
     depth: MIDDLE_GROUND_DEPTH,
   },
   {
     objectId: "noe_notebook",
     frame: 151,
-    tilemapKey: "objects",
+    tileMapKey: "objects",
   },
 ];
 
