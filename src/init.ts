@@ -1,5 +1,6 @@
 import "phaser";
 
+import "regenerator-runtime/runtime";
 import { init } from "./i18n/i18n";
 import { titleSceneConfig } from "./scenes/title/titleSceneConfig";
 import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
