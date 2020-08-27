@@ -128,10 +128,24 @@ export const isToggleSoundButtonJustPressed = (
 ) => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
-      scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T)
+      scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
     ) || state.input.touch.toggleSound;
 
   state.input.touch.toggleSound = false;
+
+  return isPressed;
+};
+
+export const isToggleFullScreenButtonJustPressed = (
+  scene: Phaser.Scene,
+  state: GameState
+) => {
+  const isPressed =
+    Phaser.Input.Keyboard.JustDown(
+      scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
+    ) || state.input.touch.toggleFullScreen;
+
+  state.input.touch.toggleFullScreen = false;
 
   return isPressed;
 };

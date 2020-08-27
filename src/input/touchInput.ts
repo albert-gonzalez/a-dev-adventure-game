@@ -4,10 +4,10 @@ import { MENU_DEPTH } from "../scenes/common/constants";
 
 const BUTTON_LINE_WIDTH = 2;
 const BUTTON_LINE_COLOR = 0x555555;
-const BUTTON_SIZE = 64;
+const BUTTON_SIZE = 80;
 const BUTTON_RADIUS = 10;
 const BUTTON_COLOR = 0x777777;
-const BUTTON_FONT_SIZE = 24;
+const BUTTON_FONT_SIZE = 30;
 const BUTTON_ALPHA = 0.15;
 const BUTTON_MARGIN = 10;
 const POINTER_UP_DELAY = 100;
@@ -35,9 +35,18 @@ export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
     scene,
     scene.cameras.main.width - (BUTTON_SIZE * 2 + BUTTON_MARGIN * 2),
     BUTTON_MARGIN,
-    "T",
+    "S",
     (pointer) => (state.input.touch.toggleSound = pointer.isDown),
     () => (state.input.touch.toggleSound = false)
+  );
+
+  createButton(
+    scene,
+    scene.cameras.main.width - (BUTTON_SIZE * 3 + BUTTON_MARGIN * 3),
+    BUTTON_MARGIN,
+    "F",
+    (pointer) => (state.input.touch.toggleFullScreen = pointer.isDown),
+    () => (state.input.touch.toggleFullScreen = false)
   );
 
   createButton(
@@ -61,7 +70,7 @@ export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
   createButton(
     scene,
     BUTTON_MARGIN * 2 + BUTTON_SIZE,
-    scene.cameras.main.height - 70,
+    scene.cameras.main.height - (BUTTON_SIZE + BUTTON_MARGIN),
     "↓",
     (pointer) => (state.input.touch.down = pointer.isDown),
     () => (state.input.touch.down = false)
@@ -105,8 +114,8 @@ const createButton = (
 
   const textElement = createMenuText({
     scene,
-    x: 34,
-    y: 34,
+    x: BUTTON_SIZE / 2,
+    y: BUTTON_SIZE / 2,
     text,
     visible: true,
     fontSize: BUTTON_FONT_SIZE,

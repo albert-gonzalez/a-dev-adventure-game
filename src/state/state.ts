@@ -32,6 +32,7 @@ export interface GameState {
       left: boolean;
       right: boolean;
       toggleSound: boolean;
+      toggleFullScreen: boolean;
       menu: boolean;
     };
   };

@@ -32,6 +32,7 @@ import {
   getCharacterDirections,
   isActionButtonJustPressed,
   isMenuButtonJustPressed,
+  isToggleFullScreenButtonJustPressed,
   isToggleSoundButtonJustPressed,
   updateCharacterVelocity,
 } from "../../input/input";
@@ -170,6 +171,10 @@ export const createSceneMethods = ({
 
     if (isToggleSoundButtonJustPressed(this, state)) {
       this.sound.mute = !this.sound.mute;
+    }
+
+    if (isToggleFullScreenButtonJustPressed(this, state)) {
+      this.scale.toggleFullscreen();
     }
 
     if (dialog.isDialogOpen()) {
