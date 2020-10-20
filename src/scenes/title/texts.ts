@@ -2,18 +2,17 @@ import { getText } from "../../i18n/i18n";
 
 import { BACKSPACE_PRESS_EFFECT, KEY_PRESS_EFFECT } from "./audio";
 import { FONT_FAMILY } from "../common/constants";
+import { START_DELAY } from "../common/texts";
 
 const TITLE_FONT_FAMILY = FONT_FAMILY;
 const TITLE_LINE_SPACING = 10;
 const TITLE_FONT_SIZE = "44px";
-const TITLE_X = 200;
-const TITLE_Y = 200;
+const TITLE_X = 210;
+const TITLE_Y = 150;
 const TITLE_TOP_PADDING = 10;
 const HELP_FONT_SIZE = "16px";
 const HELP_X = 400;
 const HELP_Y = 500;
-const START_DELAY = 500;
-const TIME_BETWEEN_KEYSTROKES = 200;
 const TIME_BETWEEN_DELETIONS = 150;
 const BLINK_TIME = 2000;
 
@@ -25,28 +24,7 @@ export const addTitleText = (scene: Phaser.Scene) => {
   });
 
   titleText.setPadding(0, TITLE_TOP_PADDING, 0, 0);
-
   return titleText;
-};
-export const writeText = (
-  titleText: Phaser.GameObjects.Text,
-  textToWrite: string,
-  scene: Phaser.Scene
-): Promise<void> => {
-  return new Promise((resolve) => {
-    scene.time.delayedCall(START_DELAY, () => {
-      textToWrite.split("").forEach((char, i) => {
-        scene.time.delayedCall(TIME_BETWEEN_KEYSTROKES * i, () => {
-          titleText.setText(titleText.text + char);
-          scene.sound.play(KEY_PRESS_EFFECT);
-
-          if (i === textToWrite.length - 1) {
-            resolve();
-          }
-        });
-      });
-    });
-  });
 };
 
 export const deleteLetters = (

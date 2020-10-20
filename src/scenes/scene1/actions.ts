@@ -1,14 +1,20 @@
 import { SceneActions } from "../common/actions";
 import { GameState } from "../../state/state";
-import {
-  createCoffeeCutScene,
-  createShowerCutScene,
-  noteBookCutscene,
-} from "./cutScenes";
+import { createShowerCutScene, noteBookCutscene } from "./cutScenes";
 import { DOWN, LEFT, UP } from "../../input/input";
 import { updateHP } from "../../characters/main/state";
 import { SHOWER_EVENT } from "./events";
-import { CLOTHES_KEY, NOTEBOOK_KEY } from "../../inventory/itemRepository";
+import {
+  CLOTHES_KEY,
+  COFFEE_CUP_KEY,
+  NOTEBOOK_KEY,
+} from "../../inventory/itemRepository";
+import { createCoffeeCutScene } from "../common/cutScenes";
+import { startSceneTransition } from "../common/scene";
+import { SCENE_2_KEY } from "../scene2/config";
+
+const COFFEE_MACHINE_X = 370;
+const COFFEE_MACHINE_Y = 765;
 
 const actions: SceneActions = {
   wardrobe: {
@@ -133,6 +139,7 @@ const actions: SceneActions = {
         texts: [{ text: "door" }],
         textsFailure: [{ text: "door_fail" }],
         condition: (state: GameState) => NOTEBOOK_KEY in state.inventory,
+        cutScene: startSceneTransition(SCENE_2_KEY),
       },
     ],
   },
@@ -150,15 +157,16 @@ const actions: SceneActions = {
       {
         texts: [{ text: "coffee_machine_1" }],
         updateState: (state: GameState) => updateHP(state, 25),
-        cutScene: createCoffeeCutScene([
-          { text: "ellipsis" },
-          { text: "coffee_machine_2" },
-        ]),
+        cutScene: createCoffeeCutScene(
+          [{ text: "ellipsis" }, { text: "coffee_machine_2" }],
+          COFFEE_MACHINE_X,
+          COFFEE_MACHINE_Y
+        ),
       },
       {
         texts: [{ text: "coffee_machine_3" }],
-        itemKeys: ["coffee_cup"],
-        cutScene: createCoffeeCutScene([]),
+        itemKeys: [COFFEE_CUP_KEY],
+        cutScene: createCoffeeCutScene([], COFFEE_MACHINE_X, COFFEE_MACHINE_Y),
       },
       {
         texts: [{ text: "coffee_machine_4" }],

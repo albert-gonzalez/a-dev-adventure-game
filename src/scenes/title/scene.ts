@@ -1,23 +1,20 @@
 import { isActionButtonJustPressed } from "../../input/input";
 import { SCENE_1_KEY } from "../scene1/config";
-import { getState } from "../../state/state";
+import { GameState, getState } from "../../state/state";
 import { INTRO_MUSIC, loadAudio } from "./audio";
 import { loadImages } from "./images";
-import {
-  addPressToStartText,
-  addTitleText,
-  deleteLetters,
-  writeText,
-} from "./texts";
+import { addPressToStartText, addTitleText, deleteLetters } from "./texts";
 import { addParticleEmitters } from "./particles";
 import { addBackground } from "./background";
-import { addFadeIn } from "../common/transitionEffect";
-import { MUSIC_VOLUME } from "../common/constants";
+import { playMusic } from "../common/audio";
+import { writeText } from "../common/texts";
+import { startSceneTransition } from "../common/scene";
 
 const START_DELAY = 1000;
 
-let showFadeIn: () => boolean;
+let continueTransition: (state: GameState) => boolean;
 let isInputEnabled = false;
+let background: Phaser.GameObjects.Sprite;
 
 export function preload(this: Phaser.Scene) {
   loadAudio(this);
@@ -25,7 +22,8 @@ export function preload(this: Phaser.Scene) {
 }
 
 export function create(this: Phaser.Scene) {
-  addBackground(this);
+  background = addBackground(this);
+  getState().scene.phaser = this;
   this.time.delayedCall(START_DELAY, async () => {
     const titleText = addTitleText(this);
     await writeText(titleText, "A Dev's\nAdvetnure", this);
@@ -35,29 +33,29 @@ export function create(this: Phaser.Scene) {
     addPressToStartText(this);
     addParticleEmitters(this);
 
-    this.sound.play(INTRO_MUSIC, { volume: MUSIC_VOLUME, loop: true });
+    playMusic(this, INTRO_MUSIC);
     isInputEnabled = true;
   });
 }
 
 export function update(this: Phaser.Scene): void {
+  moveBackground(this);
+
   if (!isInputEnabled) {
     return;
   }
 
-  if (isActionButtonJustPressed(this, getState())) {
-    showFadeIn = addFadeIn(this);
+  if (!continueTransition && isActionButtonJustPressed(this, getState())) {
+    continueTransition = startSceneTransition(SCENE_1_KEY);
   }
 
-  if (showFadeIn) {
-    const fadeFinished = showFadeIn();
-
-    if (fadeFinished) {
-      this.sound.stopAll();
-      this.scene.start(SCENE_1_KEY);
-      isInputEnabled = false;
-    }
-
-    return;
+  if (continueTransition) {
+    continueTransition(getState());
   }
 }
+
+const moveBackground = (scene: Phaser.Scene) => {
+  if (background.x > -background.width + scene.cameras.main.width) {
+    background.x = background.x - 0.3;
+  }
+};

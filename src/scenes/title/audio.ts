@@ -1,8 +1,8 @@
 import keyPressEffect from "url:../../assets/audio/effects/keyPress.ogg";
 import introMusic from "url:../../assets/audio/music/intro.ogg";
 import backspacePressEffect from "url:../../assets/audio/effects/backspacePress.ogg";
+import { KEY_PRESS_EFFECT } from "../common/audio";
 
-export const KEY_PRESS_EFFECT = "keyPress";
 export const BACKSPACE_PRESS_EFFECT = "backspacePress";
 export const INTRO_MUSIC = "intro";
 

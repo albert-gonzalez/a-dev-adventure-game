@@ -14,7 +14,7 @@ export const RIGHT_DIRECTION = 1;
 
 export const NO_DIRECTION = 0;
 
-const MOVEMENT_SPEED = 200;
+export const MOVEMENT_SPEED = 200;
 export const MOVEMENT_SPEED_SLOW = 150;
 
 export const getCharacterDirections = (
@@ -151,12 +151,12 @@ export const isToggleFullScreenButtonJustPressed = (
 };
 
 export const updateCharacterVelocity = (
-  albert: Phaser.GameObjects.Sprite,
+  character: Phaser.GameObjects.Sprite,
   directionX: number,
   directionY: number,
   movementSpeed = MOVEMENT_SPEED
 ) =>
-  (albert.body as Phaser.Physics.Arcade.Body).setVelocity(
+  (character.body as Phaser.Physics.Arcade.Body).setVelocity(
     movementSpeed * directionX,
     movementSpeed * directionY
   );

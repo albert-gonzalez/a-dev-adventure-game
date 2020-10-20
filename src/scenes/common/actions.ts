@@ -41,6 +41,7 @@ export interface SceneAction {
   states: ActionState[];
   removeAfterLastState?: boolean;
   characterKey?: string;
+  disabled?: boolean;
 }
 
 export interface CurrentActionStates {
@@ -105,7 +106,7 @@ export const actionCallback = (
     findPropertyByName(object, "action").value
   );
 
-  if (!sceneAction) {
+  if (!sceneAction || sceneAction.disabled) {
     return;
   }
 

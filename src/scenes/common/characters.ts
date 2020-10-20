@@ -11,7 +11,7 @@ import {
 } from "../../characters/main/creation";
 import { ActionCallback, ColliderWithCallback } from "./actions";
 import { SpriteSheet } from "./images";
-import { DOWN, LEFT, RIGHT, UP } from "../../input/input";
+import { MOVEMENT_SPEED, updateCharacterVelocity } from "../../input/input";
 
 export const HUMAN_FRAME_SIZE = {
   frameWidth: 32,
@@ -27,6 +27,11 @@ const MAIN_CHARACTER_BOUNDING_BOX_HEIGHT = 10;
 const MAIN_CHARACTER_BOUNDING_BOX_OFFSET = 55;
 export const STANDING_NPC_BOUNDING_BOX_HEIGHT = 45;
 export const STANDING_NPC_BOUNDING_BOX_OFFSET = 30;
+
+export const SITTING_NPC_BOUNDING_BOX = {
+  height: 44,
+  offset: 20,
+};
 
 export const ALBERT_KEY = "albert";
 
@@ -45,7 +50,7 @@ export const insertCharactersIntoScene = (
         frame: character.frame,
       },
       Phaser.Physics.Arcade.DYNAMIC_BODY,
-      transformNPCCharacter
+      (sprite) => transformNPCCharacter(character, sprite)
     )[0];
 
     createCharacterAnimations(
@@ -129,11 +134,20 @@ const initCollisions = (
   body.offset.y = MAIN_CHARACTER_BOUNDING_BOX_OFFSET;
 };
 
-const transformNPCCharacter = (object: Phaser.GameObjects.Sprite) => {
+const transformNPCCharacter = (
+  characterSpriteSheet: SpriteSheet,
+  object: Phaser.GameObjects.Sprite
+) => {
   const body = object.body as Phaser.Physics.Arcade.Body;
 
-  body.setSize(body.width, STANDING_NPC_BOUNDING_BOX_HEIGHT);
-  body.setOffset(body.offset.x, STANDING_NPC_BOUNDING_BOX_OFFSET);
+  body.setSize(
+    body.width,
+    characterSpriteSheet.boundingBox?.height || STANDING_NPC_BOUNDING_BOX_HEIGHT
+  );
+  body.setOffset(
+    body.offset.x,
+    characterSpriteSheet.boundingBox?.offset || STANDING_NPC_BOUNDING_BOX_OFFSET
+  );
   body.immovable = true;
 };
 
@@ -155,4 +169,15 @@ export const lookAtMainCharacter = (
   }
 
   updateAnimation(npc, xDirection, yDirection, npcKey, true);
+};
+
+export const updateVelocityWithAnimation = (
+  character: Phaser.GameObjects.Sprite,
+  directionX: number,
+  directionY: number,
+  animationPrefix: string,
+  movementSpeed = MOVEMENT_SPEED
+) => {
+  updateCharacterVelocity(character, directionX, directionY, movementSpeed);
+  updateAnimation(character, directionX, directionY, animationPrefix);
 };

@@ -16,15 +16,6 @@ export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
   createButton(
     scene,
     scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
-    scene.cameras.main.height - (BUTTON_SIZE + BUTTON_MARGIN),
-    "A",
-    (pointer) => (state.input.touch.action = pointer.isDown),
-    () => (state.input.touch.action = false)
-  );
-
-  createButton(
-    scene,
-    scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
     BUTTON_MARGIN,
     "M",
     (pointer) => (state.input.touch.menu = pointer.isDown),
@@ -47,6 +38,19 @@ export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
     "F",
     (pointer) => (state.input.touch.toggleFullScreen = pointer.isDown),
     () => (state.input.touch.toggleFullScreen = false)
+  );
+
+  if (scene.game.device.os.desktop) {
+    return;
+  }
+
+  createButton(
+    scene,
+    scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
+    scene.cameras.main.height - (BUTTON_SIZE + BUTTON_MARGIN),
+    "A",
+    (pointer) => (state.input.touch.action = pointer.isDown),
+    () => (state.input.touch.action = false)
   );
 
   createButton(
@@ -114,8 +118,8 @@ const createButton = (
 
   const textElement = createMenuText({
     scene,
-    x: BUTTON_SIZE / 2,
-    y: BUTTON_SIZE / 2,
+    x: BUTTON_SIZE / 2 + 2,
+    y: BUTTON_SIZE / 2 + 2,
     text,
     visible: true,
     fontSize: BUTTON_FONT_SIZE,

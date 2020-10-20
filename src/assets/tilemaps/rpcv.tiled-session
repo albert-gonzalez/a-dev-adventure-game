@@ -75,11 +75,11 @@
             "scaleInEditor": 1
         },
         "office.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 1,
+            "scale": 1.5,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 610.6666666666665,
-                "y": 263.33333333333326
+                "x": 352.6666666666667,
+                "y": 291.66666666666663
             }
         },
         "office.tmx#albert": {
@@ -88,8 +88,41 @@
         "office.tmx#boss": {
             "scaleInDock": 1
         },
+        "office.tmx#cc": {
+            "scaleInDock": 1
+        },
+        "office.tmx#ef": {
+            "scaleInDock": 1
+        },
+        "office.tmx#ej": {
+            "scaleInDock": 1
+        },
+        "office.tmx#fs": {
+            "scaleInDock": 1
+        },
+        "office.tmx#ja": {
+            "scaleInDock": 1
+        },
+        "office.tmx#mf": {
+            "scaleInDock": 1
+        },
+        "office.tmx#rm": {
+            "scaleInDock": 1
+        },
         "office.tmx#room": {
             "scaleInDock": 0.75
+        },
+        "office.tmx#rs": {
+            "scaleInDock": 1
+        },
+        "office.tmx#se": {
+            "scaleInDock": 1
+        },
+        "office.tmx#sn": {
+            "scaleInDock": 1
+        },
+        "office.tmx#wg": {
+            "scaleInDock": 1
         },
         "room.tmx": {
             "scale": 2.499147727272727,
@@ -126,7 +159,7 @@
         "office.tmx"
     ],
     "project": "rpcv.tiled-project",
-    "property.type": "bool",
+    "property.type": "string",
     "recentFiles": [
         "home.tmx",
         "office.tmx",

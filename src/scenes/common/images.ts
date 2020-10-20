@@ -30,6 +30,10 @@ export interface SpriteSheet {
     frameWidth: number;
     frameHeight: number;
   };
+  boundingBox?: {
+    height: number;
+    offset: number;
+  };
 }
 
 export const COMMON_IMAGES: Image[] = [

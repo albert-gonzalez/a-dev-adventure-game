@@ -8,7 +8,7 @@ import {
   TILE_HEIGHT,
 } from "./images";
 import { createMap, loadMap, SceneMap } from "./sceneMap";
-import { Audio, loadAudio } from "./audio";
+import { Audio, loadAudio, playMusic } from "./audio";
 import { createObjectsFromMap } from "../../tileSets/objects";
 import {
   createCharacterAnimations,
@@ -19,11 +19,7 @@ import {
   SLEEPY_ALBERT_KEY,
   SLEEPY_PREFIX,
 } from "../../characters/main/creation";
-import {
-  createMainCharacters,
-  insertCharactersIntoScene,
-  lookAtMainCharacter,
-} from "./characters";
+import { createMainCharacters, insertCharactersIntoScene } from "./characters";
 import { actionCallback, SceneActions, transformAction } from "./actions";
 import { DynamicObjectInfo, insertDynamicObjectsIntoScene } from "./objects";
 import { controlDialog, createDialogBox, Dialog } from "../../menus/dialog";
@@ -36,13 +32,14 @@ import {
   isToggleSoundButtonJustPressed,
   updateCharacterVelocity,
 } from "../../input/input";
-import { BOSS_KEY } from "../scene2/characters";
+import { addFadeIn } from "./transitionEffect";
 
 export interface CreateSceneInput {
   initialCutScene: (state: GameState) => boolean;
   images: Image[];
   spriteSheets: SpriteSheet[];
   audios: Audio[];
+  music?: string;
   map: SceneMap;
   dynamicObjects: DynamicObjectInfo[];
   characters: { [key: string]: SpriteSheet };
@@ -56,6 +53,7 @@ export const createSceneMethods = ({
   spriteSheets,
   map,
   audios,
+  music,
   initialAnimationPrefix = "",
   dynamicObjects,
   characters,
@@ -85,6 +83,8 @@ export const createSceneMethods = ({
     state.scene.actions = actions;
     state.scene.charactersData = characters;
     state.scene.currentActionStates = {};
+
+    music && playMusic(this, music);
 
     let tilemap: Phaser.Tilemaps.Tilemap;
     ({
@@ -230,4 +230,25 @@ export const createSceneMethods = ({
   }
 
   return { preload, update, create };
+};
+
+export const startSceneTransition = (sceneKey: string) => {
+  let showFadeIn: () => boolean;
+  return (state: GameState): boolean => {
+    const scene = state.scene.phaser as Phaser.Scene;
+
+    if (!showFadeIn) {
+      showFadeIn = addFadeIn(scene);
+    }
+
+    const fadeFinished = showFadeIn();
+
+    if (fadeFinished) {
+      scene.sound.stopAll();
+      scene.scene.start(sceneKey);
+      return true;
+    }
+
+    return false;
+  };
 };
