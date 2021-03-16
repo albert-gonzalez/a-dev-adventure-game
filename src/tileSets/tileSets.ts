@@ -9,7 +9,7 @@ export const createTileSetLayer = (
   const tiles = map.addTilesetImage(tileSetName, key);
 
   return map
-    .createStaticLayer(layerId, tiles, 0, 0)
+    .createLayer(layerId, tiles, 0, 0)
     .setVisible(false)
     .setCollisionFromCollisionGroup();
 };

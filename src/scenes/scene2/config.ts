@@ -1,4 +1,4 @@
-import { createSceneMethods } from "../common/scene";
+import { createSceneMethods } from "../common/map/scene";
 import { getImages, getSpriteSheets } from "./images";
 import officeJson from "url:../../assets/tilemaps/office.json";
 import { getCharacters } from "./characters";

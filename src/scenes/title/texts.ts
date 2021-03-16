@@ -1,8 +1,8 @@
 import { getText } from "../../i18n/i18n";
 
-import { BACKSPACE_PRESS_EFFECT, KEY_PRESS_EFFECT } from "./audio";
-import { FONT_FAMILY } from "../common/constants";
-import { START_DELAY } from "../common/texts";
+import { BACKSPACE_PRESS_EFFECT } from "./audio";
+import { FONT_FAMILY } from "../common/map/constants";
+import { START_DELAY } from "../common/map/texts";
 
 const TITLE_FONT_FAMILY = FONT_FAMILY;
 const TITLE_LINE_SPACING = 10;
@@ -20,10 +20,10 @@ export const addTitleText = (scene: Phaser.Scene) => {
   const titleText = scene.add.text(TITLE_X, TITLE_Y, "", {
     fontFamily: TITLE_FONT_FAMILY,
     fontSize: TITLE_FONT_SIZE,
-    lineSpacing: TITLE_LINE_SPACING,
   });
 
   titleText.setPadding(0, TITLE_TOP_PADDING, 0, 0);
+  titleText.setLineSpacing(TITLE_LINE_SPACING);
   return titleText;
 };
 

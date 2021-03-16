@@ -1,8 +1,10 @@
-import roomImage from "url:../../assets/tilemaps/room.png";
-import portrait from "url:../../assets/sprites/portrait.png";
-import steam from "url:../../assets/sprites/steam.png";
-import { loadMainCharacterSprite } from "../../characters/main/creation";
-import { createTileSetLayer } from "../../tileSets/tileSets";
+import roomImage from "url:../../../assets/tilemaps/room.png";
+import portrait from "url:../../../assets/sprites/portrait.png";
+import steam from "url:../../../assets/sprites/steam.png";
+import albertImage from "url:../../../assets/sprites/albert.png";
+import sleepyAlbertImage from "url:../../../assets/sprites/sleepyAlbert.png";
+import { createTileSetLayer } from "../../../tileSets/tileSets";
+import { ALBERT_KEY, HUMAN_FRAME_SIZE, SLEEPY_ALBERT_KEY } from "./characters";
 
 const ROOM_IMAGE_KEY = "room";
 const OBJECTS_IMAGE_KEY = "objects";
@@ -16,6 +18,8 @@ export const PORTRAIT_KEY = "portrait";
 export const STEAM_KEY = "steam";
 export const TILE_HEIGHT = 32;
 export const TILE_WIDTH = 32;
+export const ENEMY_WIDTH = 256;
+export const ENEMY_HEIGHT = 256;
 
 export interface Image {
   key: string;
@@ -34,6 +38,7 @@ export interface SpriteSheet {
     height: number;
     offset: number;
   };
+  animated?: boolean;
 }
 
 export const COMMON_IMAGES: Image[] = [
@@ -48,6 +53,18 @@ export const COMMON_SPRITE_SHEETS: SpriteSheet[] = [
     image: roomImage,
     size: { frameWidth: TILE_WIDTH, frameHeight: TILE_HEIGHT },
   },
+  {
+    key: ALBERT_KEY,
+    image: albertImage,
+    size: HUMAN_FRAME_SIZE,
+    animated: true,
+  },
+  {
+    key: SLEEPY_ALBERT_KEY,
+    image: sleepyAlbertImage,
+    size: HUMAN_FRAME_SIZE,
+    animated: true,
+  },
 ];
 
 export const loadImages = (
@@ -61,7 +78,6 @@ export const loadImages = (
       ...spriteSheet.size,
     });
   });
-  loadMainCharacterSprite(scene);
 };
 
 export const createImageObjects = (map: Phaser.Tilemaps.Tilemap) => {

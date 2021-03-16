@@ -29,7 +29,7 @@ import {
   isUpButtonJustPressed,
   isUpButtonPressed,
 } from "../input/input";
-import { MENU_DEPTH } from "../scenes/common/constants";
+import { MENU_DEPTH } from "../scenes/common/map/constants";
 import { GameState } from "../state/state";
 
 const menuOptionsConfig = () => [

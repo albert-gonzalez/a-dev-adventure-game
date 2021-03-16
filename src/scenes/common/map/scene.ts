@@ -1,5 +1,5 @@
-import { controlMenu, createMenu, Menu } from "../../menus/menu";
-import { GameState, getState } from "../../state/state";
+import { controlMenu, createMenu, Menu } from "../../../menus/menu";
+import { GameState, getState } from "../../../state/state";
 import {
   createImageObjects,
   Image,
@@ -9,21 +9,22 @@ import {
 } from "./images";
 import { createMap, loadMap, SceneMap } from "./sceneMap";
 import { Audio, loadAudio, playMusic } from "./audio";
-import { createObjectsFromMap } from "../../tileSets/objects";
+import { createObjectsFromMap } from "../../../tileSets/objects";
 import {
   createCharacterAnimations,
   updateAnimation,
-} from "../../characters/common/animation/animation";
+} from "../../../characters/common/animation/animation";
 import {
   ALBERT_KEY,
+  createMainCharacters,
+  insertCharactersIntoScene,
   SLEEPY_ALBERT_KEY,
   SLEEPY_PREFIX,
-} from "../../characters/main/creation";
-import { createMainCharacters, insertCharactersIntoScene } from "./characters";
+} from "./characters";
 import { actionCallback, SceneActions, transformAction } from "./actions";
 import { DynamicObjectInfo, insertDynamicObjectsIntoScene } from "./objects";
-import { controlDialog, createDialogBox, Dialog } from "../../menus/dialog";
-import { createTouchButtons } from "../../input/touchInput";
+import { controlDialog, createDialogBox, Dialog } from "../../../menus/dialog";
+import { createTouchButtons } from "../../../input/touchInput";
 import {
   getCharacterDirections,
   isActionButtonJustPressed,
@@ -31,7 +32,7 @@ import {
   isToggleFullScreenButtonJustPressed,
   isToggleSoundButtonJustPressed,
   updateCharacterVelocity,
-} from "../../input/input";
+} from "../../../input/input";
 import { addFadeIn } from "./transitionEffect";
 
 export interface CreateSceneInput {
@@ -63,11 +64,11 @@ export const createSceneMethods = ({
   let groundCanvas: Phaser.GameObjects.RenderTexture;
   let foregroundCanvas: Phaser.GameObjects.RenderTexture;
   let middleGroundCanvas: Phaser.GameObjects.RenderTexture;
-  let ground: Phaser.Tilemaps.StaticTilemapLayer,
-    foreground: Phaser.Tilemaps.StaticTilemapLayer,
-    middleGround: Phaser.Tilemaps.StaticTilemapLayer,
-    objects: Phaser.Tilemaps.StaticTilemapLayer,
-    objectsOver: Phaser.Tilemaps.StaticTilemapLayer;
+  let ground: Phaser.Tilemaps.TilemapLayer,
+    foreground: Phaser.Tilemaps.TilemapLayer,
+    middleGround: Phaser.Tilemaps.TilemapLayer,
+    objects: Phaser.Tilemaps.TilemapLayer,
+    objectsOver: Phaser.Tilemaps.TilemapLayer;
 
   function preload(this: Phaser.Scene): void {
     const state = getState();
@@ -109,7 +110,7 @@ export const createSceneMethods = ({
       undefined,
       undefined,
       transformAction
-    );
+    ) as Phaser.GameObjects.Sprite[];
 
     createCharacterAnimations(this, SLEEPY_ALBERT_KEY, SLEEPY_PREFIX);
     createCharacterAnimations(this, ALBERT_KEY);
@@ -128,7 +129,12 @@ export const createSceneMethods = ({
       objects,
       characterSprites,
       actionSprites,
-      (albert, object) => actionCallback(albert, object, getState()),
+      (albert, object) =>
+        actionCallback(
+          albert as Phaser.GameObjects.Sprite,
+          object as Phaser.GameObjects.Sprite,
+          getState()
+        ),
       initialAnimationPrefix
     );
     state.albert.sprite = albert;
@@ -224,8 +230,9 @@ export const createSceneMethods = ({
 
     updateCharacterVelocity(albertSprite, directionX, directionY);
     albertSprite.setDepth(Math.ceil(albertSprite.y / TILE_HEIGHT));
-    Object.values(state.scene.characterSprites).forEach((character) =>
-      character.setDepth(Math.ceil(character.y / TILE_HEIGHT))
+    Object.values(state.scene.characterSprites).forEach(
+      (character) =>
+        character && character.setDepth(Math.ceil(character.y / TILE_HEIGHT))
     );
   }
 

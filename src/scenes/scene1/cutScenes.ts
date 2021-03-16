@@ -7,12 +7,12 @@ import {
   updateCharacterVelocity,
 } from "../../input/input";
 import { COBI_KEY, NOE_KEY } from "./characters";
-import { ALBERT_KEY } from "../common/characters";
+import { ALBERT_KEY } from "../common/map/characters";
 import { SHOWER_EVENT } from "./events";
-import { addFadeOut } from "../common/transitionEffect";
+import { addFadeOut } from "../common/map/transitionEffect";
 import { HOME_MUSIC } from "./audio";
-import { STEAM_KEY } from "../common/images";
-import { playMusic } from "../common/audio";
+import { STEAM_KEY } from "../common/map/images";
+import { playMusic } from "../common/map/audio";
 
 export const createShowerCutScene = (): ((state: GameState) => boolean) => {
   let finished = false;

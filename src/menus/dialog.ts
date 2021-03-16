@@ -11,9 +11,9 @@ import {
   MENU_BOX_LINE_COLOR,
   MENU_BOX_LINE_WIDTH,
 } from "./style";
-import { DialogText } from "../scenes/common/actions";
+import { DialogText } from "../scenes/common/map/actions";
 import { GameState, getState } from "../state/state";
-import { MENU_DEPTH } from "../scenes/common/constants";
+import { MENU_DEPTH } from "../scenes/common/map/constants";
 import { getText } from "../i18n/i18n";
 
 const MENU_BOX_MARGIN = 20;
@@ -153,13 +153,13 @@ const createDialogBoxText = (
     {
       fontFamily: MENU_BOX_FONT_FAMILY,
       fontSize: MENU_BOX_FONT_SIZE_L,
-      lineSpacing: MENU_BOX_FONT_LINE_SPACING_SMALL,
     }
   );
 
   text.setWordWrapWidth(scene.cameras.main.width - MENU_BOX_MARGIN * 4);
   text.setScrollFactor(0, 0);
   text.setVisible(false);
+  text.setLineSpacing(MENU_BOX_FONT_LINE_SPACING_SMALL);
 
   return text;
 };

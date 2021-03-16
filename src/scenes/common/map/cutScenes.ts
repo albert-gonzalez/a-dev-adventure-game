@@ -1,5 +1,5 @@
 import { DialogText } from "./actions";
-import { GameState } from "../../state/state";
+import { GameState } from "../../../state/state";
 import { STEAM_KEY } from "./images";
 import { FOREGROUND_DEPTH } from "./constants";
 import { COFFEE_EFFECT } from "./audio";

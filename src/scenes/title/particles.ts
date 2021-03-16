@@ -22,7 +22,12 @@ export const addParticleEmitters = (scene: Phaser.Scene) => {
     },
     emitZone: {
       type: "random",
-      source: new Phaser.Geom.Rectangle(0, 0, 800, 10),
+      source: new Phaser.Geom.Rectangle(
+        0,
+        0,
+        800,
+        10
+      ) as Phaser.Types.GameObjects.Particles.RandomZoneSource,
     },
   });
 };

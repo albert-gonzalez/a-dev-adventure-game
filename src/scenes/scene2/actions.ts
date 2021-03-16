@@ -1,4 +1,4 @@
-import { SceneActions } from "../common/actions";
+import { SceneActions } from "../common/map/actions";
 import {
   BOSS_KEY,
   CC_KEY,
@@ -21,7 +21,7 @@ import {
   DONUT_KEY,
   FLJ_BOOK_KEY,
 } from "../../inventory/itemRepository";
-import { createCoffeeCutScene } from "../common/cutScenes";
+import { createCoffeeCutScene } from "../common/map/cutScenes";
 
 const actions: SceneActions = {
   [BOSS_KEY]: {

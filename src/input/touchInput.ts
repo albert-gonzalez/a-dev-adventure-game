@@ -1,13 +1,13 @@
 import { GameState } from "../state/state";
 import { createMenuText } from "../menus/texts";
-import { MENU_DEPTH } from "../scenes/common/constants";
+import { MENU_DEPTH } from "../scenes/common/map/constants";
 
 const BUTTON_LINE_WIDTH = 2;
 const BUTTON_LINE_COLOR = 0x555555;
 const BUTTON_SIZE = 80;
 const BUTTON_RADIUS = 10;
 const BUTTON_COLOR = 0x777777;
-const BUTTON_FONT_SIZE = 30;
+const BUTTON_FONT_SIZE = "30px";
 const BUTTON_ALPHA = 0.15;
 const BUTTON_MARGIN = 10;
 const POINTER_UP_DELAY = 100;
@@ -114,7 +114,7 @@ const createButton = (
   );
 
   graphics.fillStyle(BUTTON_COLOR, 1);
-  rectangle.fill();
+  rectangle.fillRoundedRect(0, 0, BUTTON_SIZE, BUTTON_SIZE, BUTTON_RADIUS);
 
   const textElement = createMenuText({
     scene,

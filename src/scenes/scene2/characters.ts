@@ -1,7 +1,7 @@
 import {
   HUMAN_FRAME_SIZE,
   SITTING_NPC_BOUNDING_BOX,
-} from "../common/characters";
+} from "../common/map/characters";
 import bossImage from "url:../../assets/sprites/boss.png";
 import ccImage from "url:../../assets/sprites/cc.png";
 import rsImage from "url:../../assets/sprites/rs.png";
@@ -16,7 +16,7 @@ import jaImage from "url:../../assets/sprites/ja.png";
 import mfImage from "url:../../assets/sprites/mf.png";
 import yfImage from "url:../../assets/sprites/yf.png";
 import emptyChairImage from "url:../../assets/sprites/emptyChair.png";
-import { SpriteSheet } from "../common/images";
+import { SpriteSheet } from "../common/map/images";
 
 export const BOSS_KEY = "boss";
 export const CC_KEY = "cc";
@@ -40,93 +40,95 @@ const characters: { [key: string]: SpriteSheet } = {
     frame: 10,
     image: bossImage,
     size: HUMAN_FRAME_SIZE,
+    animated: true,
   },
   [MF_KEY]: {
     key: MF_KEY,
     frame: 10,
     image: mfImage,
     size: HUMAN_FRAME_SIZE,
+    animated: true,
   },
   [CC_KEY]: {
     key: CC_KEY,
-    frame: 1,
+    frame: 0,
     image: ccImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [RS_KEY]: {
     key: RS_KEY,
-    frame: 1,
+    frame: 0,
     image: rsImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [SN_KEY]: {
     key: SN_KEY,
-    frame: 1,
+    frame: 0,
     image: snImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [EF_KEY]: {
     key: EF_KEY,
-    frame: 1,
+    frame: 0,
     image: efImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [EJ_KEY]: {
     key: EJ_KEY,
-    frame: 1,
+    frame: 0,
     image: ejImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [FS_KEY]: {
     key: FS_KEY,
-    frame: 1,
+    frame: 0,
     image: fsImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [RM_KEY]: {
     key: RM_KEY,
-    frame: 1,
+    frame: 0,
     image: rmImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [SE_KEY]: {
     key: SE_KEY,
-    frame: 1,
+    frame: 0,
     image: seImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [WG_KEY]: {
     key: WG_KEY,
-    frame: 1,
+    frame: 0,
     image: wgImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [JA_KEY]: {
     key: JA_KEY,
-    frame: 1,
+    frame: 0,
     image: jaImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [YF_KEY]: {
     key: YF_KEY,
-    frame: 1,
+    frame: 0,
     image: yfImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,
   },
   [EMPTY_CHAIR_KEY]: {
     key: EMPTY_CHAIR_KEY,
-    frame: 1,
+    frame: 0,
     image: emptyChairImage,
     size: HUMAN_FRAME_SIZE,
     boundingBox: SITTING_NPC_BOUNDING_BOX,

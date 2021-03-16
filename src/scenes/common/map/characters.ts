@@ -1,17 +1,13 @@
-import { GameState } from "../../state/state";
-import { createObjectsFromMap } from "../../tileSets/objects";
+import { GameState } from "../../../state/state";
+import { createObjectsFromMap } from "../../../tileSets/objects";
 import {
   ANIMATION_STILL_DOWN,
   createCharacterAnimations,
   updateAnimation,
-} from "../../characters/common/animation/animation";
-import {
-  SLEEPY_ALBERT_KEY,
-  SLEEPY_PREFIX,
-} from "../../characters/main/creation";
+} from "../../../characters/common/animation/animation";
 import { ActionCallback, ColliderWithCallback } from "./actions";
 import { SpriteSheet } from "./images";
-import { MOVEMENT_SPEED, updateCharacterVelocity } from "../../input/input";
+import { MOVEMENT_SPEED, updateCharacterVelocity } from "../../../input/input";
 
 export const HUMAN_FRAME_SIZE = {
   frameWidth: 32,
@@ -34,6 +30,8 @@ export const SITTING_NPC_BOUNDING_BOX = {
 };
 
 export const ALBERT_KEY = "albert";
+export const SLEEPY_ALBERT_KEY = "sleepyAlbert";
+export const SLEEPY_PREFIX = "SLEEPY_";
 
 export const insertCharactersIntoScene = (
   map: Phaser.Tilemaps.Tilemap,
@@ -48,16 +46,19 @@ export const insertCharactersIntoScene = (
       {
         key: character.key,
         frame: character.frame,
+        name: character.key,
       },
       Phaser.Physics.Arcade.DYNAMIC_BODY,
       (sprite) => transformNPCCharacter(character, sprite)
     )[0];
 
-    createCharacterAnimations(
-      state.scene.phaser as Phaser.Scene,
-      character.key,
-      character.key
-    );
+    if (character.animated) {
+      createCharacterAnimations(
+        state.scene.phaser as Phaser.Scene,
+        character.key,
+        character.key
+      );
+    }
 
     return [...acc, state.scene.characterSprites[character.key]];
   }, [] as Phaser.GameObjects.Sprite[]);
@@ -66,8 +67,8 @@ export const insertCharactersIntoScene = (
 export const createMainCharacters = (
   scene: Phaser.Scene,
   map: Phaser.Tilemaps.Tilemap,
-  ground: Phaser.Tilemaps.StaticTilemapLayer,
-  objects: Phaser.Tilemaps.StaticTilemapLayer,
+  ground: Phaser.Tilemaps.TilemapLayer,
+  objects: Phaser.Tilemaps.TilemapLayer,
   characters: Phaser.GameObjects.Sprite[],
   actions: Phaser.GameObjects.Sprite[],
   actionCallback: ActionCallback,
@@ -98,6 +99,7 @@ export const createMainCharacters = (
   const albert = createObjectsFromMap(map, "characters", "albert", {
     key: ALBERT_KEY,
     frame: 2,
+    name: "albert",
   })[0];
 
   initCollisions(scene, albert, collidesWithAlbert, overlapsWithAlbert);

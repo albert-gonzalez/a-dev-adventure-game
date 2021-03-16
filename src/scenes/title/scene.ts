@@ -6,9 +6,9 @@ import { loadImages } from "./images";
 import { addPressToStartText, addTitleText, deleteLetters } from "./texts";
 import { addParticleEmitters } from "./particles";
 import { addBackground } from "./background";
-import { playMusic } from "../common/audio";
-import { writeText } from "../common/texts";
-import { startSceneTransition } from "../common/scene";
+import { playMusic } from "../common/map/audio";
+import { writeText } from "../common/map/texts";
+import { startSceneTransition } from "../common/map/scene";
 
 const START_DELAY = 1000;
 

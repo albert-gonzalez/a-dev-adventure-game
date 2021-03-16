@@ -1,5 +1,5 @@
-import selectEffect from "url:../../assets/audio/effects/select.ogg";
-import coffeeEffect from "url:../../assets/audio/effects/coffee.ogg";
+import selectEffect from "url:../../../assets/audio/effects/select.ogg";
+import coffeeEffect from "url:../../../assets/audio/effects/coffee.ogg";
 import { MUSIC_VOLUME } from "./constants";
 
 export interface Audio {

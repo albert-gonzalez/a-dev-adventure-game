@@ -6,13 +6,13 @@ import {
   RIGHT_DIRECTION,
   UP_DIRECTION,
 } from "../../input/input";
-import { updateVelocityWithAnimation } from "../common/characters";
+import { updateVelocityWithAnimation } from "../common/map/characters";
 import { updateAnimation } from "../../characters/common/animation/animation";
-import { addFadeOut } from "../common/transitionEffect";
+import { addFadeOut } from "../common/map/transitionEffect";
 import { createMenuText } from "../../menus/texts";
-import { writeText } from "../common/texts";
+import { writeText } from "../common/map/texts";
 import { getText } from "../../i18n/i18n";
-import { getAction } from "../common/actions";
+import { getAction } from "../common/map/actions";
 
 export const createInitScene = (): ((state: GameState) => boolean) => {
   let csState = 0;

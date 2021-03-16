@@ -1,4 +1,4 @@
-import { SceneActions } from "../common/actions";
+import { SceneActions } from "../common/map/actions";
 import { GameState } from "../../state/state";
 import { createShowerCutScene, noteBookCutscene } from "./cutScenes";
 import { DOWN, LEFT, UP } from "../../input/input";
@@ -9,8 +9,8 @@ import {
   COFFEE_CUP_KEY,
   NOTEBOOK_KEY,
 } from "../../inventory/itemRepository";
-import { createCoffeeCutScene } from "../common/cutScenes";
-import { startSceneTransition } from "../common/scene";
+import { createCoffeeCutScene } from "../common/map/cutScenes";
+import { startSceneTransition } from "../common/map/scene";
 import { SCENE_2_KEY } from "../scene2/config";
 
 const COFFEE_MACHINE_X = 370;

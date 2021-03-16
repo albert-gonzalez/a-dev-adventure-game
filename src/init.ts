@@ -5,6 +5,7 @@ import { init } from "./i18n/i18n";
 import { titleSceneConfig } from "./scenes/title/titleSceneConfig";
 import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
 import { scene2Config, SCENE_2_KEY } from "./scenes/scene2/config";
+import { scene3Config, SCENE_3_KEY } from "./scenes/scene3/config";
 
 const gameConfig = {
   type: Phaser.AUTO,
@@ -33,3 +34,4 @@ const game = new Phaser.Game({
 
 game.scene.add(SCENE_1_KEY, scene1Config);
 game.scene.add(SCENE_2_KEY, scene2Config);
+game.scene.add(SCENE_3_KEY, scene3Config);

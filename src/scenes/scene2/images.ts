@@ -3,7 +3,7 @@ import {
   COMMON_SPRITE_SHEETS,
   Image,
   SpriteSheet,
-} from "../common/images";
+} from "../common/map/images";
 import { getCharacters } from "./characters";
 
 export const IMAGES: Image[] = [...COMMON_IMAGES];

@@ -1,13 +1,9 @@
-import { GameState } from "../../state/state";
-import { findPropertyByName } from "../../gameObjects/properties";
-import {
-  objectActivationDirectionMatchesAnimation,
-  updateAnimation,
-} from "../../characters/common/animation/animation";
-import { addItem } from "../../inventory/current";
-import { getItemFromRepository } from "../../inventory/itemRepository";
-import { Dialog } from "../../menus/dialog";
-import { DOWN, LEFT, RIGHT, UP } from "../../input/input";
+import { GameState } from "../../../state/state";
+import { findPropertyByName } from "../../../gameObjects/properties";
+import { addItem } from "../../../inventory/current";
+import { getItemFromRepository } from "../../../inventory/itemRepository";
+import { Dialog } from "../../../menus/dialog";
+import { DOWN, LEFT, RIGHT, UP } from "../../../input/input";
 import { lookAtMainCharacter } from "./characters";
 
 type ActivationDirection = "up" | "down" | "left" | "right";
@@ -18,7 +14,7 @@ export type ActionCallback = (
 ) => void;
 
 export interface ColliderWithCallback {
-  object: Phaser.GameObjects.GameObject[] | Phaser.Tilemaps.StaticTilemapLayer;
+  object: Phaser.GameObjects.GameObject[] | Phaser.Tilemaps.TilemapLayer;
   callback?: ActionCallback;
 }
 
@@ -174,7 +170,7 @@ export const actionCallback = (
   increaseCurrentActionState(currentActionStates, actions, actionKey);
 
   if (isCurrentStateTheLast && sceneAction.removeAfterLastState) {
-    object.destroy(true);
+    object.destroy();
   }
 };
 
@@ -194,7 +190,7 @@ const isActivationDirectionCorrect = (
     activationDirection = yDiff > 0 ? UP : DOWN;
   }
 
-  return mainCharacter.anims.getCurrentKey().includes(activationDirection);
+  return mainCharacter.anims.currentAnim.key.includes(activationDirection);
 };
 
 export const transformAction = (object: Phaser.GameObjects.Sprite) => {

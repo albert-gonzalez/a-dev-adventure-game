@@ -17,9 +17,9 @@ import { getState } from "../state/state";
 import experience from "../data/experience.json";
 import projects from "../data/projects.json";
 import skills from "../data/skills.json";
-import { MENU_DEPTH } from "../scenes/common/constants";
+import { MENU_DEPTH } from "../scenes/common/map/constants";
 import { HP_UPDATED_EVENT, updateHP } from "../characters/main/state";
-import { PORTRAIT_KEY } from "../scenes/common/images";
+import { PORTRAIT_KEY } from "../scenes/common/map/images";
 
 const createPageContainer = (
   scene: Phaser.Scene,

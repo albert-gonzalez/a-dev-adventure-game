@@ -40,7 +40,7 @@
             "scale": 1.5,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 384,
+                "x": 383.66666666666663,
                 "y": 479.66666666666663
             }
         },
@@ -76,10 +76,10 @@
         },
         "office.tmx": {
             "scale": 1.5,
-            "selectedLayer": 7,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 352.6666666666667,
-                "y": 291.66666666666663
+                "x": 737.6666666666666,
+                "y": 210.33333333333334
             }
         },
         "office.tmx#albert": {
@@ -95,6 +95,9 @@
             "scaleInDock": 1
         },
         "office.tmx#ej": {
+            "scaleInDock": 1
+        },
+        "office.tmx#emptyChair": {
             "scaleInDock": 1
         },
         "office.tmx#fs": {
@@ -122,6 +125,9 @@
             "scaleInDock": 1
         },
         "office.tmx#wg": {
+            "scaleInDock": 1
+        },
+        "office.tmx#yf": {
             "scaleInDock": 1
         },
         "room.tmx": {

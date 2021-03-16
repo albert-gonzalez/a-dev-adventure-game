@@ -1,5 +1,5 @@
-import { GameState } from "../../state/state";
-import { createObjectsFromMap } from "../../tileSets/objects";
+import { GameState } from "../../../state/state";
+import { createObjectsFromMap } from "../../../tileSets/objects";
 
 const DYNAMIC_OBJECT_LAYER = "dynamicObjects";
 
@@ -23,6 +23,7 @@ export const insertDynamicObjectsIntoScene = (
       {
         frame: object.frame,
         key: object.tileMapKey,
+        name: object.objectId,
       },
       undefined,
       transformObject(object)

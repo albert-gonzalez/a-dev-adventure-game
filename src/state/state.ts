@@ -1,7 +1,10 @@
 import { Inventory } from "../inventory/current";
 import { Dialog } from "../menus/dialog";
-import { CurrentActionStates, SceneActions } from "../scenes/common/actions";
-import { SpriteSheet } from "../scenes/common/images";
+import {
+  CurrentActionStates,
+  SceneActions,
+} from "../scenes/common/map/actions";
+import { SpriteSheet } from "../scenes/common/map/images";
 
 interface AlbertState {
   hp: number;
@@ -54,6 +57,7 @@ const state: GameState = {
       left: false,
       toggleSound: false,
       menu: false,
+      toggleFullScreen: false,
     },
   },
   scene: {

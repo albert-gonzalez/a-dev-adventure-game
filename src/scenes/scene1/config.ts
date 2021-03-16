@@ -1,12 +1,12 @@
-import { createSceneMethods } from "../common/scene";
+import { createSceneMethods } from "../common/map/scene";
 import { createInitialCutscene } from "./cutScenes";
 import { getAudios } from "./audio";
 import { getImages, getSpriteSheets } from "./images";
-import { SLEEPY_PREFIX } from "../../characters/main/creation";
 import homeJson from "url:../../assets/tilemaps/home.json";
 import { getObjects } from "./objects";
 import { getCharacters } from "./characters";
 import { getActions } from "./actions";
+import { SLEEPY_PREFIX } from "../common/map/characters";
 
 const MAP_KEY = "home";
 export const SCENE_1_KEY = "scene1";

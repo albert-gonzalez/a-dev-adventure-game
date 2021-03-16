@@ -9,7 +9,7 @@ import {
   UP,
   UP_DIRECTION,
 } from "../../../input/input";
-import { SceneAction } from "../../../scenes/common/actions";
+import { SceneAction } from "../../../scenes/common/map/actions";
 
 export const ANIMATION_STILL_LEFT = `still-${LEFT}`;
 export const ANIMATION_STILL_RIGHT = `still-${RIGHT}`;
@@ -128,7 +128,7 @@ export const updateAnimation = (
   if (!directionY && !directionX) {
     const transition =
       TRANSITION_TO_STILL[
-        character.anims.getCurrentKey().replace(animationPrefix, "")
+        character.anims.currentAnim.key.replace(animationPrefix, "")
       ];
 
     if (transition) {
@@ -160,6 +160,6 @@ export const objectActivationDirectionMatchesAnimation = (
   sceneAction: SceneAction
 ) => {
   return sceneAction.activationDirections?.some((direction) =>
-    albert.anims.getCurrentKey().includes(direction)
+    albert.anims.currentAnim.key.includes(direction)
   );
 };

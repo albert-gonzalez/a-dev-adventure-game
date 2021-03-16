@@ -1,5 +1,5 @@
 import homeMusic from "url:../../assets/audio/music/office.ogg";
-import { Audio, COMMON_AUDIOS } from "../common/audio";
+import { Audio, COMMON_AUDIOS } from "../common/map/audio";
 
 export const OFFICE_MUSIC = "office";
 

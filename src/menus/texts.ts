@@ -4,7 +4,7 @@ import {
   MENU_BOX_FONT_SIZE_L,
 } from "./style";
 import { getText } from "../i18n/i18n";
-import { MENU_DEPTH } from "../scenes/common/constants";
+import { MENU_DEPTH } from "../scenes/common/map/constants";
 
 interface MenuTextOptions {
   scene: Phaser.Scene;
@@ -14,7 +14,7 @@ interface MenuTextOptions {
   y: number;
   visible?: boolean;
   width?: number;
-  fontSize?: number;
+  fontSize?: string;
   color?: string;
 }
 
@@ -32,7 +32,6 @@ export const createMenuText = ({
   const textObject = scene.add.text(x, y, "", {
     fontFamily: MENU_BOX_FONT_FAMILY,
     fontSize,
-    lineSpacing: MENU_BOX_FONT_LINE_SPACING,
     color,
   });
 
@@ -44,6 +43,7 @@ export const createMenuText = ({
   textObject.setShadow(1, 1, "#000");
   textObject.setVisible(visible);
   textObject.setDepth(MENU_DEPTH);
+  textObject.setLineSpacing(MENU_BOX_FONT_LINE_SPACING);
 
   return textObject;
 };
