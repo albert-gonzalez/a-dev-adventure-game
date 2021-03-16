@@ -23,15 +23,10 @@ export const createBar = ({
   const maxWidth = 150;
 
   graphics.lineStyle(14, chooseBarColor(percentage));
-  const percentLine = graphics.lineBetween(
-    10,
-    38,
-    (percentage / 100) * maxWidth + 10,
-    38
-  );
+  graphics.lineBetween(10, 38, (percentage / 100) * maxWidth + 10, 38);
   graphics.stroke();
   graphics.lineStyle(MENU_BOX_LINE_WIDTH, 0xffffff);
-  const box = graphics.strokeRoundedRect(10, 30, 150, 15, 2);
+  graphics.strokeRoundedRect(10, 30, 150, 15, 2);
 
   container.add([
     createMenuText({
@@ -42,8 +37,7 @@ export const createBar = ({
       y: 0,
       visible: true,
     }),
-    percentLine,
-    box,
+    graphics,
   ]);
 
   return container;

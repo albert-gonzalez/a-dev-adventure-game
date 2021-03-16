@@ -96,11 +96,8 @@ export const actionCallback = (
   if (cutScene || dialog.isDialogOpen() || dialog.isDialogBusy()) {
     return;
   }
-  const actionKey = findPropertyByName(object, "action").value;
-  const sceneAction = getAction(
-    actions,
-    findPropertyByName(object, "action").value
-  );
+  const actionKey = findPropertyByName(object, "action");
+  const sceneAction = getAction(actions, findPropertyByName(object, "action"));
 
   if (!sceneAction || sceneAction.disabled) {
     return;

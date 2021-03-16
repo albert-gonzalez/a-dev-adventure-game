@@ -1,10 +1,4 @@
 import "phaser";
-import { findPropertyByName } from "../gameObjects/properties";
-import {
-  STANDING_NPC_BOUNDING_BOX_HEIGHT,
-  STANDING_NPC_BOUNDING_BOX_OFFSET,
-} from "../scenes/common/map/characters";
-
 export interface TileSetGameObjectConfig
   extends Phaser.Types.Tilemaps.CreateFromObjectLayerConfig {
   key?: string;
@@ -18,7 +12,7 @@ export const createObjectsFromMap = (
   spriteConfig: TileSetGameObjectConfig = {},
   bodyType?: number,
   transformationFn?: (object: Phaser.GameObjects.Sprite) => void
-) => {
+): Phaser.GameObjects.GameObject[] => {
   const objects = map.createFromObjects(
     layerName,
     spriteConfig
