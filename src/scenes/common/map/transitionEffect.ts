@@ -43,7 +43,7 @@ export const addFadeOut = (scene: Phaser.Scene) => {
     if (!timerEvent) {
       timerEvent = scene.time.delayedCall(FINISH_DELAY, () => {
         finished = true;
-        blackFadeOut.destroy(true);
+        blackFadeOut.destroy();
       });
     }
 

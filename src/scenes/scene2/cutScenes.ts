@@ -36,7 +36,7 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
       writeText(title, getText("office_intro"), scene, 100, false).then(() => {
         scene.time.delayedCall(1000, () => {
           csState++;
-          title.destroy(true);
+          title.destroy();
         });
       });
 

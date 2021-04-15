@@ -1,4 +1,4 @@
-import { BUG_KEY, getImages, getSpriteSheets } from "./images";
+import { getImages, getSpriteSheets } from "./images";
 import { getAudios, getMusic } from "./audio";
 import { createInitScene } from "./cutScenes";
 import { createSceneMethods } from "../common/combat/scene";

@@ -74,7 +74,7 @@ export const createShowerCutScene = (): ((state: GameState) => boolean) => {
 };
 
 export const noteBookCutscene = (state: GameState) => {
-  state.scene.objectSprites["albert_notebook"].destroy(true);
+  state.scene.objectSprites["albert_notebook"].destroy();
   return true;
 };
 
@@ -193,8 +193,8 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
         state.dialog?.showDialogBox([{ who: ALBERT_KEY, text: "prepare" }]);
         delete state.scene.characterSprites[NOE_KEY];
         delete state.scene.characterSprites[COBI_KEY];
-        noeSprite.destroy(true);
-        cobiSprite.destroy(true);
+        noeSprite.destroy();
+        cobiSprite.destroy();
         csState++;
       }
 
