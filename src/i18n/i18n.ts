@@ -21,4 +21,7 @@ export const init = () =>
     },
   });
 
-export const getText = (key: string) => i18next.t(key);
+export const getText = (
+  key: string,
+  options?: Record<string, unknown>
+): string => i18next.t(key, options);

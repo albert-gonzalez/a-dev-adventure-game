@@ -1,6 +1,6 @@
 import { GameState } from "../state/state";
 import { createMenuText } from "../menus/texts";
-import { MENU_DEPTH } from "../scenes/common/map/constants";
+import { MENU_DEPTH } from "../scenes/common/constants";
 
 const BUTTON_LINE_WIDTH = 2;
 const BUTTON_LINE_COLOR = 0x555555;

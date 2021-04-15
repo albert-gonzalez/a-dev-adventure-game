@@ -21,6 +21,7 @@ export interface ColliderWithCallback {
 export interface DialogText {
   who?: string;
   text: string;
+  options?: Record<string, unknown>;
 }
 
 interface ActionState {

@@ -13,11 +13,12 @@ import {
 } from "./style";
 import { DialogText } from "../scenes/common/map/actions";
 import { GameState, getState } from "../state/state";
-import { MENU_DEPTH } from "../scenes/common/map/constants";
+import { MENU_DEPTH } from "../scenes/common/constants";
 import { getText } from "../i18n/i18n";
+import { createMenuBoxRectangle, MenuConfig } from "./menu";
+import { SELECT_EFFECT } from "../scenes/common/audio";
 
 const MENU_BOX_MARGIN = 20;
-const MENU_BOX_HEIGHT = 150;
 
 export interface Dialog {
   showDialogBox(
@@ -30,8 +31,11 @@ export interface Dialog {
   isDialogBusy(): boolean;
 }
 
-export const createDialogBox = (scene: Phaser.Scene): Dialog => {
-  const dialogBox = createDialogBoxRectangle(scene);
+export const createDialogBox = (
+  scene: Phaser.Scene,
+  config: MenuConfig
+): Dialog => {
+  const dialogBox = createMenuBoxRectangle(scene, config);
   dialogBox.setDepth(MENU_DEPTH);
   const text = createDialogBoxText(scene, dialogBox);
   text.setDepth(MENU_DEPTH);
@@ -54,6 +58,8 @@ export const createDialogBox = (scene: Phaser.Scene): Dialog => {
       if (messages?.length) {
         currentMessages = [...messages];
         text.setText(formatDialogText(currentMessages.shift()));
+
+        return;
       }
 
       if (dialogBox.scaleY < 1) {
@@ -68,7 +74,7 @@ export const createDialogBox = (scene: Phaser.Scene): Dialog => {
     showNextMessageOrHideDialogBox() {
       dialogBusy = true;
       setTimeout(() => (dialogBusy = false), 100);
-      scene.sound.play("select");
+      scene.sound.play(SELECT_EFFECT);
 
       if (currentMessages.length) {
         text.setText(formatDialogText(currentMessages.shift()));
@@ -108,43 +114,12 @@ const formatDialogText = (text?: DialogText) => {
     str = `${getText(text.who)}:\n\n`;
   }
 
-  return str + getText(text.text);
-};
-
-const createDialogBoxRectangle = (scene: Phaser.Scene) => {
-  const graphics = scene.add.graphics();
-  const width = scene.cameras.main.width - MENU_BOX_MARGIN * 2;
-  graphics.fillGradientStyle(
-    MENU_BOX_FILL_COLOR_TOP,
-    MENU_BOX_FILL_COLOR_TOP,
-    MENU_BOX_FILL_COLOR_BOTTOM,
-    MENU_BOX_FILL_COLOR_BOTTOM,
-    MENU_BOX_FILL_ALPHA
-  );
-
-  graphics.fillRect(0, 0, width, MENU_BOX_HEIGHT);
-
-  graphics.lineStyle(
-    MENU_BOX_LINE_WIDTH,
-    MENU_BOX_LINE_COLOR,
-    MENU_BOX_LINE_ALPHA
-  );
-
-  const dialogBox = graphics.strokeRoundedRect(0, 0, width, MENU_BOX_HEIGHT, 4);
-
-  dialogBox.setScrollFactor(0, 0);
-
-  dialogBox.visible = false;
-  dialogBox.scaleY = 0;
-  dialogBox.x = MENU_BOX_MARGIN;
-  dialogBox.y = scene.cameras.main.height - MENU_BOX_HEIGHT - MENU_BOX_MARGIN;
-
-  return dialogBox;
+  return str + getText(text.text, text.options);
 };
 
 const createDialogBoxText = (
   scene: Phaser.Scene,
-  dialogBox: Phaser.GameObjects.Graphics
+  dialogBox: Phaser.GameObjects.Container
 ) => {
   const text = scene.add.text(
     dialogBox.x * 2,

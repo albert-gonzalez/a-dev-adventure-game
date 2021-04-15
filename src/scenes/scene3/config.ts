@@ -2,6 +2,7 @@ import { BUG_KEY, getImages, getSpriteSheets } from "./images";
 import { getAudios, getMusic } from "./audio";
 import { createInitScene } from "./cutScenes";
 import { createSceneMethods } from "../common/combat/scene";
+import { getEnemyConfig } from "./enemy";
 
 export const SCENE_3_KEY = "scene3";
 
@@ -12,7 +13,7 @@ const createSceneConfig = () => {
     music: getMusic(),
     spriteSheets: getSpriteSheets(),
     images: getImages(),
-    enemy: BUG_KEY,
+    enemy: getEnemyConfig(),
   });
 };
 

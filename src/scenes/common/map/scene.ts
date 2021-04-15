@@ -8,7 +8,7 @@ import {
   TILE_HEIGHT,
 } from "./images";
 import { createMap, loadMap, SceneMap } from "./sceneMap";
-import { Audio, loadAudio, playMusic } from "./audio";
+import { Audio, loadAudio, playMusic } from "../audio";
 import { createObjectsFromMap } from "../../../tileSets/objects";
 import {
   createCharacterAnimations,
@@ -34,6 +34,8 @@ import {
   updateCharacterVelocity,
 } from "../../../input/input";
 import { addFadeIn } from "./transitionEffect";
+import { getMenuConfig } from "./menu";
+import { createMapDialogBox } from "./dialog";
 
 export interface CreateSceneInput {
   initialCutScene: (state: GameState) => boolean;
@@ -149,9 +151,9 @@ export const createSceneMethods = ({
     );
     this.cameras.main.startFollow(albert, true);
 
-    menu = createMenu(this);
+    menu = createMenu(this, getMenuConfig(this));
 
-    state.dialog = createDialogBox(this);
+    state.dialog = createMapDialogBox(this);
     createTouchButtons(this, state);
     //document.addEventListener("pointerup", () => this.scale.startFullscreen());
   }

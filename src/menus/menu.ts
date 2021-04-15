@@ -13,13 +13,7 @@ import {
   MENU_VERTICAL_SEPARATOR_X,
   MENU_VERTICAL_SEPARATOR_Y,
 } from "./style";
-import {
-  createAboutPage,
-  createExperiencePage,
-  createItemsPage,
-  createProjectsPage,
-  createSkillsPage,
-} from "./pages";
+
 import { createMenuText } from "./texts";
 import {
   isDownButtonJustPressed,
@@ -29,69 +23,66 @@ import {
   isUpButtonJustPressed,
   isUpButtonPressed,
 } from "../input/input";
-import { MENU_DEPTH } from "../scenes/common/map/constants";
+import { MENU_DEPTH } from "../scenes/common/constants";
 import { GameState } from "../state/state";
-
-const menuOptionsConfig = () => [
-  {
-    textKey: "about",
-    pageCreationFunction: createAboutPage,
-    interactive: false,
-  },
-  {
-    textKey: "skills",
-    pageCreationFunction: createSkillsPage,
-    interactive: false,
-  },
-  {
-    textKey: "experience",
-    pageCreationFunction: createExperiencePage,
-    interactive: true,
-  },
-  {
-    textKey: "projects",
-    pageCreationFunction: createProjectsPage,
-    interactive: true,
-  },
-  {
-    textKey: "items",
-    pageCreationFunction: createItemsPage,
-    interactive: false,
-  },
-];
+import { MenuPage, PageType } from "./pages";
 
 export interface Menu {
   show(): void;
   hide(): void;
+  block(): void;
   isMenuOpen(): boolean;
   isMenuBusy(): boolean;
   selectNextOption(): void;
   selectPreviousOption(): void;
   isCurrentOptionInteractive(): boolean;
+  isCurrentOptionSingleAction(): boolean;
+  isCurrentOptionScrollable(): boolean;
   activateCurrentOption(): void;
   deactivateCurrentOption(): void;
   isCurrentOptionActive(): boolean;
-  scrollPageDown(): void;
-  scrollPageUp(): void;
+  runDown(): void;
+  runUp(): void;
+  runAction(): void;
 }
 
 interface MenuOption {
   text: Phaser.GameObjects.Text;
-  page: Phaser.GameObjects.Container;
-  interactive: boolean;
+  page: MenuPage;
 }
 
-export const createMenu = (scene: Phaser.Scene): Menu => {
-  const menuBox = createMenuBoxRectangle(scene);
-  const textOptions = createTextOptions(scene, menuBox);
+export interface MenuConfig {
+  x: number;
+  y: number;
+  separatorX?: number;
+  width: number;
+  height: number;
+  optionsConfig?: MenuOptionConfig[];
+}
+
+export interface MenuOptionConfig {
+  textKey: string;
+  pageCreationFunction: (
+    scene: Phaser.Scene,
+    box: Phaser.GameObjects.Container,
+    config: MenuConfig
+  ) => MenuPage;
+}
+
+export const createMenu = (scene: Phaser.Scene, config: MenuConfig): Menu => {
+  const menuBox = createMenuBoxRectangle(scene, config);
+  const textOptions = createTextOptions(scene, menuBox, config);
 
   let menuBusy = false;
   let selectedOption = 0;
   let isOptionActive = false;
+  let isBlocked = false;
 
   return {
     show() {
       menuBox.setVisible(true);
+      menuBox.setAlpha(1);
+      isBlocked = false;
 
       if (menuBox.scaleY < 1) {
         menuBox.scaleY = Math.min(menuBox.scaleY + 0.05, 1);
@@ -110,6 +101,17 @@ export const createMenu = (scene: Phaser.Scene): Menu => {
       menuBox.scaleY = 0;
     },
 
+    block() {
+      if (isBlocked) {
+        return;
+      }
+
+      menuBox.setAlpha(0.5);
+      selectedOption = 0;
+      textOptions[selectedOption].page.actions?.reset?.();
+      isBlocked = true;
+    },
+
     isMenuOpen() {
       return menuBox.visible;
     },
@@ -124,7 +126,7 @@ export const createMenu = (scene: Phaser.Scene): Menu => {
       }
 
       selectedOption++;
-      textOptions[selectedOption].page.y = MENU_PAGE_Y;
+      textOptions[selectedOption].page.actions?.reset?.();
     },
 
     selectPreviousOption() {
@@ -133,11 +135,19 @@ export const createMenu = (scene: Phaser.Scene): Menu => {
       }
 
       selectedOption--;
-      textOptions[selectedOption].page.y = MENU_PAGE_Y;
+      textOptions[selectedOption].page.actions?.reset?.();
     },
 
     isCurrentOptionInteractive() {
-      return textOptions[selectedOption].interactive;
+      return !!textOptions[selectedOption].page.actions;
+    },
+
+    isCurrentOptionSingleAction() {
+      return textOptions[selectedOption].page.type === PageType.SINGLE_ACTION;
+    },
+
+    isCurrentOptionScrollable() {
+      return textOptions[selectedOption].page.type === PageType.SCROLL;
     },
 
     activateCurrentOption() {
@@ -152,24 +162,16 @@ export const createMenu = (scene: Phaser.Scene): Menu => {
       return isOptionActive;
     },
 
-    scrollPageUp() {
-      if (textOptions[selectedOption].page.y >= MENU_PAGE_Y) {
-        return;
-      }
-
-      textOptions[selectedOption].page.y += 4;
+    runUp() {
+      textOptions[selectedOption].page.actions?.up?.();
     },
 
-    scrollPageDown() {
-      const pageBounds = textOptions[selectedOption].page.getBounds();
-      if (
-        textOptions[selectedOption].page.y <=
-        scene.cameras.main.height - MENU_BOX_MARGIN * 6 - pageBounds.height
-      ) {
-        return;
-      }
+    runDown() {
+      textOptions[selectedOption].page.actions?.down?.();
+    },
 
-      textOptions[selectedOption].page.y -= 4;
+    runAction() {
+      textOptions[selectedOption].page.actions?.action?.();
     },
   };
 };
@@ -195,12 +197,28 @@ export const controlMenu = (
       menu.deactivateCurrentOption();
     }
 
-    if (isUpButtonPressed(cursors, state)) {
-      menu.scrollPageUp();
+    if (menu.isCurrentOptionScrollable()) {
+      if (isUpButtonPressed(cursors, state)) {
+        menu.runUp();
+      }
+
+      if (isDownButtonPressed(cursors, state)) {
+        menu.runDown();
+      }
+
+      return;
     }
 
-    if (isDownButtonPressed(cursors, state)) {
-      menu.scrollPageDown();
+    if (isUpButtonJustPressed(scene, state)) {
+      menu.runUp();
+    }
+
+    if (isDownButtonJustPressed(scene, state)) {
+      menu.runDown();
+    }
+
+    if (isActionButtonJustPressed) {
+      menu.runAction();
     }
   } else {
     if (isUpButtonJustPressed(scene, state)) {
@@ -215,15 +233,25 @@ export const controlMenu = (
       menu.isCurrentOptionInteractive() &&
       (isActionButtonJustPressed || isRightButtonPressed(cursors, state))
     ) {
+      if (menu.isCurrentOptionSingleAction()) {
+        menu.runAction();
+
+        return;
+      }
+
       menu.activateCurrentOption();
     }
   }
 };
 
-const createMenuBoxRectangle = (scene: Phaser.Scene) => {
+export const createMenuBoxRectangle = (
+  scene: Phaser.Scene,
+  config: MenuConfig
+): Phaser.GameObjects.Container => {
+  const container = scene.add.container();
   const graphics = createGraphicsToolWithLineStyle(scene);
-  const width = scene.cameras.main.width - MENU_BOX_MARGIN * 2;
-  const height = scene.cameras.main.height - MENU_BOX_MARGIN * 2;
+  const width = config.width;
+  const height = config.height;
 
   graphics.fillGradientStyle(
     MENU_BOX_FILL_COLOR_TOP,
@@ -239,20 +267,26 @@ const createMenuBoxRectangle = (scene: Phaser.Scene) => {
 
   dialogBox.setScrollFactor(0, 0);
 
-  graphics.lineBetween(
-    MENU_VERTICAL_SEPARATOR_X,
-    MENU_BOX_MARGIN,
-    MENU_VERTICAL_SEPARATOR_X,
-    scene.cameras.main.height - MENU_VERTICAL_SEPARATOR_Y
-  );
+  if (config.separatorX) {
+    dialogBox.lineBetween(
+      config.separatorX,
+      MENU_BOX_MARGIN,
+      config.separatorX,
+      height - MENU_VERTICAL_SEPARATOR_Y
+    );
+  }
 
-  dialogBox.visible = false;
-  dialogBox.scaleY = 0;
-  dialogBox.x = MENU_BOX_MARGIN;
-  dialogBox.y = MENU_BOX_MARGIN;
-  dialogBox.setDepth(MENU_DEPTH);
+  container.visible = false;
+  container.scaleY = 0;
+  container.x = config.x;
+  container.y = config.y;
+  container.width = config.width;
+  container.height = config.height;
+  container.setDepth(MENU_DEPTH);
 
-  return dialogBox;
+  container.add(dialogBox);
+
+  return container;
 };
 
 const createGraphicsToolWithLineStyle = (scene: Phaser.Scene) => {
@@ -269,23 +303,29 @@ const createGraphicsToolWithLineStyle = (scene: Phaser.Scene) => {
 
 const createTextOptions = (
   scene: Phaser.Scene,
-  box: Phaser.GameObjects.Graphics
+  box: Phaser.GameObjects.Container,
+  config: MenuConfig
 ): MenuOption[] => {
-  const textOptions = menuOptionsConfig().map(
+  if (!config.optionsConfig) {
+    return [];
+  }
+
+  const textOptions = config.optionsConfig.map(
     (optionConfig, index): MenuOption => {
       const text = createMenuText({
         scene,
         textKey: optionConfig.textKey,
-        x: box.x * 2,
-        y: box.y * 2 + 40 * index,
+        x: MENU_BOX_MARGIN,
+        y: MENU_BOX_MARGIN + 40 * index,
       });
 
-      const page = optionConfig.pageCreationFunction(scene, box);
+      const page = optionConfig.pageCreationFunction(scene, box, config);
+
+      box.add([text, page.container]);
 
       return {
         text,
         page,
-        interactive: optionConfig.interactive,
       };
     }
   );
@@ -303,7 +343,7 @@ const showTextOptions = (
   textOptions.forEach((textOption) => {
     textOption.text.setColor("#fff");
     textOption.text.setVisible(true);
-    textOption.page.setVisible(false);
+    textOption.page.container.setVisible(false);
   });
 
   textOptions[selectedOption].text.setColor(
@@ -311,12 +351,12 @@ const showTextOptions = (
       ? MENU_BOX_FONT_ACTIVATED_OPTION_COLOR
       : MENU_BOX_FONT_SELECTED_OPTION_COLOR
   );
-  textOptions[selectedOption].page.setVisible(true);
+  textOptions[selectedOption].page.container.setVisible(true);
 };
 
 const hideTextOptions = (textOptions: MenuOption[]) => {
   textOptions.forEach((textOption) => {
     textOption.text.setVisible(false);
-    textOption.page.setVisible(false);
+    textOption.page.container.setVisible(false);
   });
 };

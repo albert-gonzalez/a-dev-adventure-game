@@ -1,3 +1,4 @@
+import { getState } from "../state/state";
 import { Item } from "./itemRepository";
 
 export const INVENTORY_UPDATED_EVENT = "inventoryUpdated";
@@ -6,18 +7,24 @@ export interface CurrentItem extends Item {
   quantity: number;
 }
 
-export interface Inventory {
-  [key: string]: CurrentItem;
-}
+export type Inventory = CurrentItem[];
 
 export const addItem = (
   inventory: Inventory,
   item: Item,
   scene: Phaser.Scene
-) => {
-  const itemInInventory = inventory[item.key];
+): void => {
+  let itemIndex = -1;
+
+  inventory = [...inventory];
+
+  const itemInInventory = inventory.find((itemInInventory, index) => {
+    itemIndex = index;
+    return itemInInventory.key === item.key;
+  });
+
   if (itemInInventory) {
-    inventory[item.key] = {
+    inventory[itemIndex] = {
       ...item,
       quantity: itemInInventory.quantity + 1,
     };
@@ -25,23 +32,27 @@ export const addItem = (
     return;
   }
 
-  inventory[item.key] = {
+  inventory.push({
     ...item,
     quantity: 1,
-  };
+  });
 
+  getState().inventory = inventory;
   scene.events.emit(INVENTORY_UPDATED_EVENT);
 };
 
 export const decreaseItemQuantity = (
   inventory: Inventory,
-  itemKey: number,
+  itemIndex: number,
   scene: Phaser.Scene
-) => {
-  let itemInInventory = inventory[itemKey];
+): boolean => {
+  let removed = false;
+  let itemInInventory = inventory[itemIndex];
+
+  inventory = [...inventory];
 
   if (!itemInInventory) {
-    return;
+    return false;
   }
 
   itemInInventory = {
@@ -50,10 +61,14 @@ export const decreaseItemQuantity = (
   };
 
   if (itemInInventory.quantity > 0) {
-    inventory[itemKey] = itemInInventory;
+    inventory[itemIndex] = itemInInventory;
   } else {
-    delete inventory[itemKey];
+    inventory = inventory.filter((item, index) => index !== itemIndex);
+    removed = true;
   }
 
+  getState().inventory = inventory;
   scene.events.emit(INVENTORY_UPDATED_EVENT);
+
+  return removed;
 };

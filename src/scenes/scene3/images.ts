@@ -8,8 +8,7 @@ import {
 import bugImage from "url:../../assets/sprites/bug.png";
 import combatBackground from "url:../../assets/sprites/battleBackground.png";
 import { COMBAT_BACKGROUND_KEY } from "../common/combat/images";
-
-export const BUG_KEY = "bug";
+import { getEnemyConfig } from "./enemy";
 
 const IMAGES: Image[] = [
   { key: COMBAT_BACKGROUND_KEY, image: combatBackground },
@@ -17,7 +16,7 @@ const IMAGES: Image[] = [
 
 const SPRITE_SHEETS: SpriteSheet[] = [
   {
-    key: BUG_KEY,
+    key: getEnemyConfig().key,
     image: bugImage,
     size: { frameWidth: ENEMY_WIDTH, frameHeight: ENEMY_HEIGHT },
   },

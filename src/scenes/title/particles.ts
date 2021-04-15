@@ -1,7 +1,35 @@
-import { COFFEE_IMAGE } from "./images";
+import {
+  COFFEE_IMAGE,
+  CSS_IMAGE,
+  DOCKER_IMAGE,
+  HTML_IMAGE,
+  JS_IMAGE,
+  NODE_IMAGE,
+  PHP_IMAGE,
+} from "./images";
 
-export const addParticleEmitters = (scene: Phaser.Scene) => {
-  const particles = scene.add.particles(COFFEE_IMAGE);
+interface EmitterOptions {
+  image: string;
+  scale?: [number, number];
+}
+
+let particleDelay = 0;
+
+export const addParticleEmitters = (scene: Phaser.Scene): void => {
+  createParticleEmitter(scene, { image: COFFEE_IMAGE });
+  createParticleEmitter(scene, { image: JS_IMAGE });
+  createParticleEmitter(scene, { image: HTML_IMAGE });
+  createParticleEmitter(scene, { image: CSS_IMAGE });
+  createParticleEmitter(scene, { image: NODE_IMAGE, scale: [0.4, 0.5] });
+  createParticleEmitter(scene, { image: PHP_IMAGE, scale: [0.3, 0.4] });
+  createParticleEmitter(scene, { image: DOCKER_IMAGE, scale: [0.3, 0.4] });
+};
+
+const createParticleEmitter = (
+  scene: Phaser.Scene,
+  options: EmitterOptions
+): void => {
+  const particles = scene.add.particles(options.image);
 
   particles.createEmitter({
     x: 0,
@@ -10,15 +38,17 @@ export const addParticleEmitters = (scene: Phaser.Scene) => {
     speed: { min: 50, max: 100 },
     angle: { min: 70, max: 100 },
     gravityY: 5,
-    bounce: 1000,
-    frequency: 500,
+    bounce: 2000,
+    frequency: 3000,
     rotate: {
       onUpdate(particle) {
-        return (particle.angle || Math.floor(Math.random() * 180)) + 1;
+        const direction = particle.velocityX > 0 ? 0.5 : -0.5;
+
+        return (particle.angle ?? Math.floor(Math.random() * 90)) + direction;
       },
     },
     scale: {
-      random: [0.75, 1.5],
+      random: options.scale ?? [0.2, 0.3],
     },
     emitZone: {
       type: "random",
@@ -29,5 +59,8 @@ export const addParticleEmitters = (scene: Phaser.Scene) => {
         10
       ) as Phaser.Types.GameObjects.Particles.RandomZoneSource,
     },
+    delay: particleDelay,
   });
+
+  particleDelay += 500;
 };

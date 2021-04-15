@@ -1,4 +1,4 @@
-import { KEY_PRESS_EFFECT } from "./audio";
+import { KEY_PRESS_EFFECT } from "../audio";
 
 export const START_DELAY = 500;
 const TIME_BETWEEN_KEYSTROKES = 200;

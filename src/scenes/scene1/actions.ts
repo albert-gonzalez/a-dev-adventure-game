@@ -2,7 +2,6 @@ import { SceneActions } from "../common/map/actions";
 import { GameState } from "../../state/state";
 import { createShowerCutScene, noteBookCutscene } from "./cutScenes";
 import { DOWN, LEFT, UP } from "../../input/input";
-import { updateHP } from "../../characters/main/state";
 import { SHOWER_EVENT } from "./events";
 import {
   CLOTHES_KEY,
@@ -54,8 +53,9 @@ const actions: SceneActions = {
       {
         texts: [{ text: "bathroom_1" }],
         textsFailure: [{ text: "bathroom_fail_1" }],
-        condition: (state: GameState) => CLOTHES_KEY in state.inventory,
-        updateState: (state: GameState) => updateHP(state, 25),
+        condition: (state: GameState) =>
+          !!state.inventory.find((item) => item.key === CLOTHES_KEY),
+        updateState: (state: GameState) => state.albert.updateHp(25),
         cutScene: createShowerCutScene(),
       },
     ],
@@ -138,7 +138,8 @@ const actions: SceneActions = {
       {
         texts: [{ text: "door" }],
         textsFailure: [{ text: "door_fail" }],
-        condition: (state: GameState) => NOTEBOOK_KEY in state.inventory,
+        condition: (state: GameState) =>
+          !!state.inventory.find((item) => item.key === NOTEBOOK_KEY),
         cutScene: startSceneTransition(SCENE_2_KEY),
       },
     ],
@@ -156,7 +157,7 @@ const actions: SceneActions = {
     states: [
       {
         texts: [{ text: "coffee_machine_1" }],
-        updateState: (state: GameState) => updateHP(state, 25),
+        updateState: (state: GameState) => state.albert.updateHp(25),
         cutScene: createCoffeeCutScene(
           [{ text: "ellipsis" }, { text: "coffee_machine_2" }],
           COFFEE_MACHINE_X,

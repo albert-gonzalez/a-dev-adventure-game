@@ -1,4 +1,4 @@
-import { FOREGROUND_DEPTH, MIDDLE_GROUND_DEPTH } from "./constants";
+import { FOREGROUND_DEPTH, MIDDLE_GROUND_DEPTH } from "../constants";
 
 export interface SceneMap {
   key: string;

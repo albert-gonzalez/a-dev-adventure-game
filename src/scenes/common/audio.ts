@@ -1,5 +1,7 @@
-import selectEffect from "url:../../../assets/audio/effects/select.ogg";
-import coffeeEffect from "url:../../../assets/audio/effects/coffee.ogg";
+import selectEffect from "url:../../assets/audio/effects/select.ogg";
+import coffeeEffect from "url:../../assets/audio/effects/coffee.ogg";
+import keyPressEffect from "url:../../assets/audio/effects/keyPress.ogg";
+
 import { MUSIC_VOLUME } from "./constants";
 
 export interface Audio {
@@ -13,6 +15,7 @@ export const COFFEE_EFFECT = "coffee";
 
 export const COMMON_AUDIOS = [
   { key: SELECT_EFFECT, url: selectEffect },
+  { key: KEY_PRESS_EFFECT, url: keyPressEffect },
   { key: COFFEE_EFFECT, url: coffeeEffect },
 ];
 

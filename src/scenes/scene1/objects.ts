@@ -1,4 +1,4 @@
-import { MIDDLE_GROUND_DEPTH } from "../common/map/constants";
+import { MIDDLE_GROUND_DEPTH } from "../common/constants";
 import { DynamicObjectInfo } from "../common/map/objects";
 
 const NOTEBOOK_KEY = "albert_notebook";

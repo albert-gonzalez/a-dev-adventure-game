@@ -1,4 +1,4 @@
-import { FOREGROUND_DEPTH } from "./constants";
+import { FOREGROUND_DEPTH } from "../constants";
 
 const FINISH_DELAY = 500;
 

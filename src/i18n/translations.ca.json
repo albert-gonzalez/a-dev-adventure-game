@@ -125,6 +125,9 @@
   "easytimerTitle": "Easytimer.js",
   "easytimerDescription": "Easytimer.js és una petita utilitat feta amb JS que permet gestionar de forma fàcil un cronòmetre i un compte enrere.",
   "gameTitle": "Aquest Videojoc!",
-  "gameDescription": "El videojoc al que estàs jugant ara mateix. M'he sortit de la meva zona de confort per a fer-ho, ja que no sóc dissenyador de videojocs. El resultat ha sigut un joc senzill i curtet, però crec que igualment és una bona carta de presentació. Li he posat molta il·lusió, espero que t'agradi!"
-
+  "gameDescription": "El videojoc al que estàs jugant ara mateix. M'he sortit de la meva zona de confort per a fer-ho, ja que no sóc dissenyador de videojocs. El resultat ha sigut un joc senzill i curtet, però crec que igualment és una bona carta de presentació. Li he posat molta il·lusió, espero que t'agradi!",
+  "code": "Code",
+  "codePageDescription": "Escriu codi per atacar al bug",
+  "enemyDamaged": "El teu codi ha fet {{ damage }} punts de mal al bug!",
+  "playerDamaged": "El bug t'ha fet {{ damage }} punts de mal"
 }

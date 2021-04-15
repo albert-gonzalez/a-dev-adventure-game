@@ -1,7 +1,7 @@
 import { getText } from "../../i18n/i18n";
 
 import { BACKSPACE_PRESS_EFFECT } from "./audio";
-import { FONT_FAMILY } from "../common/map/constants";
+import { FONT_FAMILY } from "../common/constants";
 import { START_DELAY } from "../common/map/texts";
 
 const TITLE_FONT_FAMILY = FONT_FAMILY;
@@ -12,11 +12,11 @@ const TITLE_Y = 150;
 const TITLE_TOP_PADDING = 10;
 const HELP_FONT_SIZE = "16px";
 const HELP_X = 400;
-const HELP_Y = 500;
+const HELP_Y = 480;
 const TIME_BETWEEN_DELETIONS = 150;
 const BLINK_TIME = 2000;
 
-export const addTitleText = (scene: Phaser.Scene) => {
+export const addTitleText = (scene: Phaser.Scene): Phaser.GameObjects.Text => {
   const titleText = scene.add.text(TITLE_X, TITLE_Y, "", {
     fontFamily: TITLE_FONT_FAMILY,
     fontSize: TITLE_FONT_SIZE,
@@ -24,6 +24,7 @@ export const addTitleText = (scene: Phaser.Scene) => {
 
   titleText.setPadding(0, TITLE_TOP_PADDING, 0, 0);
   titleText.setLineSpacing(TITLE_LINE_SPACING);
+
   return titleText;
 };
 

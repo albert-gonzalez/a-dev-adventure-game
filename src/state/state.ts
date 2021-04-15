@@ -1,19 +1,21 @@
+import { createPlayer, Player } from "../characters/common/player";
 import { Inventory } from "../inventory/current";
 import { Dialog } from "../menus/dialog";
+import { Enemy } from "../scenes/common/combat/enemy";
+import { CombatSkillSet } from "../scenes/common/combat/skills";
 import {
   CurrentActionStates,
   SceneActions,
 } from "../scenes/common/map/actions";
 import { SpriteSheet } from "../scenes/common/map/images";
 
-interface AlbertState {
-  hp: number;
-  sprite?: Phaser.GameObjects.Sprite;
-  animationPrefix: string;
-}
-
 export interface GameState {
   inventory: Inventory;
+  combat: {
+    skills: CombatSkillSet;
+    pendingAction?: () => Promise<void>;
+    enemy?: Enemy;
+  };
   cutScene?: (state: GameState) => boolean;
   scene: {
     phaser?: Phaser.Scene;
@@ -24,7 +26,7 @@ export interface GameState {
     actions: SceneActions;
     currentActionStates: CurrentActionStates;
   };
-  albert: AlbertState;
+  albert: Player;
   dialog?: Dialog;
   input: {
     isActionJustPressed: boolean;
@@ -42,11 +44,33 @@ export interface GameState {
 }
 
 const state: GameState = {
-  inventory: {},
-  albert: {
-    hp: 50,
-    animationPrefix: "",
+  inventory: [
+    {
+      key: "a",
+      name: "a",
+      quantity: 1,
+    },
+    {
+      key: "b",
+      name: "b",
+      quantity: 2,
+    },
+  ],
+  combat: {
+    skills: [
+      {
+        key: "debug",
+        name: "debug",
+        quantity: 0,
+      },
+      {
+        key: "pairProgramming",
+        name: "pairProgramming",
+        quantity: 2,
+      },
+    ],
   },
+  albert: createPlayer(),
   input: {
     isActionJustPressed: false,
     touch: {

@@ -4,7 +4,7 @@ import {
   MENU_BOX_FONT_SIZE_L,
 } from "./style";
 import { getText } from "../i18n/i18n";
-import { MENU_DEPTH } from "../scenes/common/map/constants";
+import { MENU_DEPTH } from "../scenes/common/constants";
 
 interface MenuTextOptions {
   scene: Phaser.Scene;

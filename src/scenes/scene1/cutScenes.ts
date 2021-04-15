@@ -12,7 +12,7 @@ import { SHOWER_EVENT } from "./events";
 import { addFadeOut } from "../common/map/transitionEffect";
 import { HOME_MUSIC } from "./audio";
 import { STEAM_KEY } from "../common/map/images";
-import { playMusic } from "../common/map/audio";
+import { playMusic } from "../common/audio";
 
 export const createShowerCutScene = (): ((state: GameState) => boolean) => {
   let finished = false;

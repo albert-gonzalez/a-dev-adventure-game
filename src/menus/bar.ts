@@ -21,6 +21,7 @@ export const createBar = ({
   const container = scene.add.container(x, y);
   const graphics = scene.add.graphics();
   const maxWidth = 150;
+  percentage = Math.max(0, Math.min(100, percentage));
 
   graphics.lineStyle(14, chooseBarColor(percentage));
   graphics.lineBetween(10, 38, (percentage / 100) * maxWidth + 10, 38);

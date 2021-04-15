@@ -12,7 +12,7 @@ export const createObjectsFromMap = (
   spriteConfig: TileSetGameObjectConfig = {},
   bodyType?: number,
   transformationFn?: (object: Phaser.GameObjects.Sprite) => void
-): Phaser.GameObjects.GameObject[] => {
+): Phaser.GameObjects.Sprite[] => {
   const objects = map.createFromObjects(
     layerName,
     spriteConfig
