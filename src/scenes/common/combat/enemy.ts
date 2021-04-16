@@ -1,6 +1,6 @@
 import { getState } from "../../../state/state";
 import { pause } from "../../../utils/pause";
-import { createEnemyAnimations, playStill } from "./animation";
+import { createEnemyAnimations, playAttack, playStill } from "./animation";
 
 const BASE_ATTACK_ENEMY = 5;
 const VARIABLE_ATTACK_ENEMY = 10;
@@ -48,22 +48,37 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
 
       await pause(200);
 
-      const tween = scene.tweens.add({
+      playAttack(enemySprite);
+
+      const tweenUp = scene.tweens.add({
+        targets: enemySprite,
+        duration: 150,
+        yoyo: true,
+        y: enemySprite.y - 20,
+      });
+
+      const tweenUpPromise = new Promise((resolve) =>
+        tweenUp.on("complete", resolve)
+      );
+
+      await tweenUpPromise;
+
+      const tweenDown = scene.tweens.add({
         targets: enemySprite,
         duration: 100,
         yoyo: true,
-        y: enemySprite.y - 20,
+        y: enemySprite.y + 10,
       });
 
       const attackSound = scene.sound.add(enemy.audio.attack);
       attackSound.play();
 
-      const tweenPromise = new Promise((resolve) =>
-        tween.on("complete", resolve)
+      const tweenDownPromise = new Promise((resolve) =>
+        tweenDown.on("complete", resolve)
       );
 
-      await tweenPromise;
-
+      await tweenDownPromise;
+      playStill(enemySprite);
       const damage = calculateDamage(BASE_ATTACK_ENEMY, VARIABLE_ATTACK_ENEMY);
 
       state.albert.updateHp(damage);

@@ -14,13 +14,52 @@ export const createEnemyAnimations = (
   scene.anims.create({
     key: ANIMATION_STILL,
     frames: scene.anims.generateFrameNumbers(characterKey, {
-      frames: [0, 0, 0, 1, 2, 2, 1],
+      frames: [
+        0,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        3,
+        3,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        4,
+        4,
+        0,
+        0,
+      ],
     }),
     frameRate: FRAMERATE,
     repeat: REPEAT_INFINITELY,
   });
+
+  scene.anims.create({
+    key: ANIMATION_ATTACK,
+    frames: scene.anims.generateFrameNames(characterKey, {
+      frames: [0, 5, 5, 0],
+    }),
+    frameRate: FRAMERATE,
+    repeat: NO_REPEAT,
+  });
 };
 
-export const playStill = (sprite: Phaser.GameObjects.Sprite) => {
+export const playStill = (sprite: Phaser.GameObjects.Sprite): void => {
   sprite.play(ANIMATION_STILL);
+};
+
+export const playAttack = (sprite: Phaser.GameObjects.Sprite): void => {
+  sprite.play(ANIMATION_ATTACK);
 };
