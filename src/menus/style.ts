@@ -14,6 +14,7 @@ export const MENU_BOX_FONT_FAMILY = FONT_FAMILY;
 export const MENU_BOX_FONT_SIZE_L = "18px";
 export const MENU_BOX_FONT_SIZE_M = "16px";
 export const MENU_BOX_FONT_SIZE_S = "14px";
+export const MENU_BOX_FONT_SIZE_XS = "12px";
 export const MENU_BOX_FONT_LINE_SPACING = 10;
 export const MENU_BOX_FONT_LINE_SPACING_SMALL = 5;
 export const MENU_BOX_FONT_TITLE_COLOR = "#ddaa55";

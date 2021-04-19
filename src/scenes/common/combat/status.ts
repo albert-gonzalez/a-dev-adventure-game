@@ -7,6 +7,7 @@ import { ALBERT_KEY } from "../map/characters";
 
 export interface StatusMenu {
   show: () => void;
+  updateHp: () => void;
 }
 
 const MENU_X = MENU_BOX_MARGIN;
@@ -24,7 +25,6 @@ export const createStatusMenu = (
   scene: Phaser.Scene,
   config: MenuConfig
 ): StatusMenu => {
-  const albertState = getState().albert;
   const menuBox = createMenuBoxRectangle(scene, config);
   let lifeBar = createHpBar(scene, menuBox, 1);
   let updatingHp = false;
@@ -44,7 +44,8 @@ export const createStatusMenu = (
       if (menuBox.scaleY < 1) {
         menuBox.scaleY = Math.min(menuBox.scaleY + 0.05, 1);
       }
-
+    },
+    updateHp() {
       if (updatingHp) {
         animationPercentage += 0.05;
 

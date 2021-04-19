@@ -5,6 +5,7 @@ import {
   MENU_BOX_FONT_SELECTED_OPTION_COLOR,
   MENU_BOX_FONT_SIZE_M,
   MENU_BOX_FONT_SIZE_S,
+  MENU_BOX_FONT_SIZE_XS,
   MENU_BOX_FONT_TITLE_COLOR,
   MENU_BOX_MARGIN,
   MENU_PAGE_MARGIN_X,
@@ -25,6 +26,7 @@ import { MENU_DEPTH } from "../scenes/common/constants";
 import { HP_UPDATED_EVENT } from "../characters/common/player";
 import { PORTRAIT_KEY } from "../scenes/common/map/images";
 import { MenuConfig } from "./menu";
+import { setPendingAction } from "../scenes/common/combat/system";
 
 export enum PageType {
   SCROLL,
@@ -41,6 +43,7 @@ export interface MenuPage {
 
 export interface ListOption {
   key: string;
+  description?: string;
   quantity: number;
 }
 
@@ -89,8 +92,8 @@ export const createListPage = (
 
   createListOptions(scene, container, config, optionListGetter());
 
-  const changeOption = (fn: () => number) => {
-    currentOptionIndex = fn();
+  const changeOption = (getCurrentOption: () => number) => {
+    currentOptionIndex = getCurrentOption();
     changeCurrentOptionTextColor(
       container,
       optionListGetter(),
@@ -187,25 +190,35 @@ export const changeCurrentOptionTextColor = (
         ? MENU_BOX_FONT_WHITE_COLOR
         : MENU_BOX_FONT_GRAY_COLOR;
 
-    const optionName = container.getAt(index * 2) as Phaser.GameObjects.Text;
+    const optionNameContainer = container.getAt(
+      index * 2
+    ) as Phaser.GameObjects.Container;
 
     const optionQuantity = container.getAt(
       index * 2 + 1
     ) as Phaser.GameObjects.Text;
 
-    optionName.setColor(color);
+    (optionNameContainer.getAt(0) as Phaser.GameObjects.Text).setColor(color);
+    (optionNameContainer.getAt(1) as Phaser.GameObjects.Text).setColor(color);
     optionQuantity.setColor(color);
   });
 };
 
 const useItem = (currentOptionIndex: number) => {
   const state = getState();
+  const item = state.inventory[currentOptionIndex];
+
+  if (!item) {
+    return currentOptionIndex;
+  }
 
   const itemRemoved = decreaseItemQuantity(
     state.inventory,
     currentOptionIndex,
     state.scene.phaser as Phaser.Scene
   );
+
+  setPendingAction(item.effect);
 
   return itemRemoved && (currentOptionIndex > 0 || state.inventory.length === 0)
     ? currentOptionIndex - 1
@@ -478,16 +491,36 @@ export const createListOptions = (
         item.quantity !== 0
           ? MENU_BOX_FONT_WHITE_COLOR
           : MENU_BOX_FONT_GRAY_COLOR;
+
+      const nameText = createMenuText({
+        scene,
+        textKey: item.key,
+        x: 0,
+        y: 35 * index,
+        fontSize: MENU_BOX_FONT_SIZE_S,
+        visible: true,
+        color,
+      });
+
+      const nameContainer = scene.add.container(0, 0, [nameText]);
+
+      if (item.description) {
+        nameContainer.add(
+          createMenuText({
+            scene,
+            textKey: item.description,
+            x: nameText.displayWidth + 5,
+            y: 35 * index,
+            fontSize: MENU_BOX_FONT_SIZE_XS,
+            visible: true,
+            color,
+            padding: { top: 4 },
+          })
+        );
+      }
+
       return [
-        createMenuText({
-          scene,
-          textKey: item.key,
-          x: 0,
-          y: 35 * index,
-          fontSize: MENU_BOX_FONT_SIZE_S,
-          visible: true,
-          color,
-        }),
+        nameContainer,
         createMenuText({
           scene,
           text: item.quantity + "",

@@ -1,8 +1,18 @@
 import { createPlayer, Player } from "../characters/common/player";
 import { Inventory } from "../inventory/current";
+import {
+  COFFEE_CUP_KEY,
+  DONUT_KEY,
+  FLJ_BOOK_KEY,
+  getItemFromRepository,
+} from "../inventory/itemRepository";
 import { Dialog } from "../menus/dialog";
 import { Enemy } from "../scenes/common/combat/enemy";
-import { CombatSkillSet } from "../scenes/common/combat/skills";
+import {
+  CombatSkillSet,
+  createDefaultCombatSkillSet,
+  getCombatSkillFromRepository,
+} from "../scenes/common/combat/skills";
 import {
   CurrentActionStates,
   SceneActions,
@@ -45,30 +55,12 @@ export interface GameState {
 
 const state: GameState = {
   inventory: [
-    {
-      key: "a",
-      name: "a",
-      quantity: 1,
-    },
-    {
-      key: "b",
-      name: "b",
-      quantity: 2,
-    },
+    { ...getItemFromRepository(COFFEE_CUP_KEY), quantity: 1 },
+    { ...getItemFromRepository(DONUT_KEY), quantity: 1 },
+    { ...getItemFromRepository(FLJ_BOOK_KEY), quantity: 1 },
   ],
   combat: {
-    skills: [
-      {
-        key: "debug",
-        name: "debug",
-        quantity: 0,
-      },
-      {
-        key: "pairProgramming",
-        name: "pairProgramming",
-        quantity: 2,
-      },
-    ],
+    skills: createDefaultCombatSkillSet(),
   },
   albert: createPlayer(),
   input: {

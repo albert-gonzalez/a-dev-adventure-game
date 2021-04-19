@@ -43,13 +43,12 @@ export const createSceneMethods = ({
 
   function create(this: Phaser.Scene) {
     const state = getState();
-    const background = this.add.sprite(0, 0, COMBAT_BACKGROUND_KEY);
+    const background = this.add.sprite(-20, -20, COMBAT_BACKGROUND_KEY);
     background.setOrigin(0, 0);
 
     state.combat.enemy = createEnemy(this, enemy);
 
     menu = createMenu(this, getMenuConfig(this));
-    menu.show();
 
     statusMenu = createStatusMenu(this, getStatusMenuConfig(this));
 
@@ -63,7 +62,7 @@ export const createSceneMethods = ({
     const actionButtonJustPressed = isActionButtonJustPressed(this, state);
     const enemy = state.combat.enemy as Enemy;
     let isTurnRunning = false;
-    statusMenu.show();
+    statusMenu.updateHp();
     isTurnRunning = runTurn();
 
     if (isTurnRunning) {
@@ -78,12 +77,23 @@ export const createSceneMethods = ({
       return;
     }
 
+    if (state.cutScene) {
+      const isFinished = state.cutScene(state);
+
+      if (isFinished) {
+        state.cutScene = undefined;
+      }
+
+      return;
+    }
+
     if (enemy.isHpEmpty()) {
       enemy.die();
 
       return;
     }
 
+    statusMenu.show();
     controlMenu(this, menu, false, actionButtonJustPressed, state);
 
     return;

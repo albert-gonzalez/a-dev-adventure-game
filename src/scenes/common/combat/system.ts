@@ -1,4 +1,5 @@
 import { getState } from "../../../state/state";
+import { EXTRA_TURN_POWER_UP_KEY } from "./skills";
 
 enum States {
   WAITING,
@@ -37,6 +38,12 @@ export const createTurnFunction = (): (() => boolean) => {
         return false;
       }
 
+      if (state.albert.usePowerUp(EXTRA_TURN_POWER_UP_KEY)) {
+        currentCombatState = States.WAITING;
+
+        return false;
+      }
+
       state.combat.enemy
         ?.attack()
         .then(() => (currentCombatState = States.WAITING));
@@ -57,6 +64,6 @@ export const attackEnemy = async (): Promise<void> => {
   await getState().albert.attack();
 };
 
-export const setPendingAction = (action: () => Promise<void>): void => {
+export const setPendingAction = (action?: () => Promise<void>): void => {
   getState().combat.pendingAction = action;
 };

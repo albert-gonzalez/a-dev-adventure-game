@@ -16,6 +16,7 @@ interface MenuTextOptions {
   width?: number;
   fontSize?: string;
   color?: string;
+  padding?: Phaser.Types.GameObjects.Text.TextPadding;
 }
 
 export const createMenuText = ({
@@ -28,11 +29,13 @@ export const createMenuText = ({
   width,
   fontSize = MENU_BOX_FONT_SIZE_L,
   color = "#ffffff",
-}: MenuTextOptions) => {
+  padding = {},
+}: MenuTextOptions): Phaser.GameObjects.Text => {
   const textObject = scene.add.text(x, y, "", {
     fontFamily: MENU_BOX_FONT_FAMILY,
     fontSize,
     color,
+    padding,
   });
 
   if (width) {

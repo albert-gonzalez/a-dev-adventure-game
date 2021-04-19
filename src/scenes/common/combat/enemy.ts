@@ -1,6 +1,7 @@
 import { getState } from "../../../state/state";
 import { pause } from "../../../utils/pause";
 import { createEnemyAnimations, playAttack, playStill } from "./animation";
+import { DEFENSE_POWER_UP_KEY } from "./skills";
 
 const BASE_ATTACK_ENEMY = 5;
 const VARIABLE_ATTACK_ENEMY = 10;
@@ -16,6 +17,7 @@ export interface EnemyConfig {
 
 export interface Enemy {
   sprite: Phaser.GameObjects.Sprite;
+  show(): Promise<void>;
   updateHp(points: number): void;
   attack(): Promise<void>;
   isHpEmpty(): boolean;
@@ -25,6 +27,7 @@ export interface Enemy {
 export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
   let hp = enemy.hp;
   let isDying = false;
+  let isVisible = false;
 
   createEnemyAnimations(scene, enemy.key);
   const enemySprite = scene.add.sprite(
@@ -33,16 +36,40 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
     enemy.key
   );
 
+  enemySprite.alpha = 0;
+  enemySprite.scale = 0.3;
+
   playStill(enemySprite);
 
   return {
     sprite: enemySprite,
+    async show() {
+      if (isVisible) {
+        return;
+      }
+
+      isVisible = true;
+
+      const showTween = scene.tweens.add({
+        targets: enemySprite,
+        duration: 3000,
+        scale: 1,
+        alpha: enemySprite.alpha + 1,
+      });
+
+      const showTweenPromise = new Promise((resolve) =>
+        showTween.on("complete", resolve)
+      );
+
+      await showTweenPromise;
+    },
     updateHp(points) {
       hp = Math.max(0, hp + points);
     },
     async attack(): Promise<void> {
       const state = getState();
       const scene = state.scene.phaser as Phaser.Scene;
+      const player = state.albert;
       const enemySprite = state.combat.enemy
         ?.sprite as Phaser.GameObjects.Sprite;
 
@@ -79,12 +106,17 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
 
       await tweenDownPromise;
       playStill(enemySprite);
-      const damage = calculateDamage(BASE_ATTACK_ENEMY, VARIABLE_ATTACK_ENEMY);
 
-      state.albert.updateHp(damage);
+      const defenseMultiplier = player.usePowerUp(DEFENSE_POWER_UP_KEY) || 1;
+      const damage = Math.floor(
+        calculateDamage(BASE_ATTACK_ENEMY, VARIABLE_ATTACK_ENEMY) /
+          defenseMultiplier
+      );
+
+      player.updateHp(-damage);
 
       state.dialog?.showDialogBox([
-        { text: "playerDamaged", options: { damage: -damage } },
+        { text: "playerDamaged", options: { damage } },
       ]);
     },
     isHpEmpty() {
@@ -120,4 +152,4 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
 };
 
 const calculateDamage = (base: number, variable: number) =>
-  Math.floor(-base - variable * Math.random());
+  Math.floor(base + variable * Math.random());

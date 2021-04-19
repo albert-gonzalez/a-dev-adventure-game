@@ -108,6 +108,7 @@ export const createMenu = (scene: Phaser.Scene, config: MenuConfig): Menu => {
 
       menuBox.setAlpha(0.5);
       selectedOption = 0;
+      isOptionActive = false;
       textOptions[selectedOption].page.actions?.reset?.();
       isBlocked = true;
     },

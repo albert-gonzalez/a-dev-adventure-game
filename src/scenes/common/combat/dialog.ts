@@ -1,7 +1,7 @@
 import { createDialogBox, Dialog } from "../../../menus/dialog";
 import { MENU_BOX_MARGIN } from "../../../menus/style";
 
-const MENU_BOX_HEIGHT = 100;
+const MENU_BOX_HEIGHT = 110;
 const MARGIN_TOP = 10;
 
 export const createCombatDialogBox = (scene: Phaser.Scene): Dialog => {

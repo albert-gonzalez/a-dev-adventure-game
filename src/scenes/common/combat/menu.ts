@@ -9,7 +9,11 @@ import { MENU_BOX_MARGIN, MENU_PAGE_MARGIN_X } from "../../../menus/style";
 import { createMenuText } from "../../../menus/texts";
 import { createPageContainer } from "../../../menus/pages";
 import { getState } from "../../../state/state";
-import { COMBAT_SKILLS_UPDATED, decreaseSkillQuantity } from "./skills";
+import {
+  COMBAT_SKILLS_UPDATED,
+  decreaseSkillQuantity,
+  isSkillInSet,
+} from "./skills";
 import { attackEnemy, setPendingAction } from "./system";
 
 const MENU_X = 220;
@@ -68,9 +72,16 @@ const createCombatSkillsPage = (
 
 const useSkill = (currentOptionIndex: number): number => {
   const state = getState();
+  const skillSet = state.combat.skills;
+
+  if (!isSkillInSet(skillSet, currentOptionIndex)) {
+    return currentOptionIndex;
+  }
+
+  setPendingAction(skillSet[currentOptionIndex].effect);
 
   const itemRemoved = decreaseSkillQuantity(
-    state.combat.skills,
+    skillSet,
     currentOptionIndex,
     state.scene.phaser as Phaser.Scene
   );

@@ -1,4 +1,9 @@
 import { KEY_PRESS_EFFECT } from "../../scenes/common/audio";
+import {
+  ATTACK_POWER_UP_KEY,
+  PowerUp,
+  PowerUps,
+} from "../../scenes/common/combat/skills";
 import { HIT_EFFECT } from "../../scenes/scene3/audio";
 import { getState } from "../../state/state";
 import { pause } from "../../utils/pause";
@@ -15,17 +20,39 @@ export interface Player {
   maxHp: number;
   sprite?: Phaser.GameObjects.Sprite;
   animationPrefix: string;
-  attack(): Promise<void>;
-  updateHp(value: number): void;
+  attack(fixedDamage?: number): Promise<void>;
+  updateHp(value: number): number;
+  addPowerUp(effect: PowerUp): void;
+  usePowerUp(key: string): number;
 }
 
 export const createPlayer = (): Player => {
+  const effects: PowerUps = {};
+
   return {
     hp: INIT_HP,
     previousHp: INIT_HP,
     maxHp: MAX_HP,
     animationPrefix: "",
-    async attack() {
+    addPowerUp(effect) {
+      effects[effect.key] = effect;
+    },
+    usePowerUp(key) {
+      const effect = effects[key];
+
+      if (!effect) {
+        return 0;
+      }
+
+      effect.turnsLeft--;
+
+      if (effect.turnsLeft === 0) {
+        delete effects[effect.key];
+      }
+
+      return effect.value;
+    },
+    async attack(fixedDamage) {
       const state = getState();
       const scene = state.scene.phaser as Phaser.Scene;
       const enemySprite = state.combat.enemy
@@ -54,29 +81,30 @@ export const createPlayer = (): Player => {
 
       await tweenPromise;
 
-      const damage = calculateDamage(
-        BASE_ATTACK_PLAYER,
-        VARIABLE_ATTACK_PLAYER
-      );
+      const bonusAttackMultiplier = this.usePowerUp(ATTACK_POWER_UP_KEY) || 1;
+      const damage =
+        (fixedDamage ??
+          calculateDamage(BASE_ATTACK_PLAYER, VARIABLE_ATTACK_PLAYER)) *
+        bonusAttackMultiplier;
 
-      state.combat.enemy?.updateHp(damage);
+      state.combat.enemy?.updateHp(-damage);
       state.dialog?.showDialogBox([
-        { text: "enemyDamaged", options: { damage: -damage } },
+        { text: "enemyDamaged", options: { damage } },
       ]);
     },
-    updateHp(value: number): void {
+    updateHp(value: number): number {
       const state = getState();
+      const player = state.albert;
 
-      state.albert.previousHp = state.albert.hp;
-      state.albert.hp += value;
-      state.albert.hp = Math.max(
-        Math.min(state.albert.hp, state.albert.maxHp),
-        0
-      );
+      player.previousHp = player.hp;
+      player.hp += value;
+      player.hp = Math.max(Math.min(player.hp, player.maxHp), 0);
       state.scene.phaser?.events.emit(HP_UPDATED_EVENT);
+
+      return player.hp - player.previousHp;
     },
   };
 };
 
 const calculateDamage = (base: number, variable: number) =>
-  Math.floor(-base - variable * Math.random());
+  Math.floor(base + variable * Math.random());
