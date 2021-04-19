@@ -1,6 +1,5 @@
 import { GameState } from "../../../state/state";
 import { findPropertyByName } from "../../../gameObjects/properties";
-import { addItem } from "../../../inventory/current";
 import { getItemFromRepository } from "../../../inventory/itemRepository";
 import { Dialog } from "../../../menus/dialog";
 import { DOWN, LEFT, RIGHT, UP } from "../../../input/input";
@@ -159,7 +158,7 @@ export const actionCallback = (
   const items = sceneActionState.itemKeys;
   if (items?.length) {
     items.forEach((key) =>
-      addItem(state.inventory, getItemFromRepository(key), scene)
+      state.inventory.add(getItemFromRepository(key), scene)
     );
   }
 

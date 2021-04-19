@@ -1,4 +1,3 @@
-import { getState } from "../state/state";
 import { Item } from "./itemRepository";
 
 export const INVENTORY_UPDATED_EVENT = "inventoryUpdated";
@@ -7,68 +6,80 @@ export interface CurrentItem extends Item {
   quantity: number;
 }
 
-export type Inventory = CurrentItem[];
+export interface Inventory {
+  add(item: Item, scene: Phaser.Scene): void;
+  getAll(): CurrentItem[];
+  decreaseQuantity(itemIndex: number, scene: Phaser.Scene): boolean;
+  get(index: number): CurrentItem | undefined;
+  getByKey(key: string): CurrentItem | undefined;
+}
 
-export const addItem = (
-  inventory: Inventory,
-  item: Item,
-  scene: Phaser.Scene
-): void => {
-  let itemIndex = -1;
+export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
+  let inventory: CurrentItem[] = [...initItems];
 
-  inventory = [...inventory];
+  return {
+    get(index) {
+      return { ...inventory[index] };
+    },
+    getAll() {
+      return [...inventory];
+    },
+    getByKey(key) {
+      const item = inventory.find((item) => item.key === key);
 
-  const itemInInventory = inventory.find((itemInInventory, index) => {
-    itemIndex = index;
-    return itemInInventory.key === item.key;
-  });
+      return item ? { ...item } : undefined;
+    },
+    add(item, scene) {
+      let itemIndex = -1;
 
-  if (itemInInventory) {
-    inventory[itemIndex] = {
-      ...item,
-      quantity: itemInInventory.quantity + 1,
-    };
+      inventory = [...inventory];
 
-    return;
-  }
+      const itemInInventory = inventory.find((itemInInventory, index) => {
+        itemIndex = index;
+        return itemInInventory.key === item.key;
+      });
 
-  inventory.push({
-    ...item,
-    quantity: 1,
-  });
+      if (itemInInventory) {
+        inventory[itemIndex] = {
+          ...item,
+          quantity: itemInInventory.quantity + 1,
+        };
 
-  getState().inventory = inventory;
-  scene.events.emit(INVENTORY_UPDATED_EVENT);
-};
+        return;
+      }
 
-export const decreaseItemQuantity = (
-  inventory: Inventory,
-  itemIndex: number,
-  scene: Phaser.Scene
-): boolean => {
-  let removed = false;
-  let itemInInventory = inventory[itemIndex];
+      inventory.push({
+        ...item,
+        quantity: 1,
+      });
 
-  inventory = [...inventory];
+      scene.events.emit(INVENTORY_UPDATED_EVENT);
+    },
+    decreaseQuantity(itemIndex, scene) {
+      let removed = false;
+      let itemInInventory = inventory[itemIndex];
 
-  if (!itemInInventory) {
-    return false;
-  }
+      inventory = [...inventory];
 
-  itemInInventory = {
-    ...itemInInventory,
-    quantity: itemInInventory.quantity - 1,
+      if (!itemInInventory) {
+        return false;
+      }
+
+      itemInInventory = {
+        ...itemInInventory,
+        quantity: itemInInventory.quantity - 1,
+      };
+
+      if (itemInInventory.quantity > 0) {
+        inventory[itemIndex] = itemInInventory;
+      } else {
+        inventory = inventory.filter((item, index) => index !== itemIndex);
+        removed = true;
+      }
+
+      scene.events.emit(INVENTORY_UPDATED_EVENT);
+
+      return removed;
+    },
   };
-
-  if (itemInInventory.quantity > 0) {
-    inventory[itemIndex] = itemInInventory;
-  } else {
-    inventory = inventory.filter((item, index) => index !== itemIndex);
-    removed = true;
-  }
-
-  getState().inventory = inventory;
-  scene.events.emit(INVENTORY_UPDATED_EVENT);
-
-  return removed;
 };

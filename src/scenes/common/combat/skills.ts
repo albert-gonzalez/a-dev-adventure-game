@@ -1,7 +1,5 @@
 import { getState } from "../../../state/state";
 import { POWER_UP_EFFECT } from "../../scene3/audio";
-import { ALBERT_KEY } from "../map/characters";
-import { setPendingAction } from "./system";
 
 export const COMBAT_SKILLS_UPDATED = "combatSkillsUpdated";
 
@@ -13,7 +11,13 @@ export interface CombatSkill {
   effect?: () => Promise<void>;
 }
 
-export type CombatSkillSet = CombatSkill[];
+export interface CombatSkillSet {
+  get(index: number): CombatSkill;
+  getAll(): CombatSkill[];
+  has(index: number): boolean;
+  add(skill: CombatSkill, scene: Phaser.Scene): void;
+  decreaseQuantity(itemIndex: number, scene: Phaser.Scene): boolean;
+}
 
 export interface PowerUp {
   key: string;
@@ -110,78 +114,70 @@ export const getCombatSkillFromRepository = (key: string): CombatSkill => ({
 });
 
 export const createDefaultCombatSkillSet = (): CombatSkillSet => {
-  return [
+  let combatSkills: CombatSkill[] = [
     { ...debugSkill },
     { ...pairProgrammingSkill },
     { ...unitTestingSkill },
   ];
-};
+  return {
+    getAll() {
+      return [...combatSkills];
+    },
+    get(index) {
+      return { ...combatSkills[index] };
+    },
+    has(index) {
+      const skillInSet = combatSkills[index];
 
-export const addSkill = (
-  skillSet: CombatSkillSet,
-  skill: CombatSkill,
-  scene: Phaser.Scene
-): void => {
-  let itemIndex = -1;
+      return skillInSet && skillInSet.quantity > 0;
+    },
+    add(skill, scene) {
+      let itemIndex = -1;
 
-  skillSet = [...skillSet];
+      combatSkills = [...combatSkills];
 
-  const skillInSet = skillSet.find((itemInInventory, index) => {
-    itemIndex = index;
-    return itemInInventory.key === skill.key;
-  });
+      const skillInSet = combatSkills.find((itemInInventory, index) => {
+        itemIndex = index;
+        return itemInInventory.key === skill.key;
+      });
 
-  if (skillInSet) {
-    skillSet[itemIndex] = {
-      ...skill,
-      quantity: skillInSet.quantity + 1,
-    };
+      if (skillInSet) {
+        combatSkills[itemIndex] = {
+          ...skill,
+          quantity: skillInSet.quantity + 1,
+        };
 
-    return;
-  }
+        return;
+      }
 
-  skillSet.push({
-    ...skill,
-    quantity: 1,
-  });
+      combatSkills.push({
+        ...skill,
+        quantity: 1,
+      });
 
-  getState().combat.skills = skillSet;
-  scene.events.emit(COMBAT_SKILLS_UPDATED);
-};
+      scene.events.emit(COMBAT_SKILLS_UPDATED);
+    },
+    decreaseQuantity(itemIndex, scene) {
+      let skillInSet = combatSkills[itemIndex];
 
-export const decreaseSkillQuantity = (
-  skillSet: CombatSkillSet,
-  itemIndex: number,
-  scene: Phaser.Scene
-): boolean => {
-  let skillInSet = skillSet[itemIndex];
+      if (!this.has(itemIndex)) {
+        return false;
+      }
 
-  if (!isSkillInSet(skillSet, itemIndex)) {
-    return false;
-  }
+      combatSkills = [...combatSkills];
 
-  skillSet = [...skillSet];
+      skillInSet = {
+        ...skillInSet,
+        quantity: skillInSet.quantity - 1,
+      };
 
-  skillInSet = {
-    ...skillInSet,
-    quantity: skillInSet.quantity - 1,
+      combatSkills[itemIndex] = skillInSet;
+
+      scene.events.emit(COMBAT_SKILLS_UPDATED);
+
+      const disabled = skillInSet.quantity === 0;
+
+      return disabled;
+    },
   };
-
-  skillSet[itemIndex] = skillInSet;
-
-  getState().combat.skills = skillSet;
-  scene.events.emit(COMBAT_SKILLS_UPDATED);
-
-  const disabled = skillInSet.quantity === 0;
-
-  return disabled;
-};
-
-export const isSkillInSet = (
-  skillSet: CombatSkillSet,
-  itemIndex: number
-): boolean => {
-  const skillInSet = skillSet[itemIndex];
-
-  return skillInSet && skillInSet.quantity > 0;
 };

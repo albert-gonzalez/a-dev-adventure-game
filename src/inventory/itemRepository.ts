@@ -1,5 +1,4 @@
 import {
-  addSkill,
   getCombatSkillFromRepository,
   FUNCTIONAL_PROGRAMMING_KEY,
 } from "../scenes/common/combat/skills";
@@ -53,10 +52,8 @@ const runBookEffect = (): Promise<void> => {
   const scene = state.scene.phaser as Phaser.Scene;
 
   state.dialog?.showDialogBox([{ text: "bookEffect" }]);
-  console.log(getCombatSkillFromRepository(FUNCTIONAL_PROGRAMMING_KEY));
 
-  addSkill(
-    state.combat.skills,
+  state.combat.skills.add(
     getCombatSkillFromRepository(FUNCTIONAL_PROGRAMMING_KEY),
     scene
   );
@@ -100,4 +97,4 @@ const itemRepository: ItemRepository = {
   },
 };
 
-export const getItemFromRepository = (key: string) => itemRepository[key];
+export const getItemFromRepository = (key: string): Item => itemRepository[key];

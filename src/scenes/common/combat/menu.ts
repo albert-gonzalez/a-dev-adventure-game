@@ -9,11 +9,7 @@ import { MENU_BOX_MARGIN, MENU_PAGE_MARGIN_X } from "../../../menus/style";
 import { createMenuText } from "../../../menus/texts";
 import { createPageContainer } from "../../../menus/pages";
 import { getState } from "../../../state/state";
-import {
-  COMBAT_SKILLS_UPDATED,
-  decreaseSkillQuantity,
-  isSkillInSet,
-} from "./skills";
+import { COMBAT_SKILLS_UPDATED } from "./skills";
 import { attackEnemy, setPendingAction } from "./system";
 
 const MENU_X = 220;
@@ -63,7 +59,7 @@ const createCombatSkillsPage = (
   return createListPage(
     container,
     config,
-    () => getState().combat.skills,
+    () => getState().combat.skills.getAll(),
     useSkill,
     getCurrentItemIndexUpdatedEvent(SKILLS_PAGE),
     COMBAT_SKILLS_UPDATED
@@ -74,20 +70,19 @@ const useSkill = (currentOptionIndex: number): number => {
   const state = getState();
   const skillSet = state.combat.skills;
 
-  if (!isSkillInSet(skillSet, currentOptionIndex)) {
+  if (!skillSet.has(currentOptionIndex)) {
     return currentOptionIndex;
   }
 
-  setPendingAction(skillSet[currentOptionIndex].effect);
+  setPendingAction(skillSet.get(currentOptionIndex).effect);
 
-  const itemRemoved = decreaseSkillQuantity(
-    skillSet,
+  const itemRemoved = skillSet.decreaseQuantity(
     currentOptionIndex,
     state.scene.phaser as Phaser.Scene
   );
 
   return itemRemoved &&
-    (currentOptionIndex > 0 || state.combat.skills.length === 0)
+    (currentOptionIndex > 0 || skillSet.getAll().length === 0)
     ? currentOptionIndex - 1
     : currentOptionIndex;
 };

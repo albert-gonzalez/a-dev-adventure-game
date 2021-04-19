@@ -54,7 +54,7 @@ const actions: SceneActions = {
         texts: [{ text: "bathroom_1" }],
         textsFailure: [{ text: "bathroom_fail_1" }],
         condition: (state: GameState) =>
-          !!state.inventory.find((item) => item.key === CLOTHES_KEY),
+          !!state.inventory.getByKey(CLOTHES_KEY),
         updateState: (state: GameState) => state.albert.updateHp(25),
         cutScene: createShowerCutScene(),
       },
@@ -139,7 +139,7 @@ const actions: SceneActions = {
         texts: [{ text: "door" }],
         textsFailure: [{ text: "door_fail" }],
         condition: (state: GameState) =>
-          !!state.inventory.find((item) => item.key === NOTEBOOK_KEY),
+          !!state.inventory.getByKey(NOTEBOOK_KEY),
         cutScene: startSceneTransition(SCENE_2_KEY),
       },
     ],
@@ -184,4 +184,4 @@ const actions: SceneActions = {
   },
 };
 
-export const getActions = () => actions;
+export const getActions = (): SceneActions => actions;

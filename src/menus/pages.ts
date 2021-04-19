@@ -14,10 +14,7 @@ import {
 } from "./style";
 import { createMenuText } from "./texts";
 import { createBar } from "./bar";
-import {
-  INVENTORY_UPDATED_EVENT,
-  decreaseItemQuantity,
-} from "../inventory/current";
+import { INVENTORY_UPDATED_EVENT } from "../inventory/current";
 import { getState } from "../state/state";
 import experience from "../data/experience.json";
 import projects from "../data/projects.json";
@@ -104,6 +101,7 @@ export const createListPage = (
   scene.events.addListener(listUpdatedEvent, () => {
     createListOptions(scene, container, config, optionListGetter());
   });
+
   changeCurrentOptionTextColor(
     container,
     optionListGetter(),
@@ -206,21 +204,21 @@ export const changeCurrentOptionTextColor = (
 
 const useItem = (currentOptionIndex: number) => {
   const state = getState();
-  const item = state.inventory[currentOptionIndex];
+  const item = state.inventory.get(currentOptionIndex);
 
   if (!item) {
     return currentOptionIndex;
   }
 
-  const itemRemoved = decreaseItemQuantity(
-    state.inventory,
+  const itemRemoved = state.inventory.decreaseQuantity(
     currentOptionIndex,
     state.scene.phaser as Phaser.Scene
   );
 
   setPendingAction(item.effect);
 
-  return itemRemoved && (currentOptionIndex > 0 || state.inventory.length === 0)
+  return itemRemoved &&
+    (currentOptionIndex > 0 || state.inventory.getAll().length === 0)
     ? currentOptionIndex - 1
     : currentOptionIndex;
 };
@@ -364,7 +362,7 @@ export const createItemsPage = (
   const page = createListPage(
     container,
     config,
-    () => getState().inventory,
+    () => getState().inventory.getAll(),
     useItem,
     getCurrentItemIndexUpdatedEvent(INVENTORY_PAGE),
     INVENTORY_UPDATED_EVENT
