@@ -2,56 +2,50 @@ import { FOREGROUND_DEPTH } from "../constants";
 
 const FINISH_DELAY = 500;
 
-export const addFadeIn = (scene: Phaser.Scene) => {
+export const addFadeIn = (scene: Phaser.Scene): (() => boolean) => {
   let finished = false;
-  let timerEvent: Phaser.Time.TimerEvent;
 
   const blackFadeIn = addBlackRectangle(scene);
   blackFadeIn.alpha = 0;
 
+  scene.tweens.add({
+    targets: blackFadeIn,
+    alpha: 1,
+    duration: FINISH_DELAY,
+    onComplete: () => (finished = true),
+  });
+
   return function continueFadeIn() {
-    if (blackFadeIn.alpha < 1) {
-      blackFadeIn.alpha += 0.02;
-
-      return false;
-    }
-
-    if (!timerEvent) {
-      timerEvent = scene.time.delayedCall(
-        FINISH_DELAY,
-        () => (finished = true)
-      );
-    }
-
     return finished;
   };
 };
 
-export const addFadeOut = (scene: Phaser.Scene) => {
+export const addFadeOut = (
+  scene: Phaser.Scene,
+  rectangle?: Phaser.GameObjects.Graphics
+): (() => boolean) => {
   let finished = false;
-  let timerEvent: Phaser.Time.TimerEvent;
 
-  const blackFadeOut = addBlackRectangle(scene);
+  const blackFadeOut = rectangle || addBlackRectangle(scene);
+
+  scene.tweens.add({
+    targets: blackFadeOut,
+    alpha: 0,
+    duration: FINISH_DELAY,
+    onComplete: () => {
+      finished = true;
+      blackFadeOut.destroy();
+    },
+  });
 
   return function continueFadeOut() {
-    if (blackFadeOut.alpha > 0) {
-      blackFadeOut.alpha -= 0.02;
-
-      return false;
-    }
-
-    if (!timerEvent) {
-      timerEvent = scene.time.delayedCall(FINISH_DELAY, () => {
-        finished = true;
-        blackFadeOut.destroy();
-      });
-    }
-
     return finished;
   };
 };
 
-const addBlackRectangle = (scene: Phaser.Scene) => {
+export const addBlackRectangle = (
+  scene: Phaser.Scene
+): Phaser.GameObjects.Graphics => {
   const graphics = scene.add.graphics();
   graphics.fillStyle(0);
   const blackFadeOut = graphics.fillRect(

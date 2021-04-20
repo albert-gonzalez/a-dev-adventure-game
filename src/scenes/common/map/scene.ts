@@ -241,7 +241,9 @@ export const createSceneMethods = ({
   return { preload, update, create };
 };
 
-export const startSceneTransition = (sceneKey: string) => {
+export const startSceneTransition = (
+  sceneKey: string
+): ((state: GameState) => boolean) => {
   let showFadeIn: () => boolean;
   return (state: GameState): boolean => {
     const scene = state.scene.phaser as Phaser.Scene;

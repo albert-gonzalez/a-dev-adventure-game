@@ -9,7 +9,7 @@ import {
 import { COBI_KEY, NOE_KEY } from "./characters";
 import { ALBERT_KEY } from "../common/map/characters";
 import { SHOWER_EVENT } from "./events";
-import { addFadeOut } from "../common/map/transitionEffect";
+import { addBlackRectangle, addFadeOut } from "../common/map/transitionEffect";
 import { HOME_MUSIC } from "./audio";
 import { STEAM_KEY } from "../common/map/images";
 import { playMusic } from "../common/audio";
@@ -79,7 +79,8 @@ export const noteBookCutscene = (state: GameState) => {
 };
 
 export const createInitialCutscene = (): ((state: GameState) => boolean) => {
-  let continueFadeOut: () => boolean;
+  let blackRectangle: Phaser.GameObjects.Graphics;
+  let isFadeOutFinished: () => boolean;
   let csState = 0;
   return (state: GameState): boolean => {
     const scene = state.scene.phaser as Phaser.Scene;
@@ -87,7 +88,7 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
     if (csState === 0) {
       const graphics = scene.add.graphics();
       graphics.fillStyle(0);
-      continueFadeOut = addFadeOut(scene);
+      blackRectangle = addBlackRectangle(scene);
 
       state.dialog?.showDialogBox([
         { who: NOE_KEY, text: "wake_up_freeman" },
@@ -101,6 +102,7 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
     }
 
     if (csState === 1) {
+      isFadeOutFinished = addFadeOut(scene, blackRectangle);
       playMusic(scene, HOME_MUSIC);
 
       csState++;
@@ -109,7 +111,7 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
     }
 
     if (csState === 2) {
-      const fadeOutFinished = continueFadeOut();
+      const fadeOutFinished = isFadeOutFinished();
 
       if (fadeOutFinished) {
         csState++;
