@@ -9,8 +9,6 @@ import {
   MENU_BOX_LINE_COLOR,
   MENU_BOX_LINE_WIDTH,
   MENU_BOX_MARGIN,
-  MENU_PAGE_Y,
-  MENU_VERTICAL_SEPARATOR_X,
   MENU_VERTICAL_SEPARATOR_Y,
 } from "./style";
 
@@ -30,6 +28,7 @@ import { MenuPage, PageType } from "./pages";
 export interface Menu {
   show(): void;
   hide(): void;
+  update(): void;
   block(): void;
   isMenuOpen(): boolean;
   isMenuBusy(): boolean;
@@ -83,14 +82,17 @@ export const createMenu = (scene: Phaser.Scene, config: MenuConfig): Menu => {
       menuBox.setVisible(true);
       menuBox.setAlpha(1);
       isBlocked = false;
+      menuBusy = true;
 
-      if (menuBox.scaleY < 1) {
-        menuBox.scaleY = Math.min(menuBox.scaleY + 0.05, 1);
-        menuBusy = true;
-      } else {
-        menuBusy = false;
-        showTextOptions(textOptions, selectedOption, isOptionActive);
-      }
+      scene.tweens.add({
+        targets: menuBox,
+        duration: 300,
+        scaleY: 1,
+        onComplete: () => {
+          updateTextOptions(textOptions, selectedOption, isOptionActive);
+          menuBusy = false;
+        },
+      });
     },
 
     hide() {
@@ -99,6 +101,12 @@ export const createMenu = (scene: Phaser.Scene, config: MenuConfig): Menu => {
       hideTextOptions(textOptions);
       selectedOption = 0;
       menuBox.scaleY = 0;
+    },
+
+    update() {
+      isBlocked = false;
+      menuBox.setAlpha(1);
+      updateTextOptions(textOptions, selectedOption, isOptionActive);
     },
 
     block() {
@@ -183,9 +191,9 @@ export const controlMenu = (
   isDownEscapeJustPressed: boolean,
   isActionButtonJustPressed: boolean,
   state: GameState
-) => {
-  menu.show();
+): void => {
   const cursors = scene.input.keyboard.createCursorKeys();
+  menu.update();
 
   if (isDownEscapeJustPressed) {
     menu.hide();
@@ -336,7 +344,7 @@ const createTextOptions = (
   return textOptions;
 };
 
-const showTextOptions = (
+const updateTextOptions = (
   textOptions: MenuOption[],
   selectedOption: number,
   isOptionActive: boolean

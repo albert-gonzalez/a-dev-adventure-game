@@ -93,7 +93,11 @@ export const createSceneMethods = ({
       return;
     }
 
-    statusMenu.show();
+    if (!menu.isMenuOpen()) {
+      statusMenu.show();
+      menu.show();
+    }
+
     controlMenu(this, menu, false, actionButtonJustPressed, state);
 
     return;

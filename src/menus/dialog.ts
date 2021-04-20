@@ -58,17 +58,19 @@ export const createDialogBox = (
       if (messages?.length) {
         currentMessages = [...messages];
         text.setText(formatDialogText(currentMessages.shift()));
-
-        return;
       }
 
-      if (dialogBox.scaleY < 1) {
-        dialogBox.scaleY = Math.min(dialogBox.scaleY + 0.08, 1);
-        dialogBusy = true;
-      } else {
-        text.setVisible(true);
-        dialogBusy = false;
-      }
+      dialogBusy = true;
+
+      scene.tweens.add({
+        targets: dialogBox,
+        duration: 250,
+        scaleY: 1,
+        onComplete: () => {
+          text.setVisible(true);
+          dialogBusy = false;
+        },
+      });
     },
 
     showNextMessageOrHideDialogBox() {
@@ -142,11 +144,11 @@ const createDialogBoxText = (
 export const controlDialog = (
   dialog: Dialog,
   isActionButtonJustPressed: boolean
-) => {
+): void => {
   if (!dialog.isDialogBusy() && isActionButtonJustPressed) {
     dialog.showNextMessageOrHideDialogBox();
     return;
   }
 
-  dialog.showDialogBox();
+  //dialog.showDialogBox();
 };

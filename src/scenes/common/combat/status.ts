@@ -41,9 +41,11 @@ export const createStatusMenu = (
     show() {
       menuBox.setVisible(true);
 
-      if (menuBox.scaleY < 1) {
-        menuBox.scaleY = Math.min(menuBox.scaleY + 0.05, 1);
-      }
+      scene.tweens.add({
+        targets: menuBox,
+        duration: 300,
+        scaleY: 1,
+      });
     },
     updateHp() {
       if (updatingHp) {
