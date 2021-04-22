@@ -1,11 +1,5 @@
 import { createPlayer, Player } from "../characters/common/player";
 import { createInventory, Inventory } from "../inventory/current";
-import {
-  COFFEE_CUP_KEY,
-  DONUT_KEY,
-  FLJ_BOOK_KEY,
-  getItemFromRepository,
-} from "../inventory/itemRepository";
 import { Dialog } from "../menus/dialog";
 import { Enemy } from "../scenes/common/combat/enemy";
 import {
@@ -53,11 +47,7 @@ export interface GameState {
 }
 
 const state: GameState = {
-  inventory: createInventory([
-    { ...getItemFromRepository(COFFEE_CUP_KEY), quantity: 1 },
-    { ...getItemFromRepository(DONUT_KEY), quantity: 1 },
-    { ...getItemFromRepository(FLJ_BOOK_KEY), quantity: 1 },
-  ]),
+  inventory: createInventory(),
   combat: {
     skills: createDefaultCombatSkillSet(),
   },

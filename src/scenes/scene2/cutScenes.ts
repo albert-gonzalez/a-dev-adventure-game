@@ -48,6 +48,7 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
       });
 
       csState++;
+
       return false;
     }
 
@@ -61,6 +62,11 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
       }
 
       return false;
+    }
+
+    if (csState === 3) {
+      state.dialog?.showDialogBox([{ text: "goToDesk" }]);
+      csState++;
     }
 
     return true;
@@ -167,6 +173,12 @@ export const createArcadeCutscene = (): ((state: GameState) => boolean) => {
       getAction(state.scene.actions, MF_SITTING_KEY).disabled = false;
       mf.y = 264;
       mf.x = 621;
+      csState++;
+    }
+
+    if (csState === 10) {
+      state.dialog?.showDialogBox([{ text: "pairProgrammingAdded" }]);
+
       csState++;
     }
 

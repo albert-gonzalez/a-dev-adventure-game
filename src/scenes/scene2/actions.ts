@@ -20,8 +20,13 @@ import {
   COFFEE_CUP_KEY,
   DONUT_KEY,
   FLJ_BOOK_KEY,
+  NOTEBOOK_KEY,
 } from "../../inventory/itemRepository";
 import { createCoffeeCutScene } from "../common/map/cutScenes";
+import { GameState } from "../../state/state";
+import { startSceneTransition } from "../common/map/scene";
+import { SCENE_3_KEY } from "../scene3/config";
+import { pairProgrammingSkill } from "../common/combat/skills";
 
 const actions: SceneActions = {
   [BOSS_KEY]: {
@@ -162,6 +167,11 @@ const actions: SceneActions = {
       {
         texts: [{ text: "arcade_1", who: MF_KEY }],
         cutScene: createArcadeCutscene(),
+        updateState: (state: GameState) =>
+          state.combat.skills.add(
+            pairProgrammingSkill,
+            state.scene.phaser as Phaser.Scene
+          ),
       },
       {
         texts: [{ text: "arcade_2" }],
@@ -247,6 +257,22 @@ const actions: SceneActions = {
     states: [
       {
         texts: [{ text: "meeting_room_1" }],
+      },
+    ],
+  },
+  desk: {
+    states: [
+      {
+        texts: [{ text: "myDesk1" }],
+      },
+      {
+        texts: [{ text: "myDesk2" }],
+        updateState: (state: GameState) =>
+          state.inventory.decreaseQuantity(
+            state.inventory.getIndexByKey(NOTEBOOK_KEY),
+            state.scene.phaser as Phaser.Scene
+          ),
+        cutScene: startSceneTransition(SCENE_3_KEY),
       },
     ],
   },

@@ -197,7 +197,7 @@ export const changeCurrentOptionTextColor = (
     ) as Phaser.GameObjects.Text;
 
     (optionNameContainer.getAt(0) as Phaser.GameObjects.Text).setColor(color);
-    (optionNameContainer.getAt(1) as Phaser.GameObjects.Text).setColor(color);
+    (optionNameContainer.getAt(1) as Phaser.GameObjects.Text)?.setColor(color);
     optionQuantity.setColor(color);
   });
 };

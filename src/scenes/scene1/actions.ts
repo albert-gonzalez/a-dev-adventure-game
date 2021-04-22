@@ -55,7 +55,13 @@ const actions: SceneActions = {
         textsFailure: [{ text: "bathroom_fail_1" }],
         condition: (state: GameState) =>
           !!state.inventory.getByKey(CLOTHES_KEY),
-        updateState: (state: GameState) => state.albert.updateHp(25),
+        updateState: (state: GameState) => {
+          state.albert.updateHp(25);
+          state.inventory.decreaseQuantity(
+            state.inventory.getIndexByKey(CLOTHES_KEY),
+            state.scene.phaser as Phaser.Scene
+          );
+        },
         cutScene: createShowerCutScene(),
       },
     ],

@@ -12,6 +12,7 @@ export interface Inventory {
   decreaseQuantity(itemIndex: number, scene: Phaser.Scene): boolean;
   get(index: number): CurrentItem | undefined;
   getByKey(key: string): CurrentItem | undefined;
+  getIndexByKey(key: string): number;
 }
 
 export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
@@ -28,6 +29,9 @@ export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
       const item = inventory.find((item) => item.key === key);
 
       return item ? { ...item } : undefined;
+    },
+    getIndexByKey(key) {
+      return inventory.findIndex((item) => item.key === key);
     },
     add(item, scene) {
       let itemIndex = -1;

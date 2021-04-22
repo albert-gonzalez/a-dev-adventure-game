@@ -48,13 +48,15 @@ export interface SceneActions {
   [key: string]: SceneAction;
 }
 
-export const getAction = (sceneActions: SceneActions, key: string) =>
-  sceneActions[key];
+export const getAction = (
+  sceneActions: SceneActions,
+  key: string
+): SceneAction => sceneActions[key];
 
 export const getCurrentActionState = (
   currentActionStates: CurrentActionStates,
   key: string
-) => {
+): number => {
   if (!(key in currentActionStates)) {
     currentActionStates[key] = 0;
   }
@@ -66,7 +68,7 @@ export const increaseCurrentActionState = (
   currentActionStates: CurrentActionStates,
   actions: SceneActions,
   key: string
-) => {
+): number | undefined => {
   if (isLastState(currentActionStates, actions, key)) {
     return;
   }
@@ -78,14 +80,14 @@ export const isLastState = (
   currentActionStates: CurrentActionStates,
   actions: SceneActions,
   key: string
-) =>
+): boolean =>
   !actions[key] || actions[key].states.length - 1 === currentActionStates[key];
 
 export const actionCallback = (
   albert: Phaser.GameObjects.Sprite,
   object: Phaser.GameObjects.Sprite,
   state: GameState
-) => {
+): void => {
   const scene = state.scene.phaser as Phaser.Scene;
   const cutScene = state.cutScene;
   const isActionButtonJustPressed = state.input.isActionJustPressed;
@@ -190,7 +192,7 @@ const isActivationDirectionCorrect = (
   return mainCharacter.anims.currentAnim.key.includes(activationDirection);
 };
 
-export const transformAction = (object: Phaser.GameObjects.Sprite) => {
+export const transformAction = (object: Phaser.GameObjects.Sprite): void => {
   object.setVisible(false);
   object.y += (object.body as Phaser.Physics.Arcade.Body).height;
 };

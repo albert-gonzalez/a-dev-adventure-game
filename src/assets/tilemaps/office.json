@@ -767,14 +767,14 @@
                         {
                          "name":"action",
                          "type":"string",
-                         "value":"rm"
+                         "value":"desk"
                         }],
                  "rotation":0,
                  "type":"rm",
                  "visible":true,
                  "width":64,
-                 "x":496.333333333333,
-                 "y":234.333333333333
+                 "x":496.333,
+                 "y":234.333
                 }, 
                 {
                  "height":64,
@@ -790,7 +790,7 @@
                  "type":"mf_sitting",
                  "visible":true,
                  "width":64,
-                 "x":591.333333333333,
+                 "x":591.333,
                  "y":260
                 }, 
                 {
@@ -808,7 +808,7 @@
                  "visible":true,
                  "width":64,
                  "x":752,
-                 "y":105.333333333333
+                 "y":105.333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -820,7 +820,7 @@
  "nextobjectid":55,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.1",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -2413,6 +2413,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":40
 }

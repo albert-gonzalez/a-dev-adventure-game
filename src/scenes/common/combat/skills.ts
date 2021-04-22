@@ -64,7 +64,7 @@ const debugSkill = {
   }),
 };
 
-const pairProgrammingSkill = {
+export const pairProgrammingSkill = {
   key: PAIR_PROGRAMMING_KEY,
   name: PAIR_PROGRAMMING_KEY,
   description: "pairProgrammingDescription",
@@ -116,7 +116,6 @@ export const getCombatSkillFromRepository = (key: string): CombatSkill => ({
 export const createDefaultCombatSkillSet = (): CombatSkillSet => {
   let combatSkills: CombatSkill[] = [
     { ...debugSkill },
-    { ...pairProgrammingSkill },
     { ...unitTestingSkill },
   ];
   return {
