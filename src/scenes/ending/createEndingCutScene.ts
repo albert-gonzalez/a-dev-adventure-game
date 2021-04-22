@@ -16,7 +16,6 @@ const STORY_TEXT_DURATION = 40000;
 const THE_END_TEXT_DURATION = 10000;
 const THE_END_TEXT_DELAY = STORY_TEXT_DURATION;
 const REFRESH_TEXT_DELAY = THE_END_TEXT_DURATION + THE_END_TEXT_DELAY;
-const TEXT_COLOR = "#c0c0c0";
 
 export const createEndingCutScene = (scene: Phaser.Scene): (() => boolean) => {
   let getFadeInTransition: () => Transition;
@@ -81,7 +80,6 @@ const createTexts = (scene: Phaser.Scene) => {
     origin: { x: 0.5, y: 0 },
     lineSpacing: 20,
     align: "justify",
-    color: TEXT_COLOR,
   });
 
   const thankYouText = createMenuText({
@@ -93,7 +91,6 @@ const createTexts = (scene: Phaser.Scene) => {
     width: scene.cameras.main.width - 100,
     origin: { x: 0.5, y: 0 },
     fontSize: MENU_BOX_FONT_SIZE_XL,
-    color: TEXT_COLOR,
   });
 
   const refreshText = createMenuText({
@@ -106,7 +103,6 @@ const createTexts = (scene: Phaser.Scene) => {
     alpha: 0,
     origin: { x: 0.5, y: 0 },
     align: "center",
-    color: TEXT_COLOR,
   });
 
   scene.tweens.add({

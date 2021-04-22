@@ -6,6 +6,8 @@ import {
 import { getText } from "../i18n/i18n";
 import { MENU_DEPTH } from "../scenes/common/constants";
 
+const TEXT_COLOR = "#dddddd";
+
 interface MenuTextOptions {
   scene: Phaser.Scene;
   textKey?: string;
@@ -32,7 +34,7 @@ export const createMenuText = ({
   visible = false,
   width,
   fontSize = MENU_BOX_FONT_SIZE_L,
-  color = "#ffffff",
+  color = TEXT_COLOR,
   padding = {},
   origin = { x: 0, y: 0 },
   lineSpacing,

@@ -6,10 +6,10 @@ import { MENU_DEPTH } from "../common/constants";
 import { addFadeIn, Transition } from "../common/map/transitionEffect";
 import { GAME_OVER_MUSIC } from "../scene3/audio";
 
-const BG_FADE_IN_DURATION = 3000;
-const TITLE_FADE_IN_DURATION = 2000;
+const BG_FADE_IN_DURATION = 6000;
+const TITLE_FADE_IN_DURATION = 5000;
 const IMAGE_DELAY = TITLE_FADE_IN_DURATION / 2;
-const IMAGE_FADE_IN_DURATION = 2000;
+const IMAGE_FADE_IN_DURATION = 6000;
 const IMAGE_FADE_IN_OUT_REPEAT_DELAY =
   IMAGE_DELAY + IMAGE_FADE_IN_DURATION + 1000;
 const IMAGE_FADE_IN_OUT_DURATION = 2000;
@@ -55,10 +55,9 @@ const createTexts = (scene: Phaser.Scene) => {
     y: 100,
     visible: true,
     fontSize: MENU_BOX_FONT_SIZE_XL,
+    origin: { x: 0.5, y: 0 },
+    alpha: 0,
   });
-
-  firedText.alpha = 0;
-  firedText.setOrigin(0.5);
 
   scene.tweens.add({
     targets: firedText,
@@ -73,11 +72,10 @@ const createTexts = (scene: Phaser.Scene) => {
     y: 500,
     visible: true,
     width: scene.cameras.main.width,
+    alpha: 0,
+    origin: { x: 0.5, y: 0 },
+    align: "center",
   });
-
-  refreshText.alpha = 0;
-  refreshText.setOrigin(0.5);
-  refreshText.setAlign("center");
 
   scene.tweens.add({
     targets: refreshText,
