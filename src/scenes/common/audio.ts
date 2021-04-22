@@ -9,6 +9,11 @@ export interface Audio {
   url: string;
 }
 
+interface MusicOptions {
+  loop?: boolean;
+  volume?: number;
+}
+
 export const SELECT_EFFECT = "select";
 export const KEY_PRESS_EFFECT = "keyPress";
 export const COFFEE_EFFECT = "coffee";
@@ -23,5 +28,13 @@ export const loadAudio = (scene: Phaser.Scene, audiosToLoad: Audio[]) => {
   audiosToLoad.forEach((audio) => scene.load.audio(audio.key, audio.url));
 };
 
-export const playMusic = (scene: Phaser.Scene, musicKey: string) =>
-  scene.sound.play(musicKey, { volume: MUSIC_VOLUME, loop: true });
+export const playMusic = (
+  scene: Phaser.Scene,
+  musicKey: string,
+  options: MusicOptions = {}
+): void => {
+  scene.sound.play(musicKey, {
+    volume: options.volume ?? MUSIC_VOLUME,
+    loop: options.loop ?? true,
+  });
+};

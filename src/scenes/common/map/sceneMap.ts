@@ -5,11 +5,18 @@ export interface SceneMap {
   data: string;
 }
 
-export const loadMap = (scene: Phaser.Scene, { key, data }: SceneMap) => {
+interface MapData {
+  map: Phaser.Tilemaps.Tilemap;
+  groundCanvas: Phaser.GameObjects.RenderTexture;
+  middleGroundCanvas: Phaser.GameObjects.RenderTexture;
+  foregroundCanvas: Phaser.GameObjects.RenderTexture;
+}
+
+export const loadMap = (scene: Phaser.Scene, { key, data }: SceneMap): void => {
   scene.load.tilemapTiledJSON(key, data);
 };
 
-export const createMap = (key: string, scene: Phaser.Scene) => {
+export const createMap = (key: string, scene: Phaser.Scene): MapData => {
   const map = scene.make.tilemap({ key });
   const groundCanvas = scene.add.renderTexture(
     0,

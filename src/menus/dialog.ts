@@ -1,22 +1,13 @@
 import "phaser";
 
-import {
-  MENU_BOX_FILL_ALPHA,
-  MENU_BOX_FILL_COLOR_BOTTOM,
-  MENU_BOX_FILL_COLOR_TOP,
-  MENU_BOX_FONT_FAMILY,
-  MENU_BOX_FONT_LINE_SPACING_SMALL,
-  MENU_BOX_FONT_SIZE_L,
-  MENU_BOX_LINE_ALPHA,
-  MENU_BOX_LINE_COLOR,
-  MENU_BOX_LINE_WIDTH,
-} from "./style";
+import { MENU_BOX_FONT_LINE_SPACING_SMALL } from "./style";
 import { DialogText } from "../scenes/common/map/actions";
 import { GameState, getState } from "../state/state";
 import { MENU_DEPTH } from "../scenes/common/constants";
 import { getText } from "../i18n/i18n";
 import { createMenuBoxRectangle, MenuConfig } from "./menu";
 import { SELECT_EFFECT } from "../scenes/common/audio";
+import { createMenuText } from "./texts";
 
 const MENU_BOX_MARGIN = 20;
 
@@ -123,20 +114,14 @@ const createDialogBoxText = (
   scene: Phaser.Scene,
   dialogBox: Phaser.GameObjects.Container
 ) => {
-  const text = scene.add.text(
-    dialogBox.x * 2,
-    dialogBox.y + MENU_BOX_MARGIN,
-    "",
-    {
-      fontFamily: MENU_BOX_FONT_FAMILY,
-      fontSize: MENU_BOX_FONT_SIZE_L,
-    }
-  );
-
-  text.setWordWrapWidth(scene.cameras.main.width - MENU_BOX_MARGIN * 4);
-  text.setScrollFactor(0, 0);
-  text.setVisible(false);
-  text.setLineSpacing(MENU_BOX_FONT_LINE_SPACING_SMALL);
+  const text = createMenuText({
+    scene,
+    x: dialogBox.x * 2,
+    y: dialogBox.y + MENU_BOX_MARGIN,
+    text: "",
+    lineSpacing: MENU_BOX_FONT_LINE_SPACING_SMALL,
+    width: scene.cameras.main.width - MENU_BOX_MARGIN * 4,
+  });
 
   return text;
 };
@@ -149,6 +134,4 @@ export const controlDialog = (
     dialog.showNextMessageOrHideDialogBox();
     return;
   }
-
-  //dialog.showDialogBox();
 };

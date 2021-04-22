@@ -8,7 +8,11 @@ import {
 } from "../../input/input";
 import { updateVelocityWithAnimation } from "../common/map/characters";
 import { updateAnimation } from "../../characters/common/animation/animation";
-import { addBlackRectangle, addFadeOut } from "../common/map/transitionEffect";
+import {
+  addBlackRectangle,
+  addFadeOut,
+  Transition,
+} from "../common/map/transitionEffect";
 import { createMenuText } from "../../menus/texts";
 import { writeText } from "../common/map/texts";
 import { getText } from "../../i18n/i18n";
@@ -17,7 +21,7 @@ import { getAction } from "../common/map/actions";
 export const createInitScene = (): ((state: GameState) => boolean) => {
   let blackRectangle: Phaser.GameObjects.Graphics;
   let csState = 0;
-  let isFadeOutFinished: () => boolean;
+  let getTransition: () => Transition;
   let title: Phaser.GameObjects.Text;
 
   return (state: GameState) => {
@@ -25,7 +29,7 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
 
     if (csState === 0) {
       blackRectangle = addBlackRectangle(scene);
-      isFadeOutFinished = addFadeOut(scene);
+      getTransition = addFadeOut(scene);
       title = createMenuText({
         scene,
         x: scene.cameras.main.width / 2,
@@ -37,7 +41,7 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
 
       writeText(title, getText("office_intro"), scene, 100, false).then(() => {
         scene.time.delayedCall(1000, () => {
-          isFadeOutFinished = addFadeOut(scene, blackRectangle);
+          getTransition = addFadeOut(scene, blackRectangle);
           csState++;
           title.destroy();
         });
@@ -50,7 +54,7 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
     if (csState === 1) return false;
 
     if (csState === 2) {
-      const fadeOutFinished = isFadeOutFinished();
+      const fadeOutFinished = getTransition().isFinished;
 
       if (fadeOutFinished) {
         csState++;

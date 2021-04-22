@@ -1,4 +1,5 @@
 import { getState } from "../../../state/state";
+import { createGameOverCutScene } from "../../gameOver/createGameOverCutScene";
 import { EXTRA_TURN_POWER_UP_KEY } from "./skills";
 
 enum States {
@@ -15,6 +16,14 @@ export const createTurnFunction = (): (() => boolean) => {
     const state = getState();
 
     if (currentCombatState === States.WAITING) {
+      if (state.albert.isDead()) {
+        state.cutScene = createGameOverCutScene(
+          state.scene.phaser as Phaser.Scene
+        );
+
+        return false;
+      }
+
       if (!state.combat.pendingAction) {
         return false;
       }
@@ -47,6 +56,7 @@ export const createTurnFunction = (): (() => boolean) => {
       state.combat.enemy
         ?.attack()
         .then(() => (currentCombatState = States.WAITING));
+
       currentCombatState = States.ENEMY_ATTACKING;
 
       return true;

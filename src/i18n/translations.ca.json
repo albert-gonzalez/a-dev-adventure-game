@@ -151,5 +151,9 @@
   "battleTutorial": "Per acabar amb el bug, puc fer 3 coses al menú: Escriure codi, fer servir una habilitat o utilitzar objectes",
   "attackPowerUpDescription": "Fer debugging t'ajuda a identificar punts febles del bug, augmenten el teu atac durant 2 turns!",
   "defensePowerUpDescription": "Fer pair programming us fa molt més eficaços , augmentant la defensa durant 2 turns!",
-  "extraTurnPowerUpDescription": "Fer refactoring i unit testing us fa detectar casos no control·lats, guanyant 2 torns extra!"
+  "extraTurnPowerUpDescription": "Fer refactoring i unit testing us fa detectar casos no control·lats, guanyant 2 torns extra!",
+  "fired": "Estàs acomiadat",
+  "refresh": "Refresca la pantalla del navegador si vols jugar de nou!",
+  "endingStory": "Després de derrotar al perillòs bug, te n'adones que estàs fet per caçar a totes aquestes bèsties que fan perillar el software del món sencer. Sense dubtar, et poses ma a l'obra lluitant amb totes les teves forces, arribant fins i tot al mateix infern, on s'originen aquests èssers malignes. La llegenda del Bug Slayer ha començat...",
+  "thankYou": "Gràcies per jugar!"
 }

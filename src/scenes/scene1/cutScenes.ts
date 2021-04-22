@@ -9,7 +9,11 @@ import {
 import { COBI_KEY, NOE_KEY } from "./characters";
 import { ALBERT_KEY } from "../common/map/characters";
 import { SHOWER_EVENT } from "./events";
-import { addBlackRectangle, addFadeOut } from "../common/map/transitionEffect";
+import {
+  addBlackRectangle,
+  addFadeOut,
+  Transition,
+} from "../common/map/transitionEffect";
 import { HOME_MUSIC } from "./audio";
 import { STEAM_KEY } from "../common/map/images";
 import { playMusic } from "../common/audio";
@@ -80,7 +84,7 @@ export const noteBookCutscene = (state: GameState) => {
 
 export const createInitialCutscene = (): ((state: GameState) => boolean) => {
   let blackRectangle: Phaser.GameObjects.Graphics;
-  let isFadeOutFinished: () => boolean;
+  let getTransition: () => Transition;
   let csState = 0;
   return (state: GameState): boolean => {
     const scene = state.scene.phaser as Phaser.Scene;
@@ -102,7 +106,7 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
     }
 
     if (csState === 1) {
-      isFadeOutFinished = addFadeOut(scene, blackRectangle);
+      getTransition = addFadeOut(scene, blackRectangle);
       playMusic(scene, HOME_MUSIC);
 
       csState++;
@@ -111,7 +115,7 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
     }
 
     if (csState === 2) {
-      const fadeOutFinished = isFadeOutFinished();
+      const fadeOutFinished = getTransition().isFinished;
 
       if (fadeOutFinished) {
         csState++;

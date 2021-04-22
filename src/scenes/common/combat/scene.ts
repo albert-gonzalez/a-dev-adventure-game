@@ -10,6 +10,7 @@ import { controlDialog, Dialog } from "../../../menus/dialog";
 import { createCombatDialogBox } from "./dialog";
 import { createTurnFunction } from "./system";
 import { createEnemy, Enemy, EnemyConfig } from "./enemy";
+import { createEndingCutScene } from "../../ending/createEndingCutScene";
 
 export interface CreateCombatSceneInput {
   initialCutScene: (state: GameState) => boolean;
@@ -30,7 +31,6 @@ export const createSceneMethods = ({
   images,
   spriteSheets,
   audios,
-  music,
   enemy,
 }: CreateCombatSceneInput) => {
   function preload(this: Phaser.Scene) {
@@ -63,13 +63,6 @@ export const createSceneMethods = ({
     const enemy = state.combat.enemy as Enemy;
     let isTurnRunning = false;
     statusMenu.updateHp();
-    isTurnRunning = runTurn();
-
-    if (isTurnRunning) {
-      menu.block();
-
-      return;
-    }
 
     if (dialog.isDialogOpen()) {
       controlDialog(dialog, actionButtonJustPressed);
@@ -87,8 +80,18 @@ export const createSceneMethods = ({
       return;
     }
 
+    isTurnRunning = runTurn();
+
+    if (isTurnRunning) {
+      menu.block();
+
+      return;
+    }
+
     if (enemy.isHpEmpty()) {
       enemy.die();
+
+      state.cutScene = createEndingCutScene(this);
 
       return;
     }

@@ -24,6 +24,7 @@ export interface Player {
   updateHp(value: number): number;
   addPowerUp(effect: PowerUp): void;
   usePowerUp(key: string): number;
+  isDead(): boolean;
 }
 
 export const createPlayer = (): Player => {
@@ -102,6 +103,9 @@ export const createPlayer = (): Player => {
       state.scene.phaser?.events.emit(HP_UPDATED_EVENT);
 
       return player.hp - player.previousHp;
+    },
+    isDead(): boolean {
+      return this.hp === 0;
     },
   };
 };

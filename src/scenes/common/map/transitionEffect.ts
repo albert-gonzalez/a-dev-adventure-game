@@ -1,50 +1,69 @@
 import { FOREGROUND_DEPTH } from "../constants";
 
-const FINISH_DELAY = 500;
+const DURATION = 500;
 
-export const addFadeIn = (scene: Phaser.Scene): (() => boolean) => {
-  let finished = false;
+interface TransitionOptions {
+  depth?: number;
+  duration?: number;
+  alpha?: number;
+}
 
-  const blackFadeIn = addBlackRectangle(scene);
+export interface Transition {
+  isFinished: boolean;
+  rectangle: Phaser.GameObjects.Graphics;
+}
+
+export const addFadeIn = (
+  scene: Phaser.Scene,
+  options: TransitionOptions = {}
+): (() => Transition) => {
+  let isFinished = false;
+
+  const blackFadeIn = addBlackRectangle(scene, options);
   blackFadeIn.alpha = 0;
 
   scene.tweens.add({
     targets: blackFadeIn,
-    alpha: 1,
-    duration: FINISH_DELAY,
-    onComplete: () => (finished = true),
+    alpha: options.alpha ?? 1,
+    duration: options.duration || DURATION,
+    onComplete: () => (isFinished = true),
   });
 
-  return function continueFadeIn() {
-    return finished;
+  return function getTransition() {
+    return { isFinished, rectangle: blackFadeIn };
   };
 };
 
 export const addFadeOut = (
   scene: Phaser.Scene,
-  rectangle?: Phaser.GameObjects.Graphics
-): (() => boolean) => {
-  let finished = false;
+  rectangle?: Phaser.GameObjects.Graphics,
+  options: TransitionOptions = {}
+): (() => Transition) => {
+  let isFinished = false;
 
-  const blackFadeOut = rectangle || addBlackRectangle(scene);
+  const blackFadeOut = rectangle || addBlackRectangle(scene, options);
+  const alpha = options.alpha ?? 0;
 
   scene.tweens.add({
     targets: blackFadeOut,
-    alpha: 0,
-    duration: FINISH_DELAY,
+    alpha,
+    duration: options.duration || DURATION,
     onComplete: () => {
-      finished = true;
-      blackFadeOut.destroy();
+      isFinished = true;
+      if (alpha === 0) {
+        blackFadeOut.destroy();
+      }
     },
   });
 
   return function continueFadeOut() {
-    return finished;
+    return { isFinished, rectangle: blackFadeOut };
   };
 };
 
 export const addBlackRectangle = (
-  scene: Phaser.Scene
+  scene: Phaser.Scene,
+  options: TransitionOptions = {}
 ): Phaser.GameObjects.Graphics => {
   const graphics = scene.add.graphics();
   graphics.fillStyle(0);
@@ -56,7 +75,7 @@ export const addBlackRectangle = (
   );
 
   blackFadeOut.setScrollFactor(0, 0);
-  blackFadeOut.depth = FOREGROUND_DEPTH;
+  blackFadeOut.depth = options.depth || FOREGROUND_DEPTH;
 
   return blackFadeOut;
 };

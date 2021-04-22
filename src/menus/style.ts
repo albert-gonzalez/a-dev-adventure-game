@@ -11,6 +11,7 @@ export const MENU_BOX_FILL_ALPHA = 0.9;
 export const MENU_BOX_MARGIN = 20;
 
 export const MENU_BOX_FONT_FAMILY = FONT_FAMILY;
+export const MENU_BOX_FONT_SIZE_XL = "30px";
 export const MENU_BOX_FONT_SIZE_L = "18px";
 export const MENU_BOX_FONT_SIZE_M = "16px";
 export const MENU_BOX_FONT_SIZE_S = "14px";

@@ -33,7 +33,7 @@ import {
   isToggleSoundButtonJustPressed,
   updateCharacterVelocity,
 } from "../../../input/input";
-import { addFadeIn } from "./transitionEffect";
+import { addFadeIn, Transition } from "./transitionEffect";
 import { getMenuConfig } from "./menu";
 import { createMapDialogBox } from "./dialog";
 
@@ -244,15 +244,15 @@ export const createSceneMethods = ({
 export const startSceneTransition = (
   sceneKey: string
 ): ((state: GameState) => boolean) => {
-  let showFadeIn: () => boolean;
+  let getTransition: () => Transition;
   return (state: GameState): boolean => {
     const scene = state.scene.phaser as Phaser.Scene;
 
-    if (!showFadeIn) {
-      showFadeIn = addFadeIn(scene);
+    if (!getTransition) {
+      getTransition = addFadeIn(scene);
     }
 
-    const fadeFinished = showFadeIn();
+    const fadeFinished = getTransition().isFinished;
 
     if (fadeFinished) {
       scene.sound.stopAll();

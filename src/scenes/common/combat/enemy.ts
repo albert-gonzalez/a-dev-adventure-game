@@ -1,5 +1,7 @@
 import { getState } from "../../../state/state";
 import { pause } from "../../../utils/pause";
+import { WIN_MUSIC } from "../../scene3/audio";
+import { playMusic } from "../audio";
 import { createEnemyAnimations, playAttack, playStill } from "./animation";
 import { DEFENSE_POWER_UP_KEY } from "./skills";
 
@@ -146,6 +148,9 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
         duration: 400,
         rate: 0.3,
       });
+
+      scene.sound.stopAll();
+      playMusic(scene, WIN_MUSIC, { loop: false });
       deathSound.play();
     },
   };

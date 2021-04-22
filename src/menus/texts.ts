@@ -17,6 +17,10 @@ interface MenuTextOptions {
   fontSize?: string;
   color?: string;
   padding?: Phaser.Types.GameObjects.Text.TextPadding;
+  origin?: { x: number; y: number };
+  lineSpacing?: number;
+  alpha?: number;
+  align?: string;
 }
 
 export const createMenuText = ({
@@ -30,6 +34,10 @@ export const createMenuText = ({
   fontSize = MENU_BOX_FONT_SIZE_L,
   color = "#ffffff",
   padding = {},
+  origin = { x: 0, y: 0 },
+  lineSpacing,
+  alpha = 1,
+  align = "left",
 }: MenuTextOptions): Phaser.GameObjects.Text => {
   const textObject = scene.add.text(x, y, "", {
     fontFamily: MENU_BOX_FONT_FAMILY,
@@ -43,10 +51,13 @@ export const createMenuText = ({
   }
   textObject.setText(textKey ? getText(textKey) : text);
   textObject.setScrollFactor(0, 0);
-  textObject.setShadow(1, 1, "#000");
+  textObject.setShadow(2, 1, "#000");
   textObject.setVisible(visible);
   textObject.setDepth(MENU_DEPTH);
-  textObject.setLineSpacing(MENU_BOX_FONT_LINE_SPACING);
+  textObject.setLineSpacing(lineSpacing ?? MENU_BOX_FONT_LINE_SPACING);
+  textObject.setOrigin(origin.x, origin.y);
+  textObject.setAlpha(alpha);
+  textObject.setAlign(align);
 
   return textObject;
 };
