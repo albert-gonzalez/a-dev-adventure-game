@@ -1,0 +1,1 @@
+{"mappings":"AAAA,WACE,wBAA2B,CAC3B,2EACF","sources":["./src/styles/main.scss"],"sourcesContent":["@font-face {\n  font-family: \"PressStart2P\";\n  src: url(\"../assets/fonts/PressStart2P-Regular.ttf\");\n}"],"names":[],"version":3,"file":"main.2cdd9a37.css.map"}
