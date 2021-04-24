@@ -39,8 +39,6 @@ export function create(this: Phaser.Scene) {
 }
 
 export function update(this: Phaser.Scene): void {
-  //moveBackground(this);
-
   if (!isInputEnabled) {
     return;
   }
@@ -53,9 +51,3 @@ export function update(this: Phaser.Scene): void {
     continueTransition(getState());
   }
 }
-
-const moveBackground = (scene: Phaser.Scene) => {
-  if (background.x > -background.width + scene.cameras.main.width) {
-    background.x = background.x - 0.3;
-  }
-};

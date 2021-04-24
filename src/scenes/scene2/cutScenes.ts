@@ -39,7 +39,7 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
 
       title.setOrigin(0.5, 0.5);
 
-      writeText(title, getText("office_intro"), scene, 100, false).then(() => {
+      writeText(title, getText("officeIntro"), scene, 100, false).then(() => {
         scene.time.delayedCall(1000, () => {
           getTransition = addFadeOut(scene, blackRectangle);
           csState++;
@@ -97,8 +97,8 @@ export const createArcadeCutscene = (): ((state: GameState) => boolean) => {
       const mfWon = Math.random() > 0.5;
       state.dialog?.showDialogBox([
         { text: "ellipsis" },
-        { text: "ellipsis_x2" },
-        { text: mfWon ? "mf_won" : "mf_lost", who: "Miquel" },
+        { text: "ellipsisX2" },
+        { text: mfWon ? "mfWon" : "mfLost", who: "Miquel" },
       ]);
       csState++;
 

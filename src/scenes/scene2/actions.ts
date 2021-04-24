@@ -33,7 +33,7 @@ const actions: SceneActions = {
     characterKey: BOSS_KEY,
     states: [
       {
-        texts: [{ text: "rr_1", who: BOSS_KEY }],
+        texts: [{ text: "rr1", who: BOSS_KEY }],
       },
     ],
   },
@@ -41,10 +41,10 @@ const actions: SceneActions = {
     characterKey: MF_KEY,
     states: [
       {
-        texts: [{ text: "mf_1", who: MF_KEY }],
+        texts: [{ text: "mf1", who: MF_KEY }],
       },
       {
-        texts: [{ text: "mf_2", who: MF_KEY }],
+        texts: [{ text: "mf2", who: MF_KEY }],
       },
     ],
   },
@@ -53,8 +53,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "mf_3", who: MF_KEY },
-          { text: "mf_4", who: MF_KEY },
+          { text: "mf3", who: MF_KEY },
+          { text: "mf4", who: MF_KEY },
         ],
       },
     ],
@@ -64,8 +64,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "rs_1", who: RS_KEY },
-          { text: "rs_2", who: RS_KEY },
+          { text: "rs1", who: RS_KEY },
+          { text: "rs2", who: RS_KEY },
         ],
       },
     ],
@@ -74,8 +74,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "cc_1", who: CC_KEY },
-          { text: "cc_2", who: CC_KEY },
+          { text: "cc1", who: CC_KEY },
+          { text: "cc2", who: CC_KEY },
         ],
       },
     ],
@@ -84,8 +84,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "sn_1", who: SN_KEY },
-          { text: "sn_2", who: SN_KEY },
+          { text: "sn1", who: SN_KEY },
+          { text: "sn2", who: SN_KEY },
         ],
       },
     ],
@@ -93,14 +93,14 @@ const actions: SceneActions = {
   [SE_KEY]: {
     states: [
       {
-        texts: [{ text: "se_1", who: SE_KEY }],
+        texts: [{ text: "se1", who: SE_KEY }],
       },
     ],
   },
   [RM_KEY]: {
     states: [
       {
-        texts: [{ text: "rm_1", who: RM_KEY }],
+        texts: [{ text: "rm1", who: RM_KEY }],
       },
     ],
   },
@@ -108,8 +108,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "ef_1", who: EF_KEY },
-          { text: "ef_2", who: EF_KEY },
+          { text: "ef1", who: EF_KEY },
+          { text: "ef2", who: EF_KEY },
         ],
       },
     ],
@@ -118,8 +118,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "ej_1", who: EJ_KEY },
-          { text: "ej_2", who: EJ_KEY },
+          { text: "ej1", who: EJ_KEY },
+          { text: "ej2", who: EJ_KEY },
         ],
       },
     ],
@@ -127,7 +127,7 @@ const actions: SceneActions = {
   [FS_KEY]: {
     states: [
       {
-        texts: [{ text: "fs_1", who: FS_KEY }],
+        texts: [{ text: "fs1", who: FS_KEY }],
       },
     ],
   },
@@ -135,8 +135,8 @@ const actions: SceneActions = {
     states: [
       {
         texts: [
-          { text: "wg_1", who: WG_KEY },
-          { text: "wg_2", who: WG_KEY },
+          { text: "wg1", who: WG_KEY },
+          { text: "wg2", who: WG_KEY },
         ],
       },
     ],
@@ -144,28 +144,28 @@ const actions: SceneActions = {
   [JA_KEY]: {
     states: [
       {
-        texts: [{ text: "ja_1", who: JA_KEY }],
+        texts: [{ text: "ja1", who: JA_KEY }],
       },
     ],
   },
   [YF_KEY]: {
     states: [
       {
-        texts: [{ text: "yf_1", who: YF_KEY }],
+        texts: [{ text: "yf1", who: YF_KEY }],
       },
     ],
   },
   tv: {
     states: [
       {
-        texts: [{ text: "tv_1" }],
+        texts: [{ text: "tv1" }],
       },
     ],
   },
   arcade: {
     states: [
       {
-        texts: [{ text: "arcade_1", who: MF_KEY }],
+        texts: [{ text: "arcade1", who: MF_KEY }],
         cutScene: createArcadeCutscene(),
         updateState: (state: GameState) =>
           state.combat.skills.add(
@@ -174,89 +174,89 @@ const actions: SceneActions = {
           ),
       },
       {
-        texts: [{ text: "arcade_2" }],
+        texts: [{ text: "arcade2" }],
       },
     ],
   },
   library: {
     states: [
       {
-        texts: [{ text: "library_1" }],
+        texts: [{ text: "library1" }],
       },
       {
-        texts: [{ text: "library_2" }],
+        texts: [{ text: "library2" }],
         itemKeys: [FLJ_BOOK_KEY],
       },
       {
-        texts: [{ text: "library_3" }],
+        texts: [{ text: "library3" }],
       },
     ],
   },
   lockers: {
     states: [
       {
-        texts: [{ text: "lockers_1" }],
+        texts: [{ text: "lockers1" }],
       },
     ],
   },
   bathroom: {
     states: [
       {
-        texts: [{ text: "office_bathroom_1" }],
+        texts: [{ text: "officeBathroom1" }],
       },
     ],
   },
   office_stuff: {
     states: [
       {
-        texts: [{ text: "office_stuff_1" }],
+        texts: [{ text: "officeStuff1" }],
       },
     ],
   },
   dining_table: {
     states: [
       {
-        texts: [{ text: "dining_table_1" }],
+        texts: [{ text: "diningTable1" }],
       },
     ],
   },
   coffee_machine: {
     states: [
       {
-        texts: [{ text: "office_coffee_machine_1" }],
+        texts: [{ text: "officeCoffeeMachine1" }],
         itemKeys: [COFFEE_CUP_KEY],
         cutScene: createCoffeeCutScene([], 1136, 410),
       },
       {
-        texts: [{ text: "office_coffee_machine_2" }],
+        texts: [{ text: "officeCoffeeMachine2" }],
       },
     ],
   },
   microwave: {
     states: [
       {
-        texts: [{ text: "office_microwave_1" }],
+        texts: [{ text: "officeMicrowave1" }],
       },
     ],
   },
   fridge: {
     states: [
       {
-        texts: [{ text: "office_fridge_1" }],
+        texts: [{ text: "officeFridge1" }],
       },
       {
-        texts: [{ text: "office_fridge_2" }],
+        texts: [{ text: "officeFridge2" }],
         itemKeys: [DONUT_KEY],
       },
       {
-        texts: [{ text: "office_fridge_1" }],
+        texts: [{ text: "officeFridge1" }],
       },
     ],
   },
   meeting_room: {
     states: [
       {
-        texts: [{ text: "meeting_room_1" }],
+        texts: [{ text: "meetingRoom1" }],
       },
     ],
   },

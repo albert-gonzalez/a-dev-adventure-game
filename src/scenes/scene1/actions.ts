@@ -20,14 +20,14 @@ const actions: SceneActions = {
     activationDirections: [DOWN],
     states: [
       {
-        texts: [{ text: "wardrobe_1" }],
+        texts: [{ text: "wardrobe1" }],
       },
       {
-        texts: [{ text: "wardrobe_2" }],
+        texts: [{ text: "wardrobe2" }],
         itemKeys: ["clothes"],
       },
       {
-        texts: [{ text: "wardrobe_3" }],
+        texts: [{ text: "wardrobe3" }],
       },
     ],
   },
@@ -35,7 +35,7 @@ const actions: SceneActions = {
     activationDirections: [UP],
     states: [
       {
-        texts: [{ text: "wardrobe_no_clothes" }],
+        texts: [{ text: "wardrobeNoClothes" }],
       },
     ],
   },
@@ -43,7 +43,7 @@ const actions: SceneActions = {
     activationDirections: [DOWN],
     states: [
       {
-        texts: [{ text: "wardrobe_no_clothes" }],
+        texts: [{ text: "wardrobeNoClothes" }],
       },
     ],
   },
@@ -51,8 +51,8 @@ const actions: SceneActions = {
     activationDirections: [UP],
     states: [
       {
-        texts: [{ text: "bathroom_1" }],
-        textsFailure: [{ text: "bathroom_fail_1" }],
+        texts: [{ text: "bathroom1" }],
+        textsFailure: [{ text: "bathroomFail1" }],
         condition: (state: GameState) =>
           !!state.inventory.getByKey(CLOTHES_KEY),
         updateState: (state: GameState) => {
@@ -71,7 +71,7 @@ const actions: SceneActions = {
     activationDirections: [UP, LEFT],
     states: [
       {
-        texts: [{ text: "noe_desktop" }],
+        texts: [{ text: "noeDesktop" }],
       },
     ],
   },
@@ -79,14 +79,14 @@ const actions: SceneActions = {
     activationDirections: [DOWN, LEFT],
     states: [
       {
-        texts: [{ text: "albert_desktop" }],
-        textsFailure: [{ text: "albert_desktop_fail" }],
+        texts: [{ text: "albertDesktop" }],
+        textsFailure: [{ text: "albertDesktopFail" }],
         itemKeys: ["notebook"],
         condition: (state: GameState) => SHOWER_EVENT in state.scene.events,
         cutScene: noteBookCutscene,
       },
       {
-        texts: [{ text: "albert_desktop_2" }],
+        texts: [{ text: "albertDesktop2" }],
       },
     ],
   },
@@ -94,7 +94,7 @@ const actions: SceneActions = {
     activationDirections: [UP],
     states: [
       {
-        texts: [{ text: "shelves_1" }],
+        texts: [{ text: "shelves1" }],
       },
     ],
   },
@@ -102,7 +102,7 @@ const actions: SceneActions = {
     activationDirections: [UP],
     states: [
       {
-        texts: [{ text: "shelves_2" }],
+        texts: [{ text: "shelves2" }],
       },
     ],
   },
@@ -110,7 +110,7 @@ const actions: SceneActions = {
     activationDirections: [DOWN],
     states: [
       {
-        texts: [{ text: "shelves_3" }],
+        texts: [{ text: "shelves3" }],
       },
     ],
   },
@@ -118,7 +118,7 @@ const actions: SceneActions = {
     activationDirections: [DOWN],
     states: [
       {
-        texts: [{ text: "shelves_4" }],
+        texts: [{ text: "shelves4" }],
       },
     ],
   },
@@ -143,7 +143,7 @@ const actions: SceneActions = {
     states: [
       {
         texts: [{ text: "door" }],
-        textsFailure: [{ text: "door_fail" }],
+        textsFailure: [{ text: "doorFail" }],
         condition: (state: GameState) =>
           !!state.inventory.getByKey(NOTEBOOK_KEY),
         cutScene: startSceneTransition(SCENE_2_KEY),
@@ -162,21 +162,21 @@ const actions: SceneActions = {
     activationDirections: [UP],
     states: [
       {
-        texts: [{ text: "coffee_machine_1" }],
+        texts: [{ text: "coffeeMachine1" }],
         updateState: (state: GameState) => state.albert.updateHp(25),
         cutScene: createCoffeeCutScene(
-          [{ text: "ellipsis" }, { text: "coffee_machine_2" }],
+          [{ text: "ellipsis" }, { text: "coffeeMachine2" }],
           COFFEE_MACHINE_X,
           COFFEE_MACHINE_Y
         ),
       },
       {
-        texts: [{ text: "coffee_machine_3" }],
+        texts: [{ text: "coffeeMachine3" }],
         itemKeys: [COFFEE_CUP_KEY],
         cutScene: createCoffeeCutScene([], COFFEE_MACHINE_X, COFFEE_MACHINE_Y),
       },
       {
-        texts: [{ text: "coffee_machine_4" }],
+        texts: [{ text: "coffeeMachine4" }],
       },
     ],
   },

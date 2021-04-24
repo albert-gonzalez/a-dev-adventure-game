@@ -70,7 +70,7 @@ export const createShowerCutScene = (): ((state: GameState) => boolean) => {
         );
         emitter.remove();
 
-        state.dialog?.showDialogBox([{ text: "like_new" }]);
+        state.dialog?.showDialogBox([{ text: "likeNew" }]);
       });
     }
     return finished;
@@ -95,10 +95,10 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
       blackRectangle = addBlackRectangle(scene);
 
       state.dialog?.showDialogBox([
-        { who: NOE_KEY, text: "wake_up_freeman" },
-        { who: NOE_KEY, text: "wake_up_albert" },
+        { who: NOE_KEY, text: "wakeUpFreeman" },
+        { who: NOE_KEY, text: "wakeUpAlbert" },
         { who: ALBERT_KEY, text: "ellipsis" },
-        { who: ALBERT_KEY, text: "right_now" },
+        { who: ALBERT_KEY, text: "rightNow" },
       ]);
       csState++;
 
@@ -126,7 +126,7 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
 
     if (csState === 3) {
       state.dialog?.showDialogBox([
-        { who: NOE_KEY, text: "walk_cobi" },
+        { who: NOE_KEY, text: "walkCobi" },
         { who: COBI_KEY, text: "bark" },
       ]);
       csState++;
@@ -196,7 +196,12 @@ export const createInitialCutscene = (): ((state: GameState) => boolean) => {
       );
 
       if (cobiSprite.y >= 650) {
-        state.dialog?.showDialogBox([{ who: ALBERT_KEY, text: "prepare" }]);
+        state.dialog?.showDialogBox([
+          { who: ALBERT_KEY, text: "prepare" },
+          { text: "prepare2" },
+          { text: "prepare3" },
+          { who: ALBERT_KEY, text: "prepare4" },
+        ]);
         delete state.scene.characterSprites[NOE_KEY];
         delete state.scene.characterSprites[COBI_KEY];
         noeSprite.destroy();

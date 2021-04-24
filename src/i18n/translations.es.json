@@ -1,6 +1,6 @@
 {
-  "wardrobe_1": "Loco!",
-  "wardrobe_2": "Ho!",
+  "wardrobe1": "Loco!",
+  "wardrobe2": "Ho!",
   "about": "About",
   "skills": "Skills",
   "items": "Items",
@@ -14,6 +14,5 @@
   "mailtrackTitle": "Fullstack Engineer at Mailtrack",
   "mailtrackDates": "Julio 2018 - Actualidad",
   "mailtrackDescription": "Bla bla bla blablabla bla bla bla blabla. Bla bla bla blablabla bla bla bla blabla. Bla bla bla blablabla bla bla bla blabla. ",
-  "bathroom_fail_1": "Antes de poder ducharme, ¡necesito coger algo de ropa!"
-
+  "bathroomFail1": "Antes de poder ducharme, ¡necesito coger algo de ropa!"
 }

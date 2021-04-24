@@ -29,7 +29,7 @@ init();
 
 const game = new Phaser.Game({
   ...gameConfig,
-  scene: scene3Config,
+  scene: titleSceneConfig,
 });
 
 game.scene.add(SCENE_1_KEY, scene1Config);
