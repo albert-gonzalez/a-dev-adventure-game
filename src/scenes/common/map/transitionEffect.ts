@@ -1,6 +1,6 @@
 import { FOREGROUND_DEPTH } from "../constants";
 
-const DURATION = 500;
+const DURATION = 1500;
 
 interface TransitionOptions {
   depth?: number;

@@ -36,6 +36,7 @@ import {
 import { addFadeIn, Transition } from "./transitionEffect";
 import { getMenuConfig } from "./menu";
 import { createMapDialogBox } from "./dialog";
+import { initLoadingScreen, SceneMethods } from "../scene";
 
 export interface CreateSceneInput {
   initialCutScene: (state: GameState) => boolean;
@@ -61,7 +62,7 @@ export const createSceneMethods = ({
   dynamicObjects,
   characters,
   actions,
-}: CreateSceneInput) => {
+}: CreateSceneInput): SceneMethods => {
   let menu: Menu;
   let groundCanvas: Phaser.GameObjects.RenderTexture;
   let foregroundCanvas: Phaser.GameObjects.RenderTexture;
@@ -76,6 +77,7 @@ export const createSceneMethods = ({
     const state = getState();
     state.scene.phaser = this;
     state.cutScene = initialCutScene;
+    initLoadingScreen(this);
     loadImages(this, images, spriteSheets);
     loadMap(this, map);
     loadAudio(this, audios);

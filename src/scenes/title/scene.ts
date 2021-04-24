@@ -14,15 +14,14 @@ const START_DELAY = 1000;
 
 let continueTransition: (state: GameState) => boolean;
 let isInputEnabled = false;
-let background: Phaser.GameObjects.Sprite;
 
-export function preload(this: Phaser.Scene) {
+export function preload(this: Phaser.Scene): void {
   loadAudio(this);
   loadImages(this);
 }
 
-export function create(this: Phaser.Scene) {
-  background = addBackground(this);
+export function create(this: Phaser.Scene): void {
+  addBackground(this);
   getState().scene.phaser = this;
   this.time.delayedCall(START_DELAY, async () => {
     const titleText = addTitleText(this);

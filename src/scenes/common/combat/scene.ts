@@ -11,6 +11,7 @@ import { createCombatDialogBox } from "./dialog";
 import { createTurnFunction } from "./system";
 import { createEnemy, Enemy, EnemyConfig } from "./enemy";
 import { createEndingCutScene } from "../../ending/createEndingCutScene";
+import { initLoadingScreen, SceneMethods } from "../scene";
 
 export interface CreateCombatSceneInput {
   initialCutScene: (state: GameState) => boolean;
@@ -32,11 +33,12 @@ export const createSceneMethods = ({
   spriteSheets,
   audios,
   enemy,
-}: CreateCombatSceneInput) => {
+}: CreateCombatSceneInput): SceneMethods => {
   function preload(this: Phaser.Scene) {
     const state = getState();
     state.scene.phaser = this;
     state.cutScene = initialCutScene;
+    initLoadingScreen(this);
     loadImages(this, images, spriteSheets);
     loadAudio(this, audios);
   }

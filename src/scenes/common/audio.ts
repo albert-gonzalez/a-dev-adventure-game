@@ -24,7 +24,7 @@ export const COMMON_AUDIOS = [
   { key: COFFEE_EFFECT, url: coffeeEffect },
 ];
 
-export const loadAudio = (scene: Phaser.Scene, audiosToLoad: Audio[]) => {
+export const loadAudio = (scene: Phaser.Scene, audiosToLoad: Audio[]): void => {
   audiosToLoad.forEach((audio) => scene.load.audio(audio.key, audio.url));
 };
 
