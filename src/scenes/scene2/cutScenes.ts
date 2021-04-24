@@ -39,13 +39,15 @@ export const createInitScene = (): ((state: GameState) => boolean) => {
 
       title.setOrigin(0.5, 0.5);
 
-      writeText(title, getText("officeIntro"), scene, 100, false).then(() => {
-        scene.time.delayedCall(1000, () => {
-          getTransition = addFadeOut(scene, blackRectangle);
-          csState++;
-          title.destroy();
-        });
-      });
+      writeText(title, getText("officeIntro"), scene, false, 100, false).then(
+        () => {
+          scene.time.delayedCall(1000, () => {
+            getTransition = addFadeOut(scene, blackRectangle);
+            csState++;
+            title.destroy();
+          });
+        }
+      );
 
       csState++;
 

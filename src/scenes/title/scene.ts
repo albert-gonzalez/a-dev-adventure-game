@@ -26,15 +26,19 @@ export function create(this: Phaser.Scene) {
   getState().scene.phaser = this;
   this.time.delayedCall(START_DELAY, async () => {
     const titleText = addTitleText(this);
-    await writeText(titleText, "A Dev's\nAdvetnure", this);
-    await deleteLetters(titleText, 5, this);
-    await writeText(titleText, "nture", this);
+    try {
+      await writeText(titleText, "A Dev's\nAdvetnure", this, true);
+      await deleteLetters(titleText, 5, this, true);
+      await writeText(titleText, "nture", this, true);
+    } catch (e) {
+      titleText.setText("A Dev's\nAdventure");
+    }
 
     addPressToStartText(this);
     addParticleEmitters(this);
 
     playMusic(this, INTRO_MUSIC);
-    isInputEnabled = true;
+    this.time.delayedCall(500, () => (isInputEnabled = true));
   });
 }
 

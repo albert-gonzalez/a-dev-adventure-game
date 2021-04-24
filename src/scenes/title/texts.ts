@@ -3,6 +3,8 @@ import { getText } from "../../i18n/i18n";
 import { BACKSPACE_PRESS_EFFECT } from "./audio";
 import { FONT_FAMILY } from "../common/constants";
 import { START_DELAY } from "../common/map/texts";
+import { isActionButtonDown } from "../../input/input";
+import { getState } from "../../state/state";
 
 const TITLE_FONT_FAMILY = FONT_FAMILY;
 const TITLE_LINE_SPACING = 10;
@@ -31,12 +33,24 @@ export const addTitleText = (scene: Phaser.Scene): Phaser.GameObjects.Text => {
 export const deleteLetters = (
   titleText: Phaser.GameObjects.Text,
   letterCount: number,
-  scene: Phaser.Scene
+  scene: Phaser.Scene,
+  canBeInterrupted = false
 ): Promise<void> => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    let interrupted = false;
+
     scene.time.delayedCall(START_DELAY, () => {
       for (let i = 1; i <= letterCount; i++) {
         scene.time.delayedCall(TIME_BETWEEN_DELETIONS * i, () => {
+          if (interrupted) {
+            return;
+          }
+
+          if (canBeInterrupted && isActionButtonDown(scene, getState())) {
+            interrupted = true;
+            reject();
+          }
+
           titleText.setText(
             titleText.text.substr(0, titleText.text.length - 1)
           );

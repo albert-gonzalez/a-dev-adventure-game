@@ -1,6 +1,11 @@
 import "phaser";
 import { GameState } from "../state/state";
 
+interface CharacterDirections {
+  directionX: number;
+  directionY: number;
+}
+
 export const LEFT = "left";
 export const RIGHT = "right";
 export const UP = "up";
@@ -20,7 +25,7 @@ export const MOVEMENT_SPEED_SLOW = 150;
 export const getCharacterDirections = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): CharacterDirections => {
   const cursors = scene.input.keyboard.createCursorKeys();
   let directionX, directionY;
 
@@ -49,27 +54,27 @@ export const getCharacterDirections = (
 export const isUpButtonPressed = (
   cursors: Phaser.Types.Input.Keyboard.CursorKeys,
   state: GameState
-) => cursors.up?.isDown || state.input.touch.up;
+): boolean => cursors.up?.isDown || state.input.touch.up;
 
 export const isDownButtonPressed = (
   cursors: Phaser.Types.Input.Keyboard.CursorKeys,
   state: GameState
-) => cursors.down?.isDown || state.input.touch.down;
+): boolean => cursors.down?.isDown || state.input.touch.down;
 
 export const isLeftButtonPressed = (
   cursors: Phaser.Types.Input.Keyboard.CursorKeys,
   state: GameState
-) => cursors.left?.isDown || state.input.touch.left;
+): boolean => cursors.left?.isDown || state.input.touch.left;
 
 export const isRightButtonPressed = (
   cursors: Phaser.Types.Input.Keyboard.CursorKeys,
   state: GameState
-) => cursors.right?.isDown || state.input.touch.right;
+): boolean => cursors.right?.isDown || state.input.touch.right;
 
 export const isActionButtonJustPressed = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): boolean => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
       scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
@@ -80,10 +85,20 @@ export const isActionButtonJustPressed = (
   return isPressed;
 };
 
+export const isActionButtonDown = (
+  scene: Phaser.Scene,
+  state: GameState
+): boolean => {
+  return (
+    scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A).isDown ||
+    state.input.touch.action
+  );
+};
+
 export const isUpButtonJustPressed = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): boolean => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
       scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
@@ -97,7 +112,7 @@ export const isUpButtonJustPressed = (
 export const isDownButtonJustPressed = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): boolean => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
       scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
@@ -111,7 +126,7 @@ export const isDownButtonJustPressed = (
 export const isMenuButtonJustPressed = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): boolean => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
       scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M)
@@ -125,7 +140,7 @@ export const isMenuButtonJustPressed = (
 export const isToggleSoundButtonJustPressed = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): boolean => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
       scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
@@ -139,7 +154,7 @@ export const isToggleSoundButtonJustPressed = (
 export const isToggleFullScreenButtonJustPressed = (
   scene: Phaser.Scene,
   state: GameState
-) => {
+): boolean => {
   const isPressed =
     Phaser.Input.Keyboard.JustDown(
       scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
@@ -155,8 +170,9 @@ export const updateCharacterVelocity = (
   directionX: number,
   directionY: number,
   movementSpeed = MOVEMENT_SPEED
-) =>
+): void => {
   (character.body as Phaser.Physics.Arcade.Body).setVelocity(
     movementSpeed * directionX,
     movementSpeed * directionY
   );
+};
