@@ -8,7 +8,7 @@ import {
   TILE_HEIGHT,
 } from "./images";
 import { createMap, loadMap, SceneMap } from "./sceneMap";
-import { Audio, loadAudio, playMusic } from "../audio";
+import { Audio, loadAudio, playMusic, toggleSound } from "../audio";
 import { createObjectsFromMap } from "../../../tileSets/objects";
 import {
   createCharacterAnimations,
@@ -178,7 +178,7 @@ export const createSceneMethods = ({
     foregroundCanvas.draw(foreground);
 
     if (isToggleSoundButtonJustPressed(this, state)) {
-      this.sound.mute = !this.sound.mute;
+      toggleSound(this);
     }
 
     if (isToggleFullScreenButtonJustPressed(this, state)) {

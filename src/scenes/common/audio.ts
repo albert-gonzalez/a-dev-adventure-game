@@ -38,3 +38,15 @@ export const playMusic = (
     loop: options.loop ?? true,
   });
 };
+
+export const isSoundMuted = (): boolean => {
+  return localStorage?.getItem("gameSoundMuted") === "true";
+};
+
+export const toggleSound = (scene: Phaser.Scene): void => {
+  const isMuted = !scene.sound.mute;
+
+  scene.sound.mute = isMuted;
+
+  localStorage?.setItem("gameSoundMuted", isMuted + "");
+};

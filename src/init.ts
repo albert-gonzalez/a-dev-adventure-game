@@ -6,12 +6,12 @@ import { titleSceneConfig } from "./scenes/title/titleSceneConfig";
 import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
 import { scene2Config, SCENE_2_KEY } from "./scenes/scene2/config";
 import { scene3Config, SCENE_3_KEY } from "./scenes/scene3/config";
+import { isSoundMuted } from "./scenes/common/audio";
 
-const gameConfig = {
+const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
-  debug: false,
   physics: {
     default: "arcade",
   },
@@ -32,6 +32,7 @@ const game = new Phaser.Game({
   scene: titleSceneConfig,
 });
 
+game.sound.mute = isSoundMuted();
 game.scene.add(SCENE_1_KEY, scene1Config);
 game.scene.add(SCENE_2_KEY, scene2Config);
 game.scene.add(SCENE_3_KEY, scene3Config);
