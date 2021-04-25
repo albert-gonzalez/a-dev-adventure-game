@@ -170,6 +170,9 @@ const pointerUp = (
   callback();
 };
 
-export const delayedPointerUp = (scene: Phaser.Scene, callback: () => void) => {
+export const delayedPointerUp = (
+  scene: Phaser.Scene,
+  callback: () => void
+): void => {
   scene.time.delayedCall(POINTER_UP_DELAY, callback);
 };
