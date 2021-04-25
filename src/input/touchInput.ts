@@ -12,15 +12,21 @@ const BUTTON_ALPHA = 0.15;
 const BUTTON_MARGIN = 10;
 const POINTER_UP_DELAY = 100;
 
-export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
-  createButton(
-    scene,
-    scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
-    BUTTON_MARGIN,
-    "M",
-    (pointer) => (state.input.touch.menu = pointer.isDown),
-    () => (state.input.touch.menu = false)
-  );
+export const createTouchButtons = (
+  scene: Phaser.Scene,
+  state: GameState,
+  withMenuButton = true
+): void => {
+  if (withMenuButton) {
+    createButton(
+      scene,
+      scene.cameras.main.width - (BUTTON_SIZE * 3 + BUTTON_MARGIN * 3),
+      BUTTON_MARGIN,
+      "M",
+      (pointer) => (state.input.touch.menu = pointer.isDown),
+      () => (state.input.touch.menu = false)
+    );
+  }
 
   createButton(
     scene,
@@ -33,7 +39,7 @@ export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
 
   createButton(
     scene,
-    scene.cameras.main.width - (BUTTON_SIZE * 3 + BUTTON_MARGIN * 3),
+    scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
     BUTTON_MARGIN,
     "F",
     (pointer) => (state.input.touch.toggleFullScreen = pointer.isDown),
@@ -46,8 +52,8 @@ export const createTouchButtons = (scene: Phaser.Scene, state: GameState) => {
 
   createButton(
     scene,
-    scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
-    scene.cameras.main.height - (BUTTON_SIZE + BUTTON_MARGIN),
+    scene.cameras.main.width - (BUTTON_MARGIN + BUTTON_SIZE + BUTTON_SIZE / 2),
+    scene.cameras.main.height - (BUTTON_MARGIN + BUTTON_SIZE + BUTTON_SIZE / 2),
     "A",
     (pointer) => (state.input.touch.action = pointer.isDown),
     () => (state.input.touch.action = false)

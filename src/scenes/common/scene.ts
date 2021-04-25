@@ -1,5 +1,11 @@
 import { getText } from "../../i18n/i18n";
+import {
+  isToggleFullScreenButtonJustPressed,
+  isToggleSoundButtonJustPressed,
+} from "../../input/input";
 import { createMenuText } from "../../menus/texts";
+import { GameState } from "../../state/state";
+import { toggleSound } from "./audio";
 
 export interface SceneMethods {
   preload: (this: Phaser.Scene) => void;
@@ -28,4 +34,17 @@ export const initLoadingScreen = (scene: Phaser.Scene): void => {
     clearInterval(intervalId);
     loadingText.destroy();
   });
+};
+
+export const checkSystemControlsInput = (
+  scene: Phaser.Scene,
+  state: GameState
+): void => {
+  if (isToggleSoundButtonJustPressed(scene, state)) {
+    toggleSound(scene);
+  }
+
+  if (isToggleFullScreenButtonJustPressed(scene, state)) {
+    scene.scale.toggleFullscreen();
+  }
 };

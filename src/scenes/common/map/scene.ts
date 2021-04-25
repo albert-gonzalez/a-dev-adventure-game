@@ -36,7 +36,11 @@ import {
 import { addFadeIn, Transition } from "./transitionEffect";
 import { getMenuConfig } from "./menu";
 import { createMapDialogBox } from "./dialog";
-import { initLoadingScreen, SceneMethods } from "../scene";
+import {
+  checkSystemControlsInput,
+  initLoadingScreen,
+  SceneMethods,
+} from "../scene";
 
 export interface CreateSceneInput {
   initialCutScene: (state: GameState) => boolean;
@@ -179,13 +183,7 @@ export const createSceneMethods = ({
     foregroundCanvas.clear();
     foregroundCanvas.draw(foreground);
 
-    if (isToggleSoundButtonJustPressed(this, state)) {
-      toggleSound(this);
-    }
-
-    if (isToggleFullScreenButtonJustPressed(this, state)) {
-      this.scale.toggleFullscreen();
-    }
+    checkSystemControlsInput(this, state);
 
     if (dialog.isDialogOpen()) {
       controlDialog(dialog, actionButtonJustPressed);

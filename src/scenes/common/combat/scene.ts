@@ -11,7 +11,12 @@ import { createCombatDialogBox } from "./dialog";
 import { createTurnFunction } from "./system";
 import { createEnemy, Enemy, EnemyConfig } from "./enemy";
 import { createEndingCutScene } from "../../ending/createEndingCutScene";
-import { initLoadingScreen, SceneMethods } from "../scene";
+import {
+  checkSystemControlsInput,
+  initLoadingScreen,
+  SceneMethods,
+} from "../scene";
+import { createTouchButtons } from "../../../input/touchInput";
 
 export interface CreateCombatSceneInput {
   initialCutScene: (state: GameState) => boolean;
@@ -57,6 +62,7 @@ export const createSceneMethods = ({
     dialog = createCombatDialogBox(this);
     state.dialog = dialog;
     runTurn = createTurnFunction();
+    createTouchButtons(this, state, false);
   }
 
   function update(this: Phaser.Scene) {
@@ -65,6 +71,8 @@ export const createSceneMethods = ({
     const enemy = state.combat.enemy as Enemy;
     let isTurnRunning = false;
     statusMenu.updateHp();
+
+    checkSystemControlsInput(this, state);
 
     if (dialog.isDialogOpen()) {
       controlDialog(dialog, actionButtonJustPressed);
