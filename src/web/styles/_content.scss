@@ -18,9 +18,12 @@ $mobile-width: 1024px;
   }
 }
 
+.game-wrap {
+  background-color: #eee;
+}
+
 .game {
   max-height: 90vh;
-  background-color: #eee;
   margin-bottom: 20px;
 
   @media only screen and (min-width: $mobile-width) {
