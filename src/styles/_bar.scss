@@ -1,0 +1,27 @@
+.bar {
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  font-family: "PressStart2P";
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  font-size: 0.8em;
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon,
+  &__option {
+    padding: 0 5px;
+  }
+
+  @media only screen and (min-width: $mobile-width) {
+    font-size: 1em;
+  }
+}

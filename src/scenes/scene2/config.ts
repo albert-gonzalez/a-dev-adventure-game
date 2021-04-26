@@ -1,6 +1,6 @@
 import { createSceneMethods } from "../common/map/scene";
 import { getImages, getSpriteSheets } from "./images";
-import officeJson from "url:../../assets/tilemaps/office.json";
+import officeJson from "../../assets/tilemaps/office.jsonc";
 import { getCharacters } from "./characters";
 import { getActions } from "./actions";
 import { getAudios, getMusic } from "./audio";

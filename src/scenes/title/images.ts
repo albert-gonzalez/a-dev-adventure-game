@@ -1,11 +1,11 @@
-import coffeeIcon from "url:../../assets/sprites/coffee.png";
-import JsIcon from "url:../../assets/sprites/logoJs.png";
-import nodeIcon from "url:../../assets/sprites/logoNode.png";
-import htmlIcon from "url:../../assets/sprites/logoHtml.png";
-import cssIcon from "url:../../assets/sprites/logoCss.png";
-import phpIcon from "url:../../assets/sprites/logoPhp.png";
-import dockerIcon from "url:../../assets/sprites/logoDocker.png";
-import titleBackground from "url:../../assets/sprites/titleBackground.png";
+import coffeeIcon from "../../assets/sprites/coffee.png";
+import JsIcon from "../../assets/sprites/logoJs.png";
+import nodeIcon from "../../assets/sprites/logoNode.png";
+import htmlIcon from "../../assets/sprites/logoHtml.png";
+import cssIcon from "../../assets/sprites/logoCss.png";
+import phpIcon from "../../assets/sprites/logoPhp.png";
+import dockerIcon from "../../assets/sprites/logoDocker.png";
+import titleBackground from "../../assets/sprites/titleBackground.png";
 
 export const COFFEE_IMAGE = "coffee";
 export const JS_IMAGE = "jsLogo";

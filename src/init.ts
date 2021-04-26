@@ -7,6 +7,7 @@ import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
 import { scene2Config, SCENE_2_KEY } from "./scenes/scene2/config";
 import { scene3Config, SCENE_3_KEY } from "./scenes/scene3/config";
 import { isSoundMuted } from "./scenes/common/audio";
+import initDropdown from "./web/ts/dropdown";
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -17,8 +18,11 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
   },
   scale: {
     parent: "game",
+    max: { width: 1024, height: 768 },
+    expandParent: false,
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
+    fullscreenTarget: "game",
   },
   input: {
     activePointers: 2,
@@ -26,6 +30,7 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
 };
 
 init();
+initDropdown();
 
 const game = new Phaser.Game({
   ...gameConfig,

@@ -8,7 +8,8 @@ const BUTTON_SIZE = 80;
 const BUTTON_RADIUS = 10;
 const BUTTON_COLOR = 0x777777;
 const BUTTON_FONT_SIZE = "30px";
-const BUTTON_ALPHA = 0.15;
+const BUTTON_ALPHA = 0.3;
+const BUTTON_PRESSED_ALPHA = 0.5;
 const BUTTON_MARGIN = 10;
 const POINTER_UP_DELAY = 100;
 
@@ -157,7 +158,7 @@ const pointerDown = (
   callback: (pointer: Phaser.Input.Pointer) => void
 ) => {
   if (pointer.isDown) {
-    button.alpha = 0.5;
+    button.alpha = BUTTON_PRESSED_ALPHA;
   }
   callback(pointer);
 };

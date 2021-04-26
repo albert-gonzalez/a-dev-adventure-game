@@ -2,7 +2,7 @@ import { createSceneMethods } from "../common/map/scene";
 import { createInitialCutscene } from "./cutScenes";
 import { getAudios } from "./audio";
 import { getImages, getSpriteSheets } from "./images";
-import homeJson from "url:../../assets/tilemaps/home.json";
+import homeJson from "../../assets/tilemaps/home.jsonc";
 import { getObjects } from "./objects";
 import { getCharacters } from "./characters";
 import { getActions } from "./actions";

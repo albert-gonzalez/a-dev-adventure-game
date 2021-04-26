@@ -1,6 +1,6 @@
-import selectEffect from "url:../../assets/audio/effects/select.ogg";
-import coffeeEffect from "url:../../assets/audio/effects/coffee.ogg";
-import keyPressEffect from "url:../../assets/audio/effects/keyPress.ogg";
+import selectEffect from "../../assets/audio/effects/select.ogg";
+import coffeeEffect from "../../assets/audio/effects/coffee.ogg";
+import keyPressEffect from "../../assets/audio/effects/keyPress.ogg";
 
 import { MUSIC_VOLUME } from "./constants";
 

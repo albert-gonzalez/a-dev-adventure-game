@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A Dev's Adventure</title>
     <link rel="stylesheet" type="text/css" href="src/styles/main.scss" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <div id="game"></div>
+    <include
+      src="./src/web/html/titleBar.html"
+      locals='{
+        "flagUrl": "./src/web/images/eng.svg",
+        "language": "Language",
+        "catalan": "Catalan",
+        "spanish": "Spanish",
+        "english": "English"
+    }'
+    ></include>
+    <div id="game" class="game"></div>
+    <div class="content">
+      <include
+        src="./src/web/html/description.html"
+        locals='{
+            "title": "Welcome to this humble video game!",
+            "introduction": "Bla bla",
+            "controls": "Controls",
+            "movement": "Movement",
+            "menu": "Menu",
+            "system": "System",
+            "credits": "Credits",
+            "creditsDescription": "Some desc"
+        }'
+      ></include>
+    </div>
     <script src="src/init.ts"></script>
   </body>
 </html>

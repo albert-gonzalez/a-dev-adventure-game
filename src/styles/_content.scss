@@ -1,0 +1,27 @@
+$mobile-width: 1024px;
+
+.content {
+  margin: 0 10px 20px 10px;
+
+  @media only screen and (min-width: $mobile-width) {
+    width: $mobile-width;
+    margin: 0 auto 20px auto;
+
+    h1 {
+      font-size: 2.5em;
+    }
+  }
+
+  p,
+  ul {
+    font-size: 1.2em;
+  }
+}
+
+.game {
+  @media only screen and (min-width: $mobile-width) {
+    height: 768px;
+    margin-bottom: 20px;
+    background-color: #000;
+  }
+}

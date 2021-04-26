@@ -1,5 +1,5 @@
-import homeMusic from "url:../../assets/audio/music/home.ogg";
-import waterEffect from "url:../../assets/audio/effects/water.ogg";
+import homeMusic from "../../assets/audio/music/home.ogg";
+import waterEffect from "../../assets/audio/effects/water.ogg";
 import { Audio, COMMON_AUDIOS } from "../common/audio";
 
 export const HOME_MUSIC = "home";

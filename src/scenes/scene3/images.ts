@@ -5,10 +5,10 @@ import {
   SpriteSheet,
 } from "../common/map/images";
 
-import bugImage from "url:../../assets/sprites/bug.png";
-import combatBackground from "url:../../assets/sprites/battleBackground.png";
-import gameOverImage from "url:../../assets/sprites/gameOver.png";
-import endingImage from "url:../../assets/sprites/ending.png";
+import bugImage from "../../assets/sprites/bug.png";
+import combatBackground from "../../assets/sprites/battleBackground.png";
+import gameOverImage from "../../assets/sprites/gameOver.png";
+import endingImage from "../../assets/sprites/ending.png";
 import {
   COMBAT_BACKGROUND_KEY,
   ENDING_KEY,

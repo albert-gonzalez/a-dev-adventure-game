@@ -1,8 +1,8 @@
-import roomImage from "url:../../../assets/tilemaps/room.png";
-import portrait from "url:../../../assets/sprites/portrait.png";
-import steam from "url:../../../assets/sprites/steam.png";
-import albertImage from "url:../../../assets/sprites/albert.png";
-import sleepyAlbertImage from "url:../../../assets/sprites/sleepyAlbert.png";
+import roomImage from "../../../assets/tilemaps/room.png";
+import portrait from "../../../assets/sprites/portrait.png";
+import steam from "../../../assets/sprites/steam.png";
+import albertImage from "../../../assets/sprites/albert.png";
+import sleepyAlbertImage from "../../../assets/sprites/sleepyAlbert.png";
 import { createTileSetLayer } from "../../../tileSets/tileSets";
 import { ALBERT_KEY, HUMAN_FRAME_SIZE, SLEEPY_ALBERT_KEY } from "./characters";
 

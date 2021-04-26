@@ -1,4 +1,4 @@
-import homeMusic from "url:../../assets/audio/music/office.ogg";
+import homeMusic from "../../assets/audio/music/office.ogg";
 import { Audio, COMMON_AUDIOS } from "../common/audio";
 
 export const OFFICE_MUSIC = "office";

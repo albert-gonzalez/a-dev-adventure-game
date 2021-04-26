@@ -2,20 +2,20 @@ import {
   HUMAN_FRAME_SIZE,
   SITTING_NPC_BOUNDING_BOX,
 } from "../common/map/characters";
-import bossImage from "url:../../assets/sprites/boss.png";
-import ccImage from "url:../../assets/sprites/cc.png";
-import rsImage from "url:../../assets/sprites/rs.png";
-import snImage from "url:../../assets/sprites/sn.png";
-import efImage from "url:../../assets/sprites/ef.png";
-import ejImage from "url:../../assets/sprites/ej.png";
-import fsImage from "url:../../assets/sprites/fs.png";
-import rmImage from "url:../../assets/sprites/rm.png";
-import seImage from "url:../../assets/sprites/se.png";
-import wgImage from "url:../../assets/sprites/wg.png";
-import jaImage from "url:../../assets/sprites/ja.png";
-import mfImage from "url:../../assets/sprites/mf.png";
-import yfImage from "url:../../assets/sprites/yf.png";
-import emptyChairImage from "url:../../assets/sprites/emptyChair.png";
+import bossImage from "../../assets/sprites/boss.png";
+import ccImage from "../../assets/sprites/cc.png";
+import rsImage from "../../assets/sprites/rs.png";
+import snImage from "../../assets/sprites/sn.png";
+import efImage from "../../assets/sprites/ef.png";
+import ejImage from "../../assets/sprites/ej.png";
+import fsImage from "../../assets/sprites/fs.png";
+import rmImage from "../../assets/sprites/rm.png";
+import seImage from "../../assets/sprites/se.png";
+import wgImage from "../../assets/sprites/wg.png";
+import jaImage from "../../assets/sprites/ja.png";
+import mfImage from "../../assets/sprites/mf.png";
+import yfImage from "../../assets/sprites/yf.png";
+import emptyChairImage from "../../assets/sprites/emptyChair.png";
 import { SpriteSheet } from "../common/map/images";
 
 export const BOSS_KEY = "boss";
