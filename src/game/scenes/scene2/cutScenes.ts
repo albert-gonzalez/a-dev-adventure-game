@@ -100,7 +100,7 @@ export const createArcadeCutscene = (): ((state: GameState) => boolean) => {
       state.dialog?.showDialogBox([
         { text: "ellipsis" },
         { text: "ellipsisX2" },
-        { text: mfWon ? "mfWon" : "mfLost", who: "Miquel" },
+        { text: mfWon ? "mfWon" : "mfLost", who: MF_KEY },
       ]);
       csState++;
 
