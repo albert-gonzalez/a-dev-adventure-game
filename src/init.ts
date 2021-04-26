@@ -1,12 +1,12 @@
 import "phaser";
 
 import "regenerator-runtime/runtime";
-import { init } from "./i18n/i18n";
-import { titleSceneConfig } from "./scenes/title/titleSceneConfig";
-import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
-import { scene2Config, SCENE_2_KEY } from "./scenes/scene2/config";
-import { scene3Config, SCENE_3_KEY } from "./scenes/scene3/config";
-import { isSoundMuted } from "./scenes/common/audio";
+import { init } from "./game/i18n/i18n";
+import { titleSceneConfig } from "./game/scenes/title/titleSceneConfig";
+import { scene1Config, SCENE_1_KEY } from "./game/scenes/scene1/config";
+import { scene2Config, SCENE_2_KEY } from "./game/scenes/scene2/config";
+import { scene3Config, SCENE_3_KEY } from "./game/scenes/scene3/config";
+import { isSoundMuted } from "./game/scenes/common/audio";
 import initDropdown from "./web/ts/dropdown";
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
