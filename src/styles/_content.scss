@@ -19,9 +19,12 @@ $mobile-width: 1024px;
 }
 
 .game {
+  max-height: 200px;
+
   @media only screen and (min-width: $mobile-width) {
     height: 768px;
     margin-bottom: 20px;
     background-color: #eee;
+    max-height: none;
   }
 }
