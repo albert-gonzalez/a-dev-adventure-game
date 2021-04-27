@@ -18,30 +18,37 @@ export interface EnemyConfig {
 }
 
 export interface Enemy {
-  sprite: Phaser.GameObjects.Sprite;
+  sprite?: Phaser.GameObjects.Sprite;
   show(): Promise<void>;
   updateHp(points: number): void;
   attack(): Promise<void>;
   isHpEmpty(): boolean;
   die(): void;
+  getHp(): number;
 }
 
-export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
+export const createEnemy = (
+  enemy: EnemyConfig,
+  scene?: Phaser.Scene
+): Enemy => {
   let hp = enemy.hp;
   let isDying = false;
   let isVisible = false;
+  let enemySprite: Phaser.GameObjects.Sprite | undefined = undefined;
 
-  createEnemyAnimations(scene, enemy.key);
-  const enemySprite = scene.add.sprite(
-    scene.cameras.main.width / 2,
-    scene.cameras.main.height / 2.5,
-    enemy.key
-  );
+  if (scene) {
+    createEnemyAnimations(scene, enemy.key);
+    enemySprite = scene.add.sprite(
+      scene.cameras.main.width / 2,
+      scene.cameras.main.height / 2.5,
+      enemy.key
+    );
 
-  enemySprite.alpha = 0;
-  enemySprite.scale = 0.3;
+    enemySprite.alpha = 0;
+    enemySprite.scale = 0.3;
 
-  playStill(enemySprite);
+    playStill(enemySprite);
+  }
 
   return {
     sprite: enemySprite,
@@ -52,21 +59,26 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
 
       isVisible = true;
 
-      const showTween = scene.tweens.add({
-        targets: enemySprite,
-        duration: 3000,
-        scale: 1,
-        alpha: enemySprite.alpha + 1,
-      });
+      if (scene && enemySprite) {
+        const showTween = scene.tweens.add({
+          targets: enemySprite,
+          duration: 3000,
+          scale: 1,
+          alpha: enemySprite.alpha + 1,
+        });
 
-      const showTweenPromise = new Promise((resolve) =>
-        showTween.on("complete", resolve)
-      );
+        const showTweenPromise = new Promise((resolve) =>
+          showTween.on("complete", resolve)
+        );
 
-      await showTweenPromise;
+        await showTweenPromise;
+      }
     },
     updateHp(points) {
       hp = Math.max(0, hp + points);
+    },
+    getHp() {
+      return hp;
     },
     async attack(): Promise<void> {
       const state = getState();
@@ -131,27 +143,33 @@ export const createEnemy = (scene: Phaser.Scene, enemy: EnemyConfig): Enemy => {
 
       isDying = true;
 
-      scene.tweens.add({
-        targets: enemySprite,
-        duration: 40,
-        yoyo: true,
-        repeat: 20,
-        x: enemySprite.x + 10,
-        onRepeat() {
-          enemySprite.alpha -= 0.05;
-        },
-      });
+      if (scene && enemySprite) {
+        scene.tweens.add({
+          targets: enemySprite,
+          duration: 40,
+          yoyo: true,
+          repeat: 20,
+          x: enemySprite.x + 10,
+          onRepeat() {
+            if (!enemySprite) {
+              return;
+            }
 
-      const deathSound = scene.sound.add(enemy.audio.death);
-      scene.tweens.add({
-        targets: deathSound,
-        duration: 400,
-        rate: 0.3,
-      });
+            enemySprite.alpha -= 0.05;
+          },
+        });
 
-      scene.sound.stopAll();
-      playMusic(scene, WIN_MUSIC, { loop: false });
-      deathSound.play();
+        const deathSound = scene.sound.add(enemy.audio.death);
+        scene.tweens.add({
+          targets: deathSound,
+          duration: 400,
+          rate: 0.3,
+        });
+
+        scene.sound.stopAll();
+        playMusic(scene, WIN_MUSIC, { loop: false });
+        deathSound.play();
+      }
     },
   };
 };

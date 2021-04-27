@@ -59,28 +59,30 @@ export const createPlayer = (): Player => {
       const enemySprite = state.combat.enemy
         ?.sprite as Phaser.GameObjects.Sprite;
 
-      for (let i = 0; i < 4; i++) {
-        scene.sound.play(KEY_PRESS_EFFECT);
-        await pause(150);
+      if (scene) {
+        for (let i = 0; i < 4; i++) {
+          scene?.sound.play(KEY_PRESS_EFFECT);
+          await pause(150);
+        }
+
+        await pause(200);
+
+        scene.sound.play(HIT_EFFECT);
+
+        const tween = scene?.tweens.add({
+          targets: enemySprite,
+          duration: 40,
+          yoyo: true,
+          repeat: 5,
+          x: enemySprite.x + 10,
+        });
+
+        const tweenPromise = new Promise((resolve) =>
+          tween?.on("complete", resolve)
+        );
+
+        await tweenPromise;
       }
-
-      await pause(200);
-
-      scene.sound.play(HIT_EFFECT);
-
-      const tween = scene.tweens.add({
-        targets: enemySprite,
-        duration: 40,
-        yoyo: true,
-        repeat: 5,
-        x: enemySprite.x + 10,
-      });
-
-      const tweenPromise = new Promise((resolve) =>
-        tween.on("complete", resolve)
-      );
-
-      await tweenPromise;
 
       const bonusAttackMultiplier = this.usePowerUp(ATTACK_POWER_UP_KEY) || 1;
       const damage =
@@ -95,14 +97,13 @@ export const createPlayer = (): Player => {
     },
     updateHp(value: number): number {
       const state = getState();
-      const player = state.albert;
 
-      player.previousHp = player.hp;
-      player.hp += value;
-      player.hp = Math.max(Math.min(player.hp, player.maxHp), 0);
+      this.previousHp = this.hp;
+      this.hp += value;
+      this.hp = Math.max(Math.min(this.hp, this.maxHp), 0);
       state.scene.phaser?.events.emit(HP_UPDATED_EVENT);
 
-      return player.hp - player.previousHp;
+      return this.hp - this.previousHp;
     },
     isDead(): boolean {
       return this.hp === 0;

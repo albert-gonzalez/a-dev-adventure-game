@@ -53,7 +53,7 @@ export const createSceneMethods = ({
     const background = this.add.sprite(-20, -20, COMBAT_BACKGROUND_KEY);
     background.setOrigin(0, 0);
 
-    state.combat.enemy = createEnemy(this, enemy);
+    state.combat.enemy = createEnemy(enemy, this);
 
     menu = createMenu(this, getMenuConfig(this));
 
