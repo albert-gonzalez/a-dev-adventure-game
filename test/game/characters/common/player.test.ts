@@ -10,6 +10,9 @@ import {
   initState,
 } from "../../../../src/game/state/state";
 
+jest.mock("../../../../src/game/scenes/common/combat/enemyEffects");
+jest.mock("../../../../src/game/scenes/common/events");
+
 describe("Player", () => {
   let player: Player;
   let state: GameState;
@@ -17,7 +20,7 @@ describe("Player", () => {
   beforeEach(() => {
     initState();
     state = getState();
-    state.combat.enemy = createEnemy(getEnemyConfig());
+    state.combat.enemy = createEnemy(getEnemyConfig(), new Phaser.Scene(""));
     player = createPlayer();
   });
   test("should be created with createPlayer function", () => {

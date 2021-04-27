@@ -1,12 +1,11 @@
-import { KEY_PRESS_EFFECT } from "../../scenes/common/audio";
+import { startEnemyEffects } from "../../scenes/common/combat/enemyEffects";
 import {
   ATTACK_POWER_UP_KEY,
   PowerUp,
   PowerUps,
 } from "../../scenes/common/combat/skills";
-import { HIT_EFFECT } from "../../scenes/scene3/audio";
+import { emit } from "../../scenes/common/events";
 import { getState } from "../../state/state";
-import { pause } from "../../utils/pause";
 
 export const HP_UPDATED_EVENT = "HPUpdated";
 const INIT_HP = 50;
@@ -59,30 +58,7 @@ export const createPlayer = (): Player => {
       const enemySprite = state.combat.enemy
         ?.sprite as Phaser.GameObjects.Sprite;
 
-      if (scene) {
-        for (let i = 0; i < 4; i++) {
-          scene?.sound.play(KEY_PRESS_EFFECT);
-          await pause(150);
-        }
-
-        await pause(200);
-
-        scene.sound.play(HIT_EFFECT);
-
-        const tween = scene?.tweens.add({
-          targets: enemySprite,
-          duration: 40,
-          yoyo: true,
-          repeat: 5,
-          x: enemySprite.x + 10,
-        });
-
-        const tweenPromise = new Promise((resolve) =>
-          tween?.on("complete", resolve)
-        );
-
-        await tweenPromise;
-      }
+      await startEnemyEffects(scene, enemySprite);
 
       const bonusAttackMultiplier = this.usePowerUp(ATTACK_POWER_UP_KEY) || 1;
       const damage =
@@ -101,7 +77,7 @@ export const createPlayer = (): Player => {
       this.previousHp = this.hp;
       this.hp += value;
       this.hp = Math.max(Math.min(this.hp, this.maxHp), 0);
-      state.scene.phaser?.events.emit(HP_UPDATED_EVENT);
+      emit(state.scene.phaser as Phaser.Scene, HP_UPDATED_EVENT);
 
       return this.hp - this.previousHp;
     },
