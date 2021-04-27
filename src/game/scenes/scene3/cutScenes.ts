@@ -3,6 +3,9 @@ import { getState } from "../../state/state";
 import { playMusic } from "../common/audio";
 import { BATTLE_MUSIC, EXPLOSION_EFFECT } from "./audio";
 
+const FIRST_SHAKE_DURATION = 1500;
+const SECOND_SHAKE_DURATION = 3000;
+
 export const createInitScene = (): (() => boolean) => {
   let sceneState = 0;
   let explosionSoundPlayed = false;
@@ -26,7 +29,7 @@ export const createInitScene = (): (() => boolean) => {
 
     if (sceneState === 1) {
       scene.cameras.main.shake(
-        1500,
+        FIRST_SHAKE_DURATION,
         0.015,
         false,
         (_: Phaser.Cameras.Scene2D.Camera, progress: number) => {
@@ -37,6 +40,7 @@ export const createInitScene = (): (() => boolean) => {
       );
 
       if (!explosionSoundPlayed) {
+        navigator.vibrate(FIRST_SHAKE_DURATION);
         scene.sound.play(EXPLOSION_EFFECT);
 
         explosionSoundPlayed = true;
@@ -54,7 +58,8 @@ export const createInitScene = (): (() => boolean) => {
     }
 
     if (sceneState === 3) {
-      scene.cameras.main.shake(3000, 0.015);
+      scene.cameras.main.shake(SECOND_SHAKE_DURATION, 0.015);
+      navigator.vibrate(SECOND_SHAKE_DURATION);
 
       state.combat.enemy?.show().then(() => sceneState++);
       playMusic(scene, BATTLE_MUSIC);
