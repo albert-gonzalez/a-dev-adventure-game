@@ -1,6 +1,8 @@
+@import "./variables";
+
 .footer {
-  background-color: #000;
-  color: #fff;
+  background-color: $dark;
+  color: $white;
   padding: 5px;
   font-family: "PressStart2P";
   display: flex;
@@ -12,7 +14,7 @@
   margin-top: 40px;
   text-align: center;
 
-  @media only screen and (min-width: $mobile-width) {
+  @media only screen and (min-width: $mobileWidth) {
     font-size: 1em;
   }
 }

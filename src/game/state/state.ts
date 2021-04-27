@@ -46,34 +46,37 @@ export interface GameState {
   };
 }
 
-const state: GameState = {
-  inventory: createInventory(),
-  combat: {
-    skills: createDefaultCombatSkillSet(),
-  },
-  albert: createPlayer(),
-  input: {
-    isActionJustPressed: false,
-    touch: {
-      action: false,
-      up: false,
-      down: false,
-      right: false,
-      left: false,
-      toggleSound: false,
-      menu: false,
-      toggleFullScreen: false,
+let state: GameState;
+
+export const initState = (): void =>
+  void (state = {
+    inventory: createInventory(),
+    combat: {
+      skills: createDefaultCombatSkillSet(),
     },
-  },
-  scene: {
-    objectSprites: {},
-    characterSprites: {},
-    events: {},
-    actions: {},
-    currentActionStates: {},
-    charactersData: {},
-  },
-};
+    albert: createPlayer(),
+    input: {
+      isActionJustPressed: false,
+      touch: {
+        action: false,
+        up: false,
+        down: false,
+        right: false,
+        left: false,
+        toggleSound: false,
+        menu: false,
+        toggleFullScreen: false,
+      },
+    },
+    scene: {
+      objectSprites: {},
+      characterSprites: {},
+      events: {},
+      actions: {},
+      currentActionStates: {},
+      charactersData: {},
+    },
+  });
 
 export const getState = (): GameState => {
   return state;

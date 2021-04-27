@@ -1,12 +1,13 @@
 import "phaser";
 
 import "regenerator-runtime/runtime";
-import { init } from "./i18n/i18n";
+import { init as initI18n } from "./i18n/i18n";
 import { titleSceneConfig } from "./scenes/title/titleSceneConfig";
 import { scene1Config, SCENE_1_KEY } from "./scenes/scene1/config";
 import { scene2Config, SCENE_2_KEY } from "./scenes/scene2/config";
 import { scene3Config, SCENE_3_KEY } from "./scenes/scene3/config";
 import { isSoundMuted } from "./scenes/common/audio";
+import { initState } from "./state/state";
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -29,7 +30,12 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
 };
 
 export default (): void => {
-  init();
+  initI18n();
+  initState();
+  initGame();
+};
+
+const initGame = () => {
   const game = new Phaser.Game({
     ...gameConfig,
     scene: titleSceneConfig,

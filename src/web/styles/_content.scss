@@ -1,11 +1,11 @@
-$mobile-width: 1024px;
+@import "variables";
 
 .content {
-  margin: 0 10px 20px 10px;
+  margin: 0 10px $componentBottomMargin 10px;
 
-  @media only screen and (min-width: $mobile-width) {
-    width: $mobile-width;
-    margin: 0 auto 20px auto;
+  @media only screen and (min-width: $mobileWidth) {
+    width: $mobileWidth;
+    margin: 0 auto $componentBottomMargin auto;
   }
 
   p,
@@ -15,14 +15,14 @@ $mobile-width: 1024px;
 }
 
 .game-wrap {
-  background-color: #eee;
+  background-color: $lightGray;
 }
 
 .game {
   max-height: 90vh;
-  margin-bottom: 20px;
+  margin-bottom: $componentBottomMargin;
 
-  @media only screen and (min-width: $mobile-width) {
+  @media only screen and (min-width: $mobileWidth) {
     height: 768px;
     max-height: none;
   }

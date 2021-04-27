@@ -1,12 +1,14 @@
+@import "./variables";
+
 .bar {
-  background-color: #000;
-  color: #fff;
+  background-color: $dark;
+  color: $white;
   padding: 5px;
   font-family: "PressStart2P";
   display: flex;
   align-items: center;
   height: 50px;
-  margin-bottom: 20px;
+  margin-bottom: $componentBottomMargin;
   justify-content: space-between;
   font-size: 0.8em;
 
@@ -21,7 +23,7 @@
     padding: 0 5px;
   }
 
-  @media only screen and (min-width: $mobile-width) {
+  @media only screen and (min-width: $mobileWidth) {
     font-size: 1em;
   }
 }
