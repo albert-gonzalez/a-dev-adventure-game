@@ -158,7 +158,7 @@ const pointerDown = (
   callback: (pointer: Phaser.Input.Pointer) => void
 ) => {
   if (pointer.isDown && button.alpha !== BUTTON_PRESSED_ALPHA) {
-    navigator.vibrate(200);
+    navigator.vibrate(50);
     button.alpha = BUTTON_PRESSED_ALPHA;
   }
   callback(pointer);
