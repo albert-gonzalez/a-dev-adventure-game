@@ -1,3 +1,4 @@
+import { emit } from "../scenes/common/events";
 import { Item } from "./itemRepository";
 
 export const INVENTORY_UPDATED_EVENT = "inventoryUpdated";
@@ -20,6 +21,10 @@ export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
 
   return {
     get(index) {
+      if (!inventory[index]) {
+        return;
+      }
+
       return { ...inventory[index] };
     },
     getAll() {
@@ -57,7 +62,7 @@ export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
         quantity: 1,
       });
 
-      scene.events.emit(INVENTORY_UPDATED_EVENT);
+      emit(scene, INVENTORY_UPDATED_EVENT);
     },
     decreaseQuantity(itemIndex, scene) {
       let removed = false;
@@ -81,7 +86,7 @@ export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
         removed = true;
       }
 
-      scene.events.emit(INVENTORY_UPDATED_EVENT);
+      emit(scene, INVENTORY_UPDATED_EVENT);
 
       return removed;
     },
