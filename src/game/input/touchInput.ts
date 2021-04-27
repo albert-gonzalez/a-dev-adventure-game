@@ -157,7 +157,8 @@ const pointerDown = (
   button: Phaser.GameObjects.Container,
   callback: (pointer: Phaser.Input.Pointer) => void
 ) => {
-  if (pointer.isDown) {
+  if (pointer.isDown && button.alpha !== BUTTON_PRESSED_ALPHA) {
+    navigator.vibrate(200);
     button.alpha = BUTTON_PRESSED_ALPHA;
   }
   callback(pointer);
