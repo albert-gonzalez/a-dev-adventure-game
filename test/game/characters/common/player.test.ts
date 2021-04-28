@@ -57,6 +57,29 @@ describe("Player", () => {
       expect(initHp).toBeDefined();
       expect(state.combat.enemy?.getHp()).toBeLessThan(initHp);
     });
+
+    test("should damage enemy in the state with the given number", async () => {
+      const initHp = state.combat.enemy?.getHp() as number;
+      await player.attack(5);
+
+      expect(initHp).toBeDefined();
+      expect(state.combat.enemy?.getHp()).toEqual(initHp - 5);
+    });
+
+    test("should deal double damage to the enemy in the state if the player has an attack power up with multiplier of 2", async () => {
+      player.addPowerUp({
+        key: "power",
+        turnsLeft: 1,
+        description: "attackPowerUpDescription",
+        value: 2,
+      });
+
+      const initHp = state.combat.enemy?.getHp() as number;
+      await player.attack(5);
+
+      expect(initHp).toBeDefined();
+      expect(state.combat.enemy?.getHp()).toEqual(initHp - 5);
+    });
   });
 
   describe("addPowerUp and usePowerUp functions", () => {
