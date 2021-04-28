@@ -21,11 +21,13 @@ export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
 
   return {
     get(index) {
-      if (!inventory[index]) {
+      const item = inventory[index];
+
+      if (!item) {
         return;
       }
 
-      return { ...inventory[index] };
+      return { ...item };
     },
     getAll() {
       return [...inventory];

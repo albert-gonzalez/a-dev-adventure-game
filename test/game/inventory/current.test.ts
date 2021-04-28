@@ -73,16 +73,26 @@ describe("current items", () => {
 
     describe("decreaseQuantity function", () => {
       test("should decrease the quantity of the item in the given index", () => {
+        const quantity = inventory.get(0)?.quantity as number;
         inventory.decreaseQuantity(0, scene);
 
-        expect(inventory.get(0)?.quantity).toEqual(1);
+        expect(inventory.get(0)?.quantity).toEqual(quantity - 1);
       });
 
       test("should decrease the quantity of the item in the given index and remove it if quantity is 0", () => {
-        inventory.decreaseQuantity(0, scene);
-        inventory.decreaseQuantity(0, scene);
+        const quantity = inventory.get(0)?.quantity as number;
+        let itemRemoved = false;
+
+        for (let i = 0; i < quantity; i++) {
+          itemRemoved = inventory.decreaseQuantity(0, scene);
+        }
 
         expect(inventory.get(0)).toBeUndefined();
+        expect(itemRemoved).toBeTruthy();
+      });
+
+      test("should do nothing if the given position does not exist", () => {
+        expect(inventory.decreaseQuantity(0, scene)).toBeFalsy();
       });
     });
   });

@@ -1,5 +1,6 @@
 import { getState } from "../../../state/state";
 import { POWER_UP_EFFECT } from "../../scene3/audio";
+import { emit } from "../events";
 
 export const COMBAT_SKILLS_UPDATED = "combatSkillsUpdated";
 
@@ -12,7 +13,7 @@ export interface CombatSkill {
 }
 
 export interface CombatSkillSet {
-  get(index: number): CombatSkill;
+  get(index: number): CombatSkill | undefined;
   getAll(): CombatSkill[];
   has(index: number): boolean;
   add(skill: CombatSkill, scene: Phaser.Scene): void;
@@ -123,7 +124,13 @@ export const createDefaultCombatSkillSet = (): CombatSkillSet => {
       return [...combatSkills];
     },
     get(index) {
-      return { ...combatSkills[index] };
+      const skill = combatSkills[index];
+
+      if (!skill) {
+        return;
+      }
+
+      return { ...skill };
     },
     has(index) {
       const skillInSet = combatSkills[index];
@@ -154,7 +161,7 @@ export const createDefaultCombatSkillSet = (): CombatSkillSet => {
         quantity: 1,
       });
 
-      scene.events.emit(COMBAT_SKILLS_UPDATED);
+      emit(scene, COMBAT_SKILLS_UPDATED);
     },
     decreaseQuantity(itemIndex, scene) {
       let skillInSet = combatSkills[itemIndex];
@@ -172,7 +179,7 @@ export const createDefaultCombatSkillSet = (): CombatSkillSet => {
 
       combatSkills[itemIndex] = skillInSet;
 
-      scene.events.emit(COMBAT_SKILLS_UPDATED);
+      emit(scene, COMBAT_SKILLS_UPDATED);
 
       const disabled = skillInSet.quantity === 0;
 

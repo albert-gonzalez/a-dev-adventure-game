@@ -74,7 +74,7 @@ const useSkill = (currentOptionIndex: number): number => {
     return currentOptionIndex;
   }
 
-  setPendingAction(skillSet.get(currentOptionIndex).effect);
+  setPendingAction(skillSet.get(currentOptionIndex)?.effect);
 
   const itemRemoved = skillSet.decreaseQuantity(
     currentOptionIndex,
