@@ -6,8 +6,19 @@ import ca from "./translations.ca.json";
 
 export const init = () =>
   i18next.use(LanguageDetector).init({
-    debug: true,
-    fallbackLng: "ca",
+    detection: {
+      order: [
+        "htmlTag",
+        "querystring",
+        "cookie",
+        "localStorage",
+        "sessionStorage",
+        "navigator",
+        "htmlTag",
+        "path",
+        "subdomain",
+      ],
+    },
     resources: {
       en: {
         translation: en,
