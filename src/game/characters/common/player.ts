@@ -27,18 +27,18 @@ export interface Player {
 }
 
 export const createPlayer = (): Player => {
-  const effects: PowerUps = {};
+  const powerUps: PowerUps = {};
 
   return {
     hp: INIT_HP,
     previousHp: INIT_HP,
     maxHp: MAX_HP,
     animationPrefix: "",
-    addPowerUp(effect) {
-      effects[effect.key] = effect;
+    addPowerUp(powerUp) {
+      powerUps[powerUp.key] = { ...powerUp };
     },
     usePowerUp(key) {
-      const effect = effects[key];
+      const effect = powerUps[key];
 
       if (!effect) {
         return 0;
@@ -47,7 +47,7 @@ export const createPlayer = (): Player => {
       effect.turnsLeft--;
 
       if (effect.turnsLeft === 0) {
-        delete effects[effect.key];
+        delete powerUps[effect.key];
       }
 
       return effect.value;
