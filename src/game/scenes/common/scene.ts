@@ -1,3 +1,4 @@
+import { Game } from "phaser";
 import { getText } from "../../i18n/i18n";
 import {
   isToggleFullScreenButtonJustPressed,
@@ -45,6 +46,9 @@ export const checkSystemControlsInput = (
   }
 
   if (isToggleFullScreenButtonJustPressed(scene, state)) {
+    window.scroll({
+      top: 50,
+    });
     scene.scale.toggleFullscreen();
   }
 };
