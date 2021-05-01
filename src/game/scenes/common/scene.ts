@@ -47,8 +47,5 @@ export const checkSystemControlsInput = (
 
   if (isToggleFullScreenButtonJustPressed(scene, state)) {
     scene.scale.toggleFullscreen();
-    window.scroll({
-      top: 50,
-    });
   }
 };
