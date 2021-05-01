@@ -19,11 +19,12 @@
 }
 
 .game {
-  max-height: 90vh;
+  max-width: 70vw;
+  margin: auto;
   margin-bottom: $componentBottomMargin;
 
   @media only screen and (min-width: $mobileWidth) {
     height: 768px;
-    max-height: none;
+    max-width: none;
   }
 }
