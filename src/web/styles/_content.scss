@@ -16,11 +16,13 @@
 
 .game-wrap {
   background-color: $lightGray;
+  margin-bottom: $componentBottomMargin;
 }
 
 .game {
+  display: flex;
+  align-items: center;
   max-height: 90vh;
-  margin-bottom: $componentBottomMargin;
 
   @media only screen and (min-width: $mobileWidth) {
     height: 768px;
