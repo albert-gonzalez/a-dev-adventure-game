@@ -132,6 +132,13 @@ const actions: SceneActions = {
       {
         texts: [{ text: "fs1", who: FS_KEY }],
       },
+      {
+        texts: [{ text: "fs2", who: FS_KEY }],
+        itemKeys: [DONUT_KEY],
+      },
+      {
+        texts: [{ text: "fs1", who: FS_KEY }],
+      },
     ],
   },
   [WG_KEY]: {

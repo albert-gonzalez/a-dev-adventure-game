@@ -152,14 +152,12 @@ export const createDefaultCombatSkillSet = (): CombatSkillSet => {
           ...skill,
           quantity: skillInSet.quantity + 1,
         };
-
-        return;
+      } else {
+        combatSkills.push({
+          ...skill,
+          quantity: 1,
+        });
       }
-
-      combatSkills.push({
-        ...skill,
-        quantity: 1,
-      });
 
       emit(scene, COMBAT_SKILLS_UPDATED);
     },

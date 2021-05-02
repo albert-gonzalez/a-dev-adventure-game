@@ -55,14 +55,12 @@ export const createInventory = (initItems: CurrentItem[] = []): Inventory => {
           ...item,
           quantity: itemInInventory.quantity + 1,
         };
-
-        return;
+      } else {
+        inventory.push({
+          ...item,
+          quantity: 1,
+        });
       }
-
-      inventory.push({
-        ...item,
-        quantity: 1,
-      });
 
       emit(scene, INVENTORY_UPDATED_EVENT);
     },
