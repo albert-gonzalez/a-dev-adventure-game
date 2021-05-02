@@ -5,7 +5,7 @@ const BUG_KEY = "bug";
 
 const ENEMY_CONFIG = {
   key: BUG_KEY,
-  hp: 300,
+  hp: 350,
   audio: {
     death: MONSTER_DEATH_EFFECT,
     attack: MONSTER_ATTACK_EFFECT,
