@@ -40,6 +40,7 @@ const initGame = () => {
   });
 
   game.sound.mute = isSoundMuted();
+  game.scale.lockOrientation(Phaser.Scale.LANDSCAPE);
   game.scene.add(SCENE_1_KEY, scene1Config);
   game.scene.add(SCENE_2_KEY, scene2Config);
   game.scene.add(SCENE_3_KEY, scene3Config);
