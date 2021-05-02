@@ -1,7 +1,7 @@
 export default (): void => {
-  const dropdowns = document.querySelectorAll(".dropdown");
+  const dropDowns = document.querySelectorAll(".dropdown");
 
-  dropdowns.forEach((element) => {
+  dropDowns.forEach((element) => {
     element
       .querySelector(".dropdown__button")
       ?.addEventListener("click", () => {

@@ -14,6 +14,8 @@ const IMAGE_FADE_IN_OUT_REPEAT_DELAY =
   IMAGE_DELAY + IMAGE_FADE_IN_DURATION + 1000;
 const IMAGE_FADE_IN_OUT_DURATION = 2000;
 const REFRESH_TEXT_DELAY = IMAGE_FADE_IN_OUT_REPEAT_DELAY;
+const FIRED_TEXT_Y = 100;
+const REFRESH_TEXT_Y = 500;
 
 export const createGameOverCutScene = (
   scene: Phaser.Scene
@@ -52,7 +54,7 @@ const createTexts = (scene: Phaser.Scene) => {
     scene,
     textKey: "fired",
     x: scene.cameras.main.width / 2,
-    y: 100,
+    y: FIRED_TEXT_Y,
     visible: true,
     fontSize: MENU_BOX_FONT_SIZE_XL,
     origin: { x: 0.5, y: 0 },
@@ -69,7 +71,7 @@ const createTexts = (scene: Phaser.Scene) => {
     scene,
     textKey: "refresh",
     x: scene.cameras.main.width / 2,
-    y: 500,
+    y: REFRESH_TEXT_Y,
     visible: true,
     width: scene.cameras.main.width,
     alpha: 0,

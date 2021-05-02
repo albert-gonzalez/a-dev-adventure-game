@@ -18,6 +18,8 @@ import {
 } from "../scene";
 import { createTouchButtons } from "../../../input/touchInput";
 
+const BACKGROUND_MARGIN = -20;
+
 export interface CreateCombatSceneInput {
   initialCutScene: (state: GameState) => boolean;
   images: Image[];
@@ -50,7 +52,11 @@ export const createSceneMethods = ({
 
   function create(this: Phaser.Scene) {
     const state = getState();
-    const background = this.add.sprite(-20, -20, COMBAT_BACKGROUND_KEY);
+    const background = this.add.sprite(
+      BACKGROUND_MARGIN,
+      BACKGROUND_MARGIN,
+      COMBAT_BACKGROUND_KEY
+    );
     background.setOrigin(0, 0);
 
     state.combat.enemy = createEnemy(enemy, this);

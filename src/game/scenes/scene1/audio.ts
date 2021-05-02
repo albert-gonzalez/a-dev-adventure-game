@@ -11,4 +11,4 @@ const AUDIOS: Audio[] = [
   { key: HOME_WATER_EFFECT, url: waterEffect },
 ];
 
-export const getAudios = () => AUDIOS;
+export const getAudios = (): Audio[] => AUDIOS;

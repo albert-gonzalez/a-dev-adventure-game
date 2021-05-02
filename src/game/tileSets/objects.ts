@@ -8,7 +8,6 @@ export interface TileSetGameObjectConfig
 export const createObjectsFromMap = (
   map: Phaser.Tilemaps.Tilemap,
   layerName: string,
-  objectId: string | number,
   spriteConfig: TileSetGameObjectConfig = {},
   bodyType?: number,
   transformationFn?: (object: Phaser.GameObjects.Sprite) => void

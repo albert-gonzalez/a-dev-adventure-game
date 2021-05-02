@@ -17,4 +17,4 @@ const objects: DynamicObjectInfo[] = [
   },
 ];
 
-export const getObjects = () => objects;
+export const getObjects = (): DynamicObjectInfo[] => objects;

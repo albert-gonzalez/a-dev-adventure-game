@@ -8,6 +8,6 @@ const AUDIOS: Audio[] = [
   { key: OFFICE_MUSIC, url: homeMusic },
 ];
 
-export const getAudios = () => AUDIOS;
+export const getAudios = (): Audio[] => AUDIOS;
 
-export const getMusic = () => OFFICE_MUSIC;
+export const getMusic = (): string => OFFICE_MUSIC;

@@ -10,6 +10,7 @@ import { SELECT_EFFECT } from "../scenes/common/audio";
 import { createMenuText } from "./texts";
 
 const MENU_BOX_MARGIN = 20;
+const BUSY_TIME = 100;
 
 export interface Dialog {
   showDialogBox(
@@ -66,7 +67,7 @@ export const createDialogBox = (
 
     showNextMessageOrHideDialogBox() {
       dialogBusy = true;
-      setTimeout(() => (dialogBusy = false), 100);
+      setTimeout(() => (dialogBusy = false), BUSY_TIME);
       scene.sound.play(SELECT_EFFECT);
 
       if (currentMessages.length) {

@@ -12,6 +12,7 @@ const INIT_HP = 50;
 const MAX_HP = 100;
 const BASE_ATTACK_PLAYER = 15;
 const VARIABLE_ATTACK_PLAYER = 15;
+const NO_POWER_UP = 0;
 
 export interface Player {
   hp: number;
@@ -41,7 +42,7 @@ export const createPlayer = (): Player => {
       const effect = powerUps[key];
 
       if (!effect) {
-        return 0;
+        return NO_POWER_UP;
       }
 
       effect.turnsLeft--;

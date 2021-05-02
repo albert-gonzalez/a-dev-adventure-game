@@ -77,7 +77,7 @@ export const createShowerCutScene = (): ((state: GameState) => boolean) => {
   };
 };
 
-export const noteBookCutscene = (state: GameState) => {
+export const noteBookCutscene = (state: GameState): boolean => {
   state.scene.objectSprites["albert_notebook"].destroy();
   return true;
 };

@@ -37,12 +37,11 @@ export const insertCharactersIntoScene = (
   map: Phaser.Tilemaps.Tilemap,
   state: GameState,
   characters: SpriteSheet[]
-) => {
+): Phaser.GameObjects.Sprite[] => {
   return characters.reduce((acc, character) => {
     state.scene.characterSprites[character.key] = createObjectsFromMap(
       map,
       "characters",
-      character.key,
       {
         key: character.key,
         frame: character.frame,
@@ -73,7 +72,7 @@ export const createMainCharacters = (
   actions: Phaser.GameObjects.Sprite[],
   actionCallback: ActionCallback,
   animationPrefix: string
-) => {
+): Phaser.GameObjects.Sprite => {
   createCharacterAnimations(scene, SLEEPY_ALBERT_KEY, SLEEPY_PREFIX);
   createCharacterAnimations(scene, ALBERT_KEY);
 
@@ -96,7 +95,7 @@ export const createMainCharacters = (
     },
   ];
 
-  const albert = createObjectsFromMap(map, "characters", "albert", {
+  const albert = createObjectsFromMap(map, "characters", {
     key: ALBERT_KEY,
     frame: 2,
     name: "albert",
@@ -157,7 +156,7 @@ export const lookAtMainCharacter = (
   mainCharacter: Phaser.GameObjects.Sprite,
   npc: Phaser.GameObjects.Sprite,
   npcKey: string
-) => {
+): void => {
   const charBody = mainCharacter.body as Phaser.Physics.Arcade.Body;
   const actionBody = npc.body as Phaser.Physics.Arcade.Body;
   const xDiff = charBody.center.x - actionBody.center.x;
@@ -179,7 +178,7 @@ export const updateVelocityWithAnimation = (
   directionY: number,
   animationPrefix: string,
   movementSpeed = MOVEMENT_SPEED
-) => {
+): void => {
   updateCharacterVelocity(character, directionX, directionY, movementSpeed);
   updateAnimation(character, directionX, directionY, animationPrefix);
 };

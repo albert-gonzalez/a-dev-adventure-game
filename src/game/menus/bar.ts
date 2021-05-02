@@ -17,7 +17,7 @@ export const createBar = ({
   x,
   y,
   percentage,
-}: BarOptions) => {
+}: BarOptions): Phaser.GameObjects.Container => {
   const container = scene.add.container(x, y);
   const graphics = scene.add.graphics();
   const maxWidth = 150;

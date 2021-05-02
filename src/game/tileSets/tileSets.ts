@@ -5,7 +5,7 @@ export const createTileSetLayer = (
   tileSetName: string,
   key: string,
   layerId: string
-) => {
+): Phaser.Tilemaps.TilemapLayer => {
   const tiles = map.addTilesetImage(tileSetName, key);
 
   return map

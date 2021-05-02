@@ -28,6 +28,9 @@ import { startSceneTransition } from "../common/map/scene";
 import { SCENE_3_KEY } from "../scene3/config";
 import { pairProgrammingSkill } from "../common/combat/skills";
 
+const COFFEE_MACHINE_X = 1136;
+const COFFEE_MACHINE_Y = 410;
+
 const actions: SceneActions = {
   [BOSS_KEY]: {
     characterKey: BOSS_KEY,
@@ -225,7 +228,7 @@ const actions: SceneActions = {
       {
         texts: [{ text: "officeCoffeeMachine1" }],
         itemKeys: [COFFEE_CUP_KEY],
-        cutScene: createCoffeeCutScene([], 1136, 410),
+        cutScene: createCoffeeCutScene([], COFFEE_MACHINE_X, COFFEE_MACHINE_Y),
       },
       {
         texts: [{ text: "officeCoffeeMachine2" }],
@@ -278,4 +281,4 @@ const actions: SceneActions = {
   },
 };
 
-export const getActions = () => actions;
+export const getActions = (): SceneActions => actions;

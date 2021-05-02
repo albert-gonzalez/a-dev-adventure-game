@@ -16,7 +16,7 @@ import jaImage from "../../assets/sprites/ja.png";
 import mfImage from "../../assets/sprites/mf.png";
 import yfImage from "../../assets/sprites/yf.png";
 import emptyChairImage from "../../assets/sprites/emptyChair.png";
-import { SpriteSheet } from "../common/map/images";
+import { SpriteSheetSet } from "../common/map/images";
 
 export const BOSS_KEY = "boss";
 export const CC_KEY = "cc";
@@ -34,7 +34,7 @@ export const MF_SITTING_KEY = "mf_sitting";
 export const YF_KEY = "yf";
 export const EMPTY_CHAIR_KEY = "emptyChair";
 
-const characters: { [key: string]: SpriteSheet } = {
+const characters: SpriteSheetSet = {
   [BOSS_KEY]: {
     key: BOSS_KEY,
     frame: 10,
@@ -135,4 +135,4 @@ const characters: { [key: string]: SpriteSheet } = {
   },
 };
 
-export const getCharacters = () => characters;
+export const getCharacters = (): SpriteSheetSet => characters;

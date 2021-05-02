@@ -81,7 +81,7 @@ const createHpBar = (
     lifeBar = createBar({
       scene,
       textKey: ALBERT_KEY,
-      x: 10,
+      x: MENU_BOX_MARGIN / 2,
       y: MENU_BOX_MARGIN,
       percentage: hpPercentage,
     });

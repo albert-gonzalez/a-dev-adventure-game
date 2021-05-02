@@ -14,6 +14,8 @@ interface MusicOptions {
   volume?: number;
 }
 
+const GAME_SOUND_MUTED_KEY = "gameSoundMuted";
+
 export const SELECT_EFFECT = "select";
 export const KEY_PRESS_EFFECT = "keyPress";
 export const COFFEE_EFFECT = "coffee";
@@ -40,7 +42,7 @@ export const playMusic = (
 };
 
 export const isSoundMuted = (): boolean => {
-  return localStorage?.getItem("gameSoundMuted") === "true";
+  return localStorage?.getItem(GAME_SOUND_MUTED_KEY) === "true";
 };
 
 export const toggleSound = (scene: Phaser.Scene): void => {
@@ -48,5 +50,5 @@ export const toggleSound = (scene: Phaser.Scene): void => {
 
   scene.sound.mute = isMuted;
 
-  localStorage?.setItem("gameSoundMuted", isMuted + "");
+  localStorage?.setItem(GAME_SOUND_MUTED_KEY, isMuted + "");
 };

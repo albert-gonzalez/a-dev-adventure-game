@@ -10,7 +10,7 @@ const REPEAT_INFINITELY = -1;
 export const createEnemyAnimations = (
   scene: Phaser.Scene,
   characterKey: string
-) => {
+): void => {
   scene.anims.create({
     key: ANIMATION_STILL,
     frames: scene.anims.generateFrameNumbers(characterKey, {

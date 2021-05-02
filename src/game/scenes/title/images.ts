@@ -16,7 +16,7 @@ export const PHP_IMAGE = "phpLogo";
 export const DOCKER_IMAGE = "dockerLogo";
 export const TITLE_BACKGROUND = "titleBackground";
 
-export const loadImages = (scene: Phaser.Scene) => {
+export const loadImages = (scene: Phaser.Scene): void => {
   scene.load.image(COFFEE_IMAGE, coffeeIcon);
   scene.load.image(JS_IMAGE, JsIcon);
   scene.load.image(NODE_IMAGE, nodeIcon);

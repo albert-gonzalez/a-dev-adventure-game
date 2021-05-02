@@ -41,6 +41,8 @@ export interface SpriteSheet {
   animated?: boolean;
 }
 
+export type SpriteSheetSet = Record<string, SpriteSheet>;
+
 export const COMMON_IMAGES: Image[] = [
   { key: ROOM_IMAGE_KEY, image: roomImage },
   { key: PORTRAIT_KEY, image: portrait },
@@ -71,7 +73,7 @@ export const loadImages = (
   scene: Phaser.Scene,
   imagesToLoad: Image[],
   spriteSheetsToLoad: SpriteSheet[]
-) => {
+): void => {
   imagesToLoad.forEach((image) => scene.load.image(image.key, image.image));
   spriteSheetsToLoad.forEach((spriteSheet) => {
     scene.load.spritesheet(spriteSheet.key, spriteSheet.image, {
@@ -80,7 +82,9 @@ export const loadImages = (
   });
 };
 
-export const createImageObjects = (map: Phaser.Tilemaps.Tilemap) => {
+export const createImageObjects = (
+  map: Phaser.Tilemaps.Tilemap
+): Record<string, Phaser.Tilemaps.TilemapLayer> => {
   return {
     ground: createTileSetLayer(
       map,

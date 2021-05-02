@@ -39,6 +39,6 @@ const AUDIOS: Audio[] = [
   { key: EXPLOSION_EFFECT, url: explosionEffect },
 ];
 
-export const getAudios = () => AUDIOS;
+export const getAudios = (): Audio[] => AUDIOS;
 
-export const getMusic = () => BATTLE_MUSIC;
+export const getMusic = (): string => BATTLE_MUSIC;

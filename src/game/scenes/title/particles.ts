@@ -55,7 +55,7 @@ const createParticleEmitter = (
       source: new Phaser.Geom.Rectangle(
         0,
         0,
-        800,
+        scene.cameras.main.width,
         10
       ) as Phaser.Types.GameObjects.Particles.RandomZoneSource,
     },

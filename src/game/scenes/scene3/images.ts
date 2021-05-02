@@ -30,6 +30,6 @@ const SPRITE_SHEETS: SpriteSheet[] = [
   },
 ];
 
-export const getImages = () => IMAGES;
+export const getImages = (): Image[] => IMAGES;
 
-export const getSpriteSheets = () => SPRITE_SHEETS;
+export const getSpriteSheets = (): SpriteSheet[] => SPRITE_SHEETS;

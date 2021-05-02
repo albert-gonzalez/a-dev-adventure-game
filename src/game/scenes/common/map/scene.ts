@@ -8,7 +8,7 @@ import {
   TILE_HEIGHT,
 } from "./images";
 import { createMap, loadMap, SceneMap } from "./sceneMap";
-import { Audio, loadAudio, playMusic, toggleSound } from "../audio";
+import { Audio, loadAudio, playMusic } from "../audio";
 import { createObjectsFromMap } from "../../../tileSets/objects";
 import {
   createCharacterAnimations,
@@ -23,14 +23,12 @@ import {
 } from "./characters";
 import { actionCallback, SceneActions, transformAction } from "./actions";
 import { DynamicObjectInfo, insertDynamicObjectsIntoScene } from "./objects";
-import { controlDialog, createDialogBox, Dialog } from "../../../menus/dialog";
+import { controlDialog, Dialog } from "../../../menus/dialog";
 import { createTouchButtons } from "../../../input/touchInput";
 import {
   getCharacterDirections,
   isActionButtonJustPressed,
   isMenuButtonJustPressed,
-  isToggleFullScreenButtonJustPressed,
-  isToggleSoundButtonJustPressed,
   updateCharacterVelocity,
 } from "../../../input/input";
 import { addFadeIn, Transition } from "./transitionEffect";
@@ -114,7 +112,6 @@ export const createSceneMethods = ({
     const actionSprites = createObjectsFromMap(
       tilemap,
       "actions",
-      "action",
       undefined,
       undefined,
       transformAction
@@ -161,7 +158,6 @@ export const createSceneMethods = ({
 
     state.dialog = createMapDialogBox(this);
     createTouchButtons(this, state);
-    //document.addEventListener("pointerup", () => this.scale.startFullscreen());
   }
 
   function update(this: Phaser.Scene): void {

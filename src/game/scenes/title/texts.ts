@@ -65,7 +65,7 @@ export const deleteLetters = (
   });
 };
 
-export const addPressToStartText = (scene: Phaser.Scene) => {
+export const addPressToStartText = (scene: Phaser.Scene): void => {
   const startText = scene.add.text(HELP_X, HELP_Y, getText("pressToStart"), {
     fontFamily: TITLE_FONT_FAMILY,
     fontSize: HELP_FONT_SIZE,

@@ -1,12 +1,12 @@
 import { DOG_FRAME_SIZE, HUMAN_FRAME_SIZE } from "../common/map/characters";
 import noeImage from "../../assets/sprites/noe.png";
 import cobiImage from "../../assets/sprites/cobi.png";
-import { SpriteSheet } from "../common/map/images";
+import { SpriteSheetSet } from "../common/map/images";
 
 export const NOE_KEY = "noe";
 export const COBI_KEY = "cobi";
 
-const characters: { [key: string]: SpriteSheet } = {
+const characters: SpriteSheetSet = {
   [NOE_KEY]: {
     key: NOE_KEY,
     frame: 10,
@@ -23,4 +23,4 @@ const characters: { [key: string]: SpriteSheet } = {
   },
 };
 
-export const getCharacters = () => characters;
+export const getCharacters = (): SpriteSheetSet => characters;

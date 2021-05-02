@@ -6,7 +6,9 @@ const BACKGROUND_COLOR = 0x2b2b2b;
 const BACKGROUND_BLACK_COLOR = 0;
 const BACKGROUND_ALPHA = 1;
 
-export const addBackground = (scene: Phaser.Scene) => {
+export const addBackground = (
+  scene: Phaser.Scene
+): Phaser.GameObjects.Sprite => {
   const graphics = scene.add.graphics();
   scene.cameras.main.roundPixels = true;
 

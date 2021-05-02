@@ -14,12 +14,11 @@ export const insertDynamicObjectsIntoScene = (
   map: Phaser.Tilemaps.Tilemap,
   state: GameState,
   objects: DynamicObjectInfo[]
-) => {
+): void => {
   objects.forEach((object) => {
     state.scene.objectSprites[object.objectId] = createObjectsFromMap(
       map,
       DYNAMIC_OBJECT_LAYER,
-      object.objectId,
       {
         frame: object.frame,
         key: object.tileMapKey,

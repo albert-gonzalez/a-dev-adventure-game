@@ -4,8 +4,8 @@ import en from "./translations.en.json";
 import es from "./translations.es.json";
 import ca from "./translations.ca.json";
 
-export const init = () =>
-  i18next.use(LanguageDetector).init({
+export const init = (): void =>
+  void i18next.use(LanguageDetector).init({
     detection: {
       order: [
         "htmlTag",

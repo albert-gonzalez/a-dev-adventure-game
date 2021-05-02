@@ -46,7 +46,7 @@ export const createCharacterAnimations = (
   scene: Phaser.Scene,
   characterKey: string,
   animationPrefix = ""
-) => {
+): void => {
   scene.anims.create({
     key: `${animationPrefix}${ANIMATION_LEFT}`,
     frames: scene.anims.generateFrameNumbers(characterKey, {
@@ -122,7 +122,7 @@ export const updateAnimation = (
   directionY: number,
   animationPrefix = "",
   forceStill = false
-) => {
+): void => {
   let animToPlay;
 
   if (!directionY && !directionX) {
@@ -158,8 +158,11 @@ export const updateAnimation = (
 export const objectActivationDirectionMatchesAnimation = (
   albert: Phaser.GameObjects.Sprite,
   sceneAction: SceneAction
-) => {
-  return sceneAction.activationDirections?.some((direction) =>
-    albert.anims.currentAnim.key.includes(direction)
+): boolean => {
+  return (
+    !!sceneAction.activationDirections &&
+    sceneAction.activationDirections.some((direction) =>
+      albert.anims.currentAnim.key.includes(direction)
+    )
   );
 };

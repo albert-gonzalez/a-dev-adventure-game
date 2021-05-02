@@ -31,7 +31,7 @@ export const createCoffeeCutScene = (
 
       particles.setDepth(FOREGROUND_DEPTH);
 
-      emitter.setAlpha((p: any, k: any, t: number) => {
+      emitter.setAlpha((p: unknown, k: unknown, t: number) => {
         return 1 - 2 * Math.abs(t - 0.5);
       });
 
