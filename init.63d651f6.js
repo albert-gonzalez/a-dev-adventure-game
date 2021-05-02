@@ -60,33 +60,33 @@ module.exports={loading:"Carregant",pressToStart:"Prem la tecla A o toca la pant
 },{"../scenes/common/events":"hJt8"}],"fe9g":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.pause=void 0;var e=function(e){return new Promise(function(t){return setTimeout(t,e)})};exports.pause=e;
 },{}],"PQDZ":[function(require,module,exports) {
-module.exports="hit.7323e7c7.ogg";
+module.exports="/a-dev-adventure-game/hit.7323e7c7.ogg";
 },{}],"yJkZ":[function(require,module,exports) {
-module.exports="monsterDeath.c56ca57c.ogg";
+module.exports="/a-dev-adventure-game/monsterDeath.c56ca57c.ogg";
 },{}],"LKUJ":[function(require,module,exports) {
-module.exports="monsterAttack.1313bc04.ogg";
+module.exports="/a-dev-adventure-game/monsterAttack.1313bc04.ogg";
 },{}],"WUEm":[function(require,module,exports) {
-module.exports="replenish.d72300c6.ogg";
+module.exports="/a-dev-adventure-game/replenish.d72300c6.ogg";
 },{}],"QHHM":[function(require,module,exports) {
-module.exports="explosion.f33caf6d.ogg";
+module.exports="/a-dev-adventure-game/explosion.f33caf6d.ogg";
 },{}],"d6og":[function(require,module,exports) {
-module.exports="book.86e3e61c.ogg";
+module.exports="/a-dev-adventure-game/book.86e3e61c.ogg";
 },{}],"rXSY":[function(require,module,exports) {
-module.exports="powerUp.0992fd48.ogg";
+module.exports="/a-dev-adventure-game/powerUp.0992fd48.ogg";
 },{}],"k94U":[function(require,module,exports) {
-module.exports="battle.a6d4256e.ogg";
+module.exports="/a-dev-adventure-game/battle.a6d4256e.ogg";
 },{}],"IpG2":[function(require,module,exports) {
-module.exports="gameOver.12554955.ogg";
+module.exports="/a-dev-adventure-game/gameOver.12554955.ogg";
 },{}],"gSx4":[function(require,module,exports) {
-module.exports="win.c5079f19.ogg";
+module.exports="/a-dev-adventure-game/win.c5079f19.ogg";
 },{}],"fu7k":[function(require,module,exports) {
-module.exports="ending.7f5e05b1.ogg";
+module.exports="/a-dev-adventure-game/ending.7f5e05b1.ogg";
 },{}],"szUm":[function(require,module,exports) {
-module.exports="select.6f742059.ogg";
+module.exports="/a-dev-adventure-game/select.6f742059.ogg";
 },{}],"XoB9":[function(require,module,exports) {
-module.exports="coffee.a653b3a8.ogg";
+module.exports="/a-dev-adventure-game/coffee.a653b3a8.ogg";
 },{}],"fcBS":[function(require,module,exports) {
-module.exports="keyPress.5cd6b26b.ogg";
+module.exports="/a-dev-adventure-game/keyPress.5cd6b26b.ogg";
 },{}],"HBgK":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.toggleSound=exports.isSoundMuted=exports.playMusic=exports.loadAudio=exports.COMMON_AUDIOS=exports.COFFEE_EFFECT=exports.KEY_PRESS_EFFECT=exports.SELECT_EFFECT=void 0;var o=e(require("../../assets/audio/effects/select.ogg")),t=e(require("../../assets/audio/effects/coffee.ogg")),r=e(require("../../assets/audio/effects/keyPress.ogg")),u=require("./constants");exports.SELECT_EFFECT="select",exports.KEY_PRESS_EFFECT="keyPress",exports.COFFEE_EFFECT="coffee",exports.COMMON_AUDIOS=[{key:exports.SELECT_EFFECT,url:o.default},{key:exports.KEY_PRESS_EFFECT,url:r.default},{key:exports.COFFEE_EFFECT,url:t.default}];var s=function(e,o){o.forEach(function(o){return e.load.audio(o.key,o.url)})};exports.loadAudio=s;var l=function(e,o){var t,r,s=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};e.sound.play(o,{volume:null!==(t=s.volume)&&void 0!==t?t:u.MUSIC_VOLUME,loop:null===(r=s.loop)||void 0===r||r})};exports.playMusic=l;var E=function(){var e;return"true"===(null===(e=localStorage)||void 0===e?void 0:e.getItem("gameSoundMuted"))};exports.isSoundMuted=E;var a=function(e){var o,t=!e.sound.mute;e.sound.mute=t,null===(o=localStorage)||void 0===o||o.setItem("gameSoundMuted",t+"")};exports.toggleSound=a;
 },{"../../assets/audio/effects/select.ogg":"szUm","../../assets/audio/effects/coffee.ogg":"XoB9","../../assets/audio/effects/keyPress.ogg":"fcBS","./constants":"rOAK"}],"FvCg":[function(require,module,exports) {
@@ -108,15 +108,15 @@ module.exports=[{titleKey:"nsbTitle",descriptionKey:"nsbDescription"},{titleKey:
 },{}],"t8ub":[function(require,module,exports) {
 module.exports=[{text:"Javascript",percentage:80},{text:"Typescript",percentage:80},{text:"NodeJS",percentage:80},{text:"PHP",percentage:80},{text:"Symfony",percentage:80},{text:"Testing",percentage:80},{text:"DDD",percentage:80},{text:"Scrum",percentage:80},{text:"React",percentage:60},{text:"HTML",percentage:60},{text:"CSS",percentage:60},{text:"webPerf",percentage:60},{text:"Docker",percentage:60},{text:"AWS",percentage:40}];
 },{}],"oU4z":[function(require,module,exports) {
-module.exports="room.c17dc670.png";
+module.exports="/a-dev-adventure-game/room.c17dc670.png";
 },{}],"xqOL":[function(require,module,exports) {
-module.exports="portrait.bb1149c9.png";
+module.exports="/a-dev-adventure-game/portrait.bb1149c9.png";
 },{}],"YZKV":[function(require,module,exports) {
-module.exports="steam.0f8f5e30.png";
+module.exports="/a-dev-adventure-game/steam.0f8f5e30.png";
 },{}],"NdML":[function(require,module,exports) {
-module.exports="albert.beb5cfde.png";
+module.exports="/a-dev-adventure-game/albert.beb5cfde.png";
 },{}],"IFba":[function(require,module,exports) {
-module.exports="sleepyAlbert.43ccaa95.png";
+module.exports="/a-dev-adventure-game/sleepyAlbert.43ccaa95.png";
 },{}],"J2Sa":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.createTileSetLayer=void 0,require("phaser");var e=function(e,r,t,i){var o=e.addTilesetImage(r,t);return e.createLayer(i,o,0,0).setVisible(!1).setCollisionFromCollisionGroup()};exports.createTileSetLayer=e;
 },{"phaser":"vWcT"}],"xZLS":[function(require,module,exports) {
@@ -162,17 +162,17 @@ module.exports="sleepyAlbert.43ccaa95.png";
 },{"../../i18n/i18n":"YOyS","../../input/input":"BfuS","../../menus/texts":"Emj9","./audio":"HBgK"}],"uvj7":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.startSceneTransition=exports.createSceneMethods=void 0;var e=require("../../../menus/menu"),t=require("../../../state/state"),r=require("./images"),i=require("./sceneMap"),a=require("../audio"),n=require("../../../tileSets/objects"),s=require("../../../characters/common/animation/animation"),c=require("./characters"),o=require("./actions"),u=require("./objects"),d=require("../../../menus/dialog"),h=require("../../../input/touchInput"),l=require("../../../input/input"),p=require("./transitionEffect"),m=require("./menu"),v=require("./dialog"),g=require("../scene"),S=function(p){var S,f,q,M,b,C,E,A,I,P=p.initialCutScene,j=p.images,x=p.spriteSheets,y=p.map,O=p.audios,T=p.music,D=p.initialAnimationPrefix,_=void 0===D?"":D,B=p.dynamicObjects,L=p.characters,w=p.actions;return{preload:function(){var e=t.getState();e.scene.phaser=this,e.cutScene=P,g.initLoadingScreen(this),r.loadImages(this,j,x),i.loadMap(this,y),a.loadAudio(this,O)},update:function(){var i,a,n=t.getState(),c=l.isMenuButtonJustPressed(this,n),o=n.albert.sprite,u=n.albert.animationPrefix,h=n.dialog,p=l.isActionButtonJustPressed(this,n);if(n.input.isActionJustPressed=p,f.clear(),f.draw([b,A,I]),M.clear(),M.draw(E),q.clear(),q.draw(C),g.checkSystemControlsInput(this,n),h.isDialogOpen())return d.controlDialog(h,p),s.updateAnimation(o,0,0,u),void l.updateCharacterVelocity(o,0,0);if(n.cutScene)n.cutScene(n)&&(n.cutScene=void 0);else{if(S.isMenuOpen())return e.controlMenu(this,S,c,p,n),s.updateAnimation(o,0,0,u),void l.updateCharacterVelocity(o,0,0);c&&S.show();var m=l.getCharacterDirections(this,n);i=m.directionX,a=m.directionY,s.updateAnimation(o,i,a,u),l.updateCharacterVelocity(o,i,a),o.setDepth(Math.ceil(o.y/r.TILE_HEIGHT)),Object.values(n.scene.characterSprites).forEach(function(e){return e&&e.setDepth(Math.ceil(e.y/r.TILE_HEIGHT))})}},create:function(){var d,l=t.getState();l.scene.actions=w,l.scene.charactersData=L,l.scene.currentActionStates={},T&&a.playMusic(this,T);var p=i.createMap(y.key,this);d=p.map,f=p.groundCanvas,M=p.middleGroundCanvas,q=p.foregroundCanvas;var g=r.createImageObjects(d);b=g.ground,C=g.foreground,E=g.middleGround,A=g.objects,I=g.objectsOver;var P=n.createObjectsFromMap(d,"actions","action",void 0,void 0,o.transformAction);s.createCharacterAnimations(this,c.SLEEPY_ALBERT_KEY,c.SLEEPY_PREFIX),s.createCharacterAnimations(this,c.ALBERT_KEY),u.insertDynamicObjectsIntoScene(d,l,B);var j=c.insertCharactersIntoScene(d,l,Object.values(L)),x=c.createMainCharacters(this,d,b,A,j,P,function(e,r){return o.actionCallback(e,r,t.getState())},_);l.albert.sprite=x,l.albert.animationPrefix=_,this.cameras.main.setBounds(0,0,d.widthInPixels,d.heightInPixels,!0),this.cameras.main.startFollow(x,!0),S=e.createMenu(this,m.getMenuConfig(this)),l.dialog=v.createMapDialogBox(this),h.createTouchButtons(this,l)}}};exports.createSceneMethods=S;var f=function(e){var t;return function(r){var i=r.scene.phaser;return t||(t=p.addFadeIn(i)),!!t().isFinished&&(i.sound.stopAll(),i.scene.start(e),!0)}};exports.startSceneTransition=f;
 },{"../../../menus/menu":"kuVg","../../../state/state":"JhBR","./images":"vudv","./sceneMap":"kGFX","../audio":"HBgK","../../../tileSets/objects":"xZLS","../../../characters/common/animation/animation":"Pg9L","./characters":"Chia","./actions":"zFW3","./objects":"Ebb2","../../../menus/dialog":"GDSR","../../../input/touchInput":"PBnh","../../../input/input":"BfuS","./transitionEffect":"CiEC","./menu":"ucT3","./dialog":"SA1G","../scene":"gxHJ"}],"SPa2":[function(require,module,exports) {
-module.exports="noe.4c505314.png";
+module.exports="/a-dev-adventure-game/noe.4c505314.png";
 },{}],"Y5VH":[function(require,module,exports) {
-module.exports="cobi.911a12cc.png";
+module.exports="/a-dev-adventure-game/cobi.911a12cc.png";
 },{}],"UuwI":[function(require,module,exports) {
 "use strict";var e;function r(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}var t=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.getCharacters=exports.COBI_KEY=exports.NOE_KEY=void 0;var s=require("../common/map/characters"),a=t(require("../../assets/sprites/noe.png")),o=t(require("../../assets/sprites/cobi.png"));exports.NOE_KEY="noe",exports.COBI_KEY="cobi";var i=(r(e={},exports.NOE_KEY,{key:exports.NOE_KEY,frame:10,image:a.default,size:s.HUMAN_FRAME_SIZE,animated:!0}),r(e,exports.COBI_KEY,{key:exports.COBI_KEY,frame:5,image:o.default,size:s.DOG_FRAME_SIZE,animated:!0}),e),n=function(){return i};exports.getCharacters=n;
 },{"../common/map/characters":"Chia","../../assets/sprites/noe.png":"SPa2","../../assets/sprites/cobi.png":"Y5VH"}],"tf4I":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.SHOWER_EVENT=void 0,exports.SHOWER_EVENT="shower";
 },{}],"Lp5d":[function(require,module,exports) {
-module.exports="home.dfd46945.ogg";
+module.exports="/a-dev-adventure-game/home.dfd46945.ogg";
 },{}],"mvWZ":[function(require,module,exports) {
-module.exports="water.195028ef.ogg";
+module.exports="/a-dev-adventure-game/water.195028ef.ogg";
 },{}],"zOsU":[function(require,module,exports) {
 "use strict";function r(r){return n(r)||o(r)||t(r)||e()}function e(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function t(r,e){if(r){if("string"==typeof r)return u(r,e);var t=Object.prototype.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?u(r,e):void 0}}function o(r){if("undefined"!=typeof Symbol&&null!=r[Symbol.iterator]||null!=r["@@iterator"])return Array.from(r)}function n(r){if(Array.isArray(r))return u(r)}function u(r,e){(null==e||e>r.length)&&(e=r.length);for(var t=0,o=new Array(e);t<e;t++)o[t]=r[t];return o}var a=this&&this.__importDefault||function(r){return r&&r.__esModule?r:{default:r}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.getAudios=exports.HOME_WATER_EFFECT=exports.HOME_MUSIC=void 0;var i=a(require("../../assets/audio/music/home.ogg")),s=a(require("../../assets/audio/effects/water.ogg")),l=require("../common/audio");exports.HOME_MUSIC="home",exports.HOME_WATER_EFFECT="water";var c=[].concat(r(l.COMMON_AUDIOS),[{key:exports.HOME_MUSIC,url:i.default},{key:exports.HOME_WATER_EFFECT,url:s.default}]),f=function(){return c};exports.getAudios=f;
 },{"../../assets/audio/music/home.ogg":"Lp5d","../../assets/audio/effects/water.ogg":"mvWZ","../common/audio":"HBgK"}],"cci9":[function(require,module,exports) {
@@ -180,57 +180,57 @@ module.exports="water.195028ef.ogg";
 },{"../../characters/common/animation/animation":"Pg9L","../../input/input":"BfuS","./characters":"UuwI","../common/map/characters":"Chia","./events":"tf4I","../common/map/transitionEffect":"CiEC","./audio":"zOsU","../common/map/images":"vudv","../common/audio":"HBgK"}],"Qc56":[function(require,module,exports) {
 "use strict";function r(r){return n(r)||o(r)||t(r)||e()}function e(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function t(r,e){if(r){if("string"==typeof r)return a(r,e);var t=Object.prototype.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?a(r,e):void 0}}function o(r){if("undefined"!=typeof Symbol&&null!=r[Symbol.iterator]||null!=r["@@iterator"])return Array.from(r)}function n(r){if(Array.isArray(r))return a(r)}function a(r,e){(null==e||e>r.length)&&(e=r.length);for(var t=0,o=new Array(e);t<e;t++)o[t]=r[t];return o}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getSpriteSheets=exports.getImages=exports.SPRITE_SHEETS=exports.IMAGES=void 0;var i=require("../common/map/images"),s=require("./characters");exports.IMAGES=r(i.COMMON_IMAGES),exports.SPRITE_SHEETS=[].concat(r(i.COMMON_SPRITE_SHEETS),r(Object.values(s.getCharacters())));var u=function(){return exports.IMAGES};exports.getImages=u;var c=function(){return exports.SPRITE_SHEETS};exports.getSpriteSheets=c;
 },{"../common/map/images":"vudv","./characters":"UuwI"}],"N02i":[function(require,module,exports) {
-module.exports="home.12492810.jsonc";
+module.exports="/a-dev-adventure-game/home.12492810.jsonc";
 },{}],"PF4t":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getObjects=void 0;var e=require("../common/constants"),t="albert_notebook",o=[{objectId:t,frame:150,tileMapKey:"objects",depth:e.MIDDLE_GROUND_DEPTH},{objectId:"noe_notebook",frame:151,tileMapKey:"objects"}],r=function(){return o};exports.getObjects=r;
 },{"../common/constants":"rOAK"}],"NmlL":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.createCoffeeCutScene=void 0;var e=require("./images"),t=require("../constants"),r=require("../audio"),a=function(a,n,i){var o,s=!1;return function(u){if(!o){var c=u.scene.phaser,l=c.add.particles(e.STEAM_KEY),d=l.createEmitter({x:n,y:i,lifespan:200,speed:{min:50,max:100},angle:{min:-105,max:-85},gravityY:0,bounce:100,frequency:100});l.setDepth(t.FOREGROUND_DEPTH),d.setAlpha(function(e,t,r){return 1-2*Math.abs(r-.5)}),d.setScale(.5),c.sound.play(r.COFFEE_EFFECT),o=c.time.delayedCall(2500,function(){var e;d.stop(),a.length&&(null===(e=u.dialog)||void 0===e||e.showDialogBox(a)),s=!0})}return s}};exports.createCoffeeCutScene=a;
 },{"./images":"vudv","../constants":"rOAK","../audio":"HBgK"}],"X5yn":[function(require,module,exports) {
-module.exports="boss.8ad9c988.png";
+module.exports="/a-dev-adventure-game/boss.8ad9c988.png";
 },{}],"rQcY":[function(require,module,exports) {
-module.exports="cc.3db162be.png";
+module.exports="/a-dev-adventure-game/cc.3db162be.png";
 },{}],"JQYo":[function(require,module,exports) {
-module.exports="rs.d40b6f71.png";
+module.exports="/a-dev-adventure-game/rs.d40b6f71.png";
 },{}],"nvMH":[function(require,module,exports) {
-module.exports="sn.204e759f.png";
+module.exports="/a-dev-adventure-game/sn.204e759f.png";
 },{}],"LZgB":[function(require,module,exports) {
-module.exports="ef.bffaffde.png";
+module.exports="/a-dev-adventure-game/ef.bffaffde.png";
 },{}],"jetw":[function(require,module,exports) {
-module.exports="ej.1ec19f81.png";
+module.exports="/a-dev-adventure-game/ej.1ec19f81.png";
 },{}],"TQv8":[function(require,module,exports) {
-module.exports="fs.99d430d9.png";
+module.exports="/a-dev-adventure-game/fs.99d430d9.png";
 },{}],"gR75":[function(require,module,exports) {
-module.exports="rm.1d223218.png";
+module.exports="/a-dev-adventure-game/rm.1d223218.png";
 },{}],"Lfvv":[function(require,module,exports) {
-module.exports="se.aac5bd81.png";
+module.exports="/a-dev-adventure-game/se.aac5bd81.png";
 },{}],"C642":[function(require,module,exports) {
-module.exports="wg.13c858d7.png";
+module.exports="/a-dev-adventure-game/wg.13c858d7.png";
 },{}],"eHMW":[function(require,module,exports) {
-module.exports="ja.929c588e.png";
+module.exports="/a-dev-adventure-game/ja.929c588e.png";
 },{}],"ICnv":[function(require,module,exports) {
-module.exports="mf.eec38be8.png";
+module.exports="/a-dev-adventure-game/mf.eec38be8.png";
 },{}],"iC6y":[function(require,module,exports) {
-module.exports="yf.3bdf1c70.png";
+module.exports="/a-dev-adventure-game/yf.3bdf1c70.png";
 },{}],"gxdz":[function(require,module,exports) {
-module.exports="emptyChair.28315fa4.png";
+module.exports="/a-dev-adventure-game/emptyChair.28315fa4.png";
 },{}],"eMYc":[function(require,module,exports) {
 "use strict";var e;function s(e,s,r){return s in e?Object.defineProperty(e,s,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[s]=r,e}var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.getCharacters=exports.EMPTY_CHAIR_KEY=exports.YF_KEY=exports.MF_SITTING_KEY=exports.MF_KEY=exports.JA_KEY=exports.WG_KEY=exports.SE_KEY=exports.RM_KEY=exports.FS_KEY=exports.EJ_KEY=exports.EF_KEY=exports.SN_KEY=exports.RS_KEY=exports.CC_KEY=exports.BOSS_KEY=void 0;var _=require("../common/map/characters"),t=r(require("../../assets/sprites/boss.png")),E=r(require("../../assets/sprites/cc.png")),o=r(require("../../assets/sprites/rs.png")),p=r(require("../../assets/sprites/sn.png")),i=r(require("../../assets/sprites/ef.png")),a=r(require("../../assets/sprites/ej.png")),x=r(require("../../assets/sprites/fs.png")),N=r(require("../../assets/sprites/rm.png")),Y=r(require("../../assets/sprites/se.png")),n=r(require("../../assets/sprites/wg.png")),I=r(require("../../assets/sprites/ja.png")),K=r(require("../../assets/sprites/mf.png")),u=r(require("../../assets/sprites/yf.png")),S=r(require("../../assets/sprites/emptyChair.png"));exports.BOSS_KEY="boss",exports.CC_KEY="cc",exports.RS_KEY="rs",exports.SN_KEY="sn",exports.EF_KEY="ef",exports.EJ_KEY="ej",exports.FS_KEY="fs",exports.RM_KEY="rm",exports.SE_KEY="se",exports.WG_KEY="wg",exports.JA_KEY="ja",exports.MF_KEY="mf",exports.MF_SITTING_KEY="mf_sitting",exports.YF_KEY="yf",exports.EMPTY_CHAIR_KEY="emptyChair";var g=(s(e={},exports.BOSS_KEY,{key:exports.BOSS_KEY,frame:10,image:t.default,size:_.HUMAN_FRAME_SIZE,animated:!0}),s(e,exports.MF_KEY,{key:exports.MF_KEY,frame:10,image:K.default,size:_.HUMAN_FRAME_SIZE,animated:!0}),s(e,exports.CC_KEY,{key:exports.CC_KEY,frame:0,image:E.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.RS_KEY,{key:exports.RS_KEY,frame:0,image:o.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.SN_KEY,{key:exports.SN_KEY,frame:0,image:p.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.EF_KEY,{key:exports.EF_KEY,frame:0,image:i.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.EJ_KEY,{key:exports.EJ_KEY,frame:0,image:a.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.FS_KEY,{key:exports.FS_KEY,frame:0,image:x.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.RM_KEY,{key:exports.RM_KEY,frame:0,image:N.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.SE_KEY,{key:exports.SE_KEY,frame:0,image:Y.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.WG_KEY,{key:exports.WG_KEY,frame:0,image:n.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.JA_KEY,{key:exports.JA_KEY,frame:0,image:I.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.YF_KEY,{key:exports.YF_KEY,frame:0,image:u.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),s(e,exports.EMPTY_CHAIR_KEY,{key:exports.EMPTY_CHAIR_KEY,frame:0,image:S.default,size:_.HUMAN_FRAME_SIZE,boundingBox:_.SITTING_NPC_BOUNDING_BOX}),e),f=function(){return g};exports.getCharacters=f;
 },{"../common/map/characters":"Chia","../../assets/sprites/boss.png":"X5yn","../../assets/sprites/cc.png":"rQcY","../../assets/sprites/rs.png":"JQYo","../../assets/sprites/sn.png":"nvMH","../../assets/sprites/ef.png":"LZgB","../../assets/sprites/ej.png":"jetw","../../assets/sprites/fs.png":"TQv8","../../assets/sprites/rm.png":"gR75","../../assets/sprites/se.png":"Lfvv","../../assets/sprites/wg.png":"C642","../../assets/sprites/ja.png":"eHMW","../../assets/sprites/mf.png":"ICnv","../../assets/sprites/yf.png":"iC6y","../../assets/sprites/emptyChair.png":"gxdz"}],"p51m":[function(require,module,exports) {
 "use strict";function r(r){return n(r)||o(r)||t(r)||e()}function e(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function t(r,e){if(r){if("string"==typeof r)return a(r,e);var t=Object.prototype.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?a(r,e):void 0}}function o(r){if("undefined"!=typeof Symbol&&null!=r[Symbol.iterator]||null!=r["@@iterator"])return Array.from(r)}function n(r){if(Array.isArray(r))return a(r)}function a(r,e){(null==e||e>r.length)&&(e=r.length);for(var t=0,o=new Array(e);t<e;t++)o[t]=r[t];return o}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getSpriteSheets=exports.getImages=exports.SPRITE_SHEETS=exports.IMAGES=void 0;var i=require("../common/map/images"),s=require("./characters");exports.IMAGES=r(i.COMMON_IMAGES),exports.SPRITE_SHEETS=[].concat(r(i.COMMON_SPRITE_SHEETS),r(Object.values(s.getCharacters())));var u=function(){return exports.IMAGES};exports.getImages=u;var c=function(){return exports.SPRITE_SHEETS};exports.getSpriteSheets=c;
 },{"../common/map/images":"vudv","./characters":"eMYc"}],"h1q4":[function(require,module,exports) {
-module.exports="office.789d0bcd.jsonc";
+module.exports="/a-dev-adventure-game/office.789d0bcd.jsonc";
 },{}],"dip4":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.writeText=exports.START_DELAY=void 0;var e=require("../../../input/input"),t=require("../../../state/state"),i=require("../audio");exports.START_DELAY=500;var r=200,o=function(o,n,u){var s=arguments.length>3&&void 0!==arguments[3]&&arguments[3],a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:r,l=!(arguments.length>5&&void 0!==arguments[5])||arguments[5];return new Promise(function(r,d){var p=!1;u.time.delayedCall(exports.START_DELAY,function(){n.split("").forEach(function(v,x){u.time.delayedCall(a*x,function(){if(!p){if(s&&e.isActionButtonDown(u,t.getState()))return p=!0,void d();o.setText(o.text+v),l&&u.sound.play(i.KEY_PRESS_EFFECT),x===n.length-1&&r()}})})})})};exports.writeText=o;
 },{"../../../input/input":"BfuS","../../../state/state":"JhBR","../audio":"HBgK"}],"dqoA":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.createArcadeCutscene=exports.createInitScene=void 0;var e=require("./characters"),t=require("../../input/input"),i=require("../common/map/characters"),n=require("../../characters/common/animation/animation"),r=require("../common/map/transitionEffect"),a=require("../../menus/texts"),o=require("../common/map/texts"),c=require("../../i18n/i18n"),u=require("../common/map/actions"),s=function(){var e,t,i,n=0;return function(u){var s,d=u.scene.phaser;if(0===n)return e=r.addBlackRectangle(d),t=r.addFadeOut(d),(i=a.createMenuText({scene:d,x:d.cameras.main.width/2,y:d.cameras.main.height/2,visible:!0})).setOrigin(.5,.5),o.writeText(i,c.getText("officeIntro"),d,!1,100,!1).then(function(){d.time.delayedCall(1e3,function(){t=r.addFadeOut(d,e),n++,i.destroy()})}),n++,!1;if(1===n)return!1;if(2===n)return t().isFinished&&n++,!1;3===n&&(null===(s=u.dialog)||void 0===s||s.showDialogBox([{text:"goToDesk"}]),n++);return!0}};exports.createInitScene=s;var d=function(){var r=0;return function(a){var o,c=a.scene.phaser,s=a.scene.characterSprites[e.MF_KEY],d=a.scene.characterSprites[e.BOSS_KEY];if(0===r)return c.time.delayedCall(500,function(){return r++}),n.updateAnimation(d,t.LEFT_DIRECTION,0,e.BOSS_KEY,!0),r++,!1;if(1===r)return!1;if(2===r){var m,l=Math.random()>.5;return null===(m=a.dialog)||void 0===m||m.showDialogBox([{text:"ellipsis"},{text:"ellipsisX2"},{text:l?"mfWon":"mfLost",who:e.MF_KEY}]),r++,!1}if(3===r)return i.updateVelocityWithAnimation(s,0,t.DOWN_DIRECTION,e.MF_KEY),s.y>140&&r++,!1;if(4===r)return i.updateVelocityWithAnimation(s,t.RIGHT_DIRECTION,0,e.MF_KEY),s.x>250&&r++,!1;if(5===r)return i.updateVelocityWithAnimation(s,0,t.DOWN_DIRECTION,e.MF_KEY),s.y>300&&r++,!1;if(6===r)return i.updateVelocityWithAnimation(s,t.RIGHT_DIRECTION,0,e.MF_KEY),s.x>580&&r++,!1;if(7===r)return i.updateVelocityWithAnimation(s,0,t.UP_DIRECTION,e.MF_KEY),s.y<272&&r++,!1;if(8===r)return i.updateVelocityWithAnimation(s,t.RIGHT_DIRECTION,0,e.MF_KEY),s.x>615&&r++,!1;(9===r&&(i.updateVelocityWithAnimation(s,0,0,e.MF_KEY),n.updateAnimation(s,0,t.UP_DIRECTION,e.MF_KEY,!0),n.updateAnimation(d,0,t.UP_DIRECTION,e.BOSS_KEY,!0),u.getAction(a.scene.actions,e.MF_KEY).disabled=!0,u.getAction(a.scene.actions,e.MF_SITTING_KEY).disabled=!1,s.y=264,s.x=621,r++),10===r)&&(null===(o=a.dialog)||void 0===o||o.showDialogBox([{text:"pairProgrammingAdded"}]),r++);return!0}};exports.createArcadeCutscene=d;
 },{"./characters":"eMYc","../../input/input":"BfuS","../common/map/characters":"Chia","../../characters/common/animation/animation":"Pg9L","../common/map/transitionEffect":"CiEC","../../menus/texts":"Emj9","../common/map/texts":"dip4","../../i18n/i18n":"YOyS","../common/map/actions":"zFW3"}],"OiGL":[function(require,module,exports) {
-module.exports="bug.a719b97d.png";
+module.exports="/a-dev-adventure-game/bug.a719b97d.png";
 },{}],"raio":[function(require,module,exports) {
-module.exports="battleBackground.a9fba19b.png";
+module.exports="/a-dev-adventure-game/battleBackground.a9fba19b.png";
 },{}],"q5uR":[function(require,module,exports) {
-module.exports="gameOver.e903b323.png";
+module.exports="/a-dev-adventure-game/gameOver.e903b323.png";
 },{}],"rHAz":[function(require,module,exports) {
-module.exports="ending.a3b164f6.png";
+module.exports="/a-dev-adventure-game/ending.a3b164f6.png";
 },{}],"B10I":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getEnemyConfig=void 0;var e=require("./audio"),t="bug",o={key:t,hp:300,audio:{death:e.MONSTER_DEATH_EFFECT,attack:e.MONSTER_ATTACK_EFFECT}},r=function(){return o};exports.getEnemyConfig=r;
 },{"./audio":"FvCg"}],"AwFn":[function(require,module,exports) {
@@ -254,7 +254,7 @@ module.exports="ending.a3b164f6.png";
 },{"./images":"AwFn","./audio":"FvCg","./cutScenes":"DpHR","../common/combat/scene":"zRHL","./enemy":"B10I"}],"BCRS":[function(require,module,exports) {
 "use strict";var t;function e(t,e,s){return e in t?Object.defineProperty(t,e,{value:s,enumerable:!0,configurable:!0,writable:!0}):t[e]=s,t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.getActions=void 0;var s=require("./characters"),r=require("./cutScenes"),a=require("../../inventory/itemRepository"),x=require("../common/map/cutScenes"),o=require("../common/map/scene"),c=require("../scene3/config"),i=require("../common/combat/skills"),E=(e(t={},s.BOSS_KEY,{characterKey:s.BOSS_KEY,states:[{texts:[{text:"rr1",who:s.BOSS_KEY}]}]}),e(t,s.MF_KEY,{characterKey:s.MF_KEY,states:[{texts:[{text:"mf1",who:s.MF_KEY}]},{texts:[{text:"mf2",who:s.MF_KEY}]}]}),e(t,s.MF_SITTING_KEY,{characterKey:s.MF_SITTING_KEY,states:[{texts:[{text:"mf3",who:s.MF_KEY},{text:"mf4",who:s.MF_KEY}]}],disabled:!0}),e(t,s.RS_KEY,{states:[{texts:[{text:"rs1",who:s.RS_KEY},{text:"rs2",who:s.RS_KEY}]}]}),e(t,s.CC_KEY,{states:[{texts:[{text:"cc1",who:s.CC_KEY},{text:"cc2",who:s.CC_KEY}]}]}),e(t,s.SN_KEY,{states:[{texts:[{text:"sn1",who:s.SN_KEY},{text:"sn2",who:s.SN_KEY}]}]}),e(t,s.SE_KEY,{states:[{texts:[{text:"se1",who:s.SE_KEY}]}]}),e(t,s.RM_KEY,{states:[{texts:[{text:"rm1",who:s.RM_KEY}]}]}),e(t,s.EF_KEY,{states:[{texts:[{text:"ef1",who:s.EF_KEY},{text:"ef2",who:s.EF_KEY}]}]}),e(t,s.EJ_KEY,{states:[{texts:[{text:"ej1",who:s.EJ_KEY},{text:"ej2",who:s.EJ_KEY}]}]}),e(t,s.FS_KEY,{states:[{texts:[{text:"fs1",who:s.FS_KEY}]}]}),e(t,s.WG_KEY,{states:[{texts:[{text:"wg1",who:s.WG_KEY},{text:"wg2",who:s.WG_KEY}]}]}),e(t,s.JA_KEY,{states:[{texts:[{text:"ja1",who:s.JA_KEY}]}]}),e(t,s.YF_KEY,{states:[{texts:[{text:"yf1",who:s.YF_KEY}]}]}),e(t,"tv",{states:[{texts:[{text:"tv1"}]}]}),e(t,"arcade",{states:[{texts:[{text:"arcade1",who:s.MF_KEY}],cutScene:r.createArcadeCutscene(),updateState:function(t){return t.combat.skills.add(i.pairProgrammingSkill,t.scene.phaser)}},{texts:[{text:"arcade2"}]}]}),e(t,"library",{states:[{texts:[{text:"library1"}]},{texts:[{text:"library2"}],itemKeys:[a.FLJ_BOOK_KEY]},{texts:[{text:"library3"}]}]}),e(t,"lockers",{states:[{texts:[{text:"lockers1"}]}]}),e(t,"bathroom",{states:[{texts:[{text:"officeBathroom1"}]}]}),e(t,"office_stuff",{states:[{texts:[{text:"officeStuff1"}]}]}),e(t,"dining_table",{states:[{texts:[{text:"diningTable1"}]}]}),e(t,"coffee_machine",{states:[{texts:[{text:"officeCoffeeMachine1"}],itemKeys:[a.COFFEE_CUP_KEY],cutScene:x.createCoffeeCutScene([],1136,410)},{texts:[{text:"officeCoffeeMachine2"}]}]}),e(t,"microwave",{states:[{texts:[{text:"officeMicrowave1"}]}]}),e(t,"fridge",{states:[{texts:[{text:"officeFridge1"}]},{texts:[{text:"officeFridge2"}],itemKeys:[a.DONUT_KEY]},{texts:[{text:"officeFridge1"}]}]}),e(t,"meeting_room",{states:[{texts:[{text:"meetingRoom1"}]}]}),e(t,"desk",{states:[{texts:[{text:"myDesk1"}]},{texts:[{text:"myDesk2"}],updateState:function(t){return t.inventory.decreaseQuantity(t.inventory.getIndexByKey(a.NOTEBOOK_KEY),t.scene.phaser)},cutScene:o.startSceneTransition(c.SCENE_3_KEY)}]}),t),n=function(){return E};exports.getActions=n;
 },{"./characters":"eMYc","./cutScenes":"dqoA","../../inventory/itemRepository":"lkhe","../common/map/cutScenes":"NmlL","../common/map/scene":"uvj7","../scene3/config":"mJdN","../common/combat/skills":"wcZW"}],"a1pn":[function(require,module,exports) {
-module.exports="office.44cd531d.ogg";
+module.exports="/a-dev-adventure-game/office.44cd531d.ogg";
 },{}],"dKrd":[function(require,module,exports) {
 "use strict";function r(r){return n(r)||o(r)||e(r)||t()}function t(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function e(r,t){if(r){if("string"==typeof r)return i(r,t);var e=Object.prototype.toString.call(r).slice(8,-1);return"Object"===e&&r.constructor&&(e=r.constructor.name),"Map"===e||"Set"===e?Array.from(r):"Arguments"===e||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)?i(r,t):void 0}}function o(r){if("undefined"!=typeof Symbol&&null!=r[Symbol.iterator]||null!=r["@@iterator"])return Array.from(r)}function n(r){if(Array.isArray(r))return i(r)}function i(r,t){(null==t||t>r.length)&&(t=r.length);for(var e=0,o=new Array(t);e<t;e++)o[e]=r[e];return o}var u=this&&this.__importDefault||function(r){return r&&r.__esModule?r:{default:r}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.getMusic=exports.getAudios=exports.OFFICE_MUSIC=void 0;var a=u(require("../../assets/audio/music/office.ogg")),s=require("../common/audio");exports.OFFICE_MUSIC="office";var c=[].concat(r(s.COMMON_AUDIOS),[{key:exports.OFFICE_MUSIC,url:a.default}]),f=function(){return c};exports.getAudios=f;var l=function(){return exports.OFFICE_MUSIC};exports.getMusic=l;
 },{"../../assets/audio/music/office.ogg":"a1pn","../common/audio":"HBgK"}],"Chk5":[function(require,module,exports) {
@@ -264,27 +264,27 @@ module.exports="office.44cd531d.ogg";
 },{"./cutScenes":"cci9","../../input/input":"BfuS","./events":"tf4I","../../inventory/itemRepository":"lkhe","../common/map/cutScenes":"NmlL","../common/map/scene":"uvj7","../scene2/config":"Chk5"}],"UIso":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.scene1Config=exports.SCENE_1_KEY=void 0;var t=require("../common/map/scene"),r=require("./cutScenes"),i=require("./audio"),s=require("./images"),a=e(require("../../assets/tilemaps/home.jsonc")),c=require("./objects"),o=require("./characters"),n=require("./actions"),u=require("../common/map/characters"),m="home";exports.SCENE_1_KEY="scene1";var p=function(){return t.createSceneMethods({initialCutScene:r.createInitialCutscene(),audios:i.getAudios(),spriteSheets:s.getSpriteSheets(),images:s.getImages(),initialAnimationPrefix:u.SLEEPY_PREFIX,map:{key:m,data:a.default},dynamicObjects:c.getObjects(),characters:o.getCharacters(),actions:n.getActions()})};exports.scene1Config=p();
 },{"../common/map/scene":"uvj7","./cutScenes":"cci9","./audio":"zOsU","./images":"Qc56","../../assets/tilemaps/home.jsonc":"N02i","./objects":"PF4t","./characters":"UuwI","./actions":"H4Lx","../common/map/characters":"Chia"}],"kV3r":[function(require,module,exports) {
-module.exports="intro.ad971028.ogg";
+module.exports="/a-dev-adventure-game/intro.ad971028.ogg";
 },{}],"tmkO":[function(require,module,exports) {
-module.exports="backspacePress.e9dca7a5.ogg";
+module.exports="/a-dev-adventure-game/backspacePress.e9dca7a5.ogg";
 },{}],"U4fS":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.loadAudio=exports.INTRO_MUSIC=exports.BACKSPACE_PRESS_EFFECT=void 0;var o=e(require("../../assets/audio/effects/keyPress.ogg")),s=e(require("../../assets/audio/music/intro.ogg")),r=e(require("../../assets/audio/effects/backspacePress.ogg")),t=require("../common/audio");exports.BACKSPACE_PRESS_EFFECT="backspacePress",exports.INTRO_MUSIC="intro";var a=function(e){e.load.audio(t.KEY_PRESS_EFFECT,o.default),e.load.audio(exports.BACKSPACE_PRESS_EFFECT,r.default),e.load.audio(exports.INTRO_MUSIC,s.default)};exports.loadAudio=a;
 },{"../../assets/audio/effects/keyPress.ogg":"fcBS","../../assets/audio/music/intro.ogg":"kV3r","../../assets/audio/effects/backspacePress.ogg":"tmkO","../common/audio":"HBgK"}],"L9XP":[function(require,module,exports) {
-module.exports="coffee.6383febd.png";
+module.exports="/a-dev-adventure-game/coffee.6383febd.png";
 },{}],"cL67":[function(require,module,exports) {
-module.exports="logoJs.f2efa737.png";
+module.exports="/a-dev-adventure-game/logoJs.f2efa737.png";
 },{}],"LIDD":[function(require,module,exports) {
-module.exports="logoNode.b5badb31.png";
+module.exports="/a-dev-adventure-game/logoNode.b5badb31.png";
 },{}],"bqFl":[function(require,module,exports) {
-module.exports="logoHtml.286c3ca8.png";
+module.exports="/a-dev-adventure-game/logoHtml.286c3ca8.png";
 },{}],"kvGg":[function(require,module,exports) {
-module.exports="logoCss.9cf58009.png";
+module.exports="/a-dev-adventure-game/logoCss.9cf58009.png";
 },{}],"U4ND":[function(require,module,exports) {
-module.exports="logoPhp.c8e21889.png";
+module.exports="/a-dev-adventure-game/logoPhp.c8e21889.png";
 },{}],"eyNC":[function(require,module,exports) {
-module.exports="logoDocker.9ebdf81b.png";
+module.exports="/a-dev-adventure-game/logoDocker.9ebdf81b.png";
 },{}],"S2gb":[function(require,module,exports) {
-module.exports="titleBackground.22a116da.png";
+module.exports="/a-dev-adventure-game/titleBackground.22a116da.png";
 },{}],"usId":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.loadImages=exports.TITLE_BACKGROUND=exports.DOCKER_IMAGE=exports.PHP_IMAGE=exports.CSS_IMAGE=exports.HTML_IMAGE=exports.NODE_IMAGE=exports.JS_IMAGE=exports.COFFEE_IMAGE=void 0;var s=e(require("../../assets/sprites/coffee.png")),o=e(require("../../assets/sprites/logoJs.png")),t=e(require("../../assets/sprites/logoNode.png")),r=e(require("../../assets/sprites/logoHtml.png")),p=e(require("../../assets/sprites/logoCss.png")),a=e(require("../../assets/sprites/logoPhp.png")),E=e(require("../../assets/sprites/logoDocker.png")),i=e(require("../../assets/sprites/titleBackground.png"));exports.COFFEE_IMAGE="coffee",exports.JS_IMAGE="jsLogo",exports.NODE_IMAGE="nodeLogo",exports.HTML_IMAGE="htmlLogo",exports.CSS_IMAGE="cssLogo",exports.PHP_IMAGE="phpLogo",exports.DOCKER_IMAGE="dockerLogo",exports.TITLE_BACKGROUND="titleBackground";var l=function(e){e.load.image(exports.COFFEE_IMAGE,s.default),e.load.image(exports.JS_IMAGE,o.default),e.load.image(exports.NODE_IMAGE,t.default),e.load.image(exports.HTML_IMAGE,r.default),e.load.image(exports.CSS_IMAGE,p.default),e.load.image(exports.PHP_IMAGE,a.default),e.load.image(exports.DOCKER_IMAGE,E.default),e.load.image(exports.TITLE_BACKGROUND,i.default)};exports.loadImages=l;
 },{"../../assets/sprites/coffee.png":"L9XP","../../assets/sprites/logoJs.png":"cL67","../../assets/sprites/logoNode.png":"LIDD","../../assets/sprites/logoHtml.png":"bqFl","../../assets/sprites/logoCss.png":"kvGg","../../assets/sprites/logoPhp.png":"U4ND","../../assets/sprites/logoDocker.png":"eyNC","../../assets/sprites/titleBackground.png":"S2gb"}],"cZpn":[function(require,module,exports) {
@@ -300,4 +300,4 @@ module.exports="titleBackground.22a116da.png";
 },{"./scene":"kmKM"}],"c55i":[function(require,module,exports) {
 "use strict";function e(e,r){var t=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);r&&(n=n.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),t.push.apply(t,n)}return t}function r(r){for(var n=1;n<arguments.length;n++){var i=null!=arguments[n]?arguments[n]:{};n%2?e(Object(i),!0).forEach(function(e){t(r,e,i[e])}):Object.getOwnPropertyDescriptors?Object.defineProperties(r,Object.getOwnPropertyDescriptors(i)):e(Object(i)).forEach(function(e){Object.defineProperty(r,e,Object.getOwnPropertyDescriptor(i,e))})}return r}function t(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}Object.defineProperty(exports,"__esModule",{value:!0}),require("phaser"),require("regenerator-runtime/runtime");var n=require("./i18n/i18n"),i=require("./scenes/title/titleSceneConfig"),c=require("./scenes/scene1/config"),s=require("./scenes/scene2/config"),o=require("./scenes/scene3/config"),u=require("./scenes/common/audio"),a=require("./state/state"),f={type:Phaser.AUTO,width:800,height:600,physics:{default:"arcade"},scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},input:{activePointers:2}},p=function(){n.init(),a.initState(),l()},l=function(){var e=new Phaser.Game(r(r({},f),{},{scene:i.titleSceneConfig}));e.sound.mute=u.isSoundMuted(),e.scene.add(c.SCENE_1_KEY,c.scene1Config),e.scene.add(s.SCENE_2_KEY,s.scene2Config),e.scene.add(o.SCENE_3_KEY,o.scene3Config)};p();
 },{"phaser":"vWcT","regenerator-runtime/runtime":"KA2S","./i18n/i18n":"YOyS","./scenes/title/titleSceneConfig":"DbtJ","./scenes/scene1/config":"UIso","./scenes/scene2/config":"Chk5","./scenes/scene3/config":"mJdN","./scenes/common/audio":"HBgK","./state/state":"JhBR"}]},{},["c55i"], null)
-//# sourceMappingURL=init.63d651f6.js.map
+//# sourceMappingURL=/a-dev-adventure-game/init.63d651f6.js.map
