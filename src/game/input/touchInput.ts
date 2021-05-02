@@ -43,7 +43,7 @@ export const createTouchButtons = (
     scene.cameras.main.width - (BUTTON_SIZE + BUTTON_MARGIN),
     BUTTON_MARGIN,
     "F",
-    (pointer) => pointer.isDown && scene.scale.toggleFullscreen(),
+    (pointer) => (state.input.touch.toggleFullScreen = pointer.isDown),
     () => (state.input.touch.toggleFullScreen = false)
   );
 
