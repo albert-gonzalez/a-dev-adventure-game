@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="40" height="21" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="55">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="40" height="21" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="56">
  <editorsettings>
   <export target="office.json" format="json"/>
  </editorsettings>
@@ -606,7 +606,7 @@
     <property name="action" value="meeting_room"/>
    </properties>
   </object>
-  <object id="51" name="action" type="rm" x="496.333" y="234.333" width="64" height="64">
+  <object id="51" name="action" type="desk" x="496.333" y="235.333" width="64" height="64">
    <properties>
     <property name="action" value="desk"/>
    </properties>
@@ -619,6 +619,11 @@
   <object id="54" name="action" type="yf" x="752" y="105.333" width="64" height="64">
    <properties>
     <property name="action" value="yf"/>
+   </properties>
+  </object>
+  <object id="55" name="action" type="desk" x="503.99" y="226.772" width="48" height="64">
+   <properties>
+    <property name="action" value="desk"/>
    </properties>
   </object>
  </objectgroup>

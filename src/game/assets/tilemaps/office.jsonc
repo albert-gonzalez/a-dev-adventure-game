@@ -770,11 +770,11 @@
                          "value":"desk"
                         }],
                  "rotation":0,
-                 "type":"rm",
+                 "type":"desk",
                  "visible":true,
                  "width":64,
                  "x":496.333,
-                 "y":234.333
+                 "y":235.333
                 }, 
                 {
                  "height":64,
@@ -809,6 +809,23 @@
                  "width":64,
                  "x":752,
                  "y":105.333
+                }, 
+                {
+                 "height":64,
+                 "id":55,
+                 "name":"action",
+                 "properties":[
+                        {
+                         "name":"action",
+                         "type":"string",
+                         "value":"desk"
+                        }],
+                 "rotation":0,
+                 "type":"desk",
+                 "visible":true,
+                 "width":48,
+                 "x":503.989791103676,
+                 "y":226.771972719084
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -817,10 +834,10 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":55,
+ "nextobjectid":56,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.5.0",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -2413,6 +2430,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.5,
+ "version":"1.6",
  "width":40
 }
