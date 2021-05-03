@@ -11,8 +11,6 @@ import { initState } from "./state/state";
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
   physics: {
     default: "arcade",
   },
@@ -21,6 +19,9 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
     fullscreenTarget: "game",
+    expandParent: false,
+    width: 800,
+    height: 600,
   },
   input: {
     activePointers: 2,
