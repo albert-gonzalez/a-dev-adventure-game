@@ -22,7 +22,7 @@
 .game {
   display: flex;
   align-items: center;
-  max-height: 90vh;
+  max-height: calc(100vh - 10px);
 
   @media only screen and (min-width: $mobileWidth) {
     height: 768px;
