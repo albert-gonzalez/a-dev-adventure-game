@@ -23,9 +23,6 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     width: 800,
     height: 600,
   },
-  input: {
-    activePointers: 2,
-  },
 };
 
 export default (): void => {
