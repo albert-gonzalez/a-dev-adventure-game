@@ -1,5 +1,7 @@
 {
   "loading": "Cargando",
+  "howToPlay": "Como jugar:",
+  "howToPlayControls": "- Flechas: Movimiento\n- Tecla A: Acción",
   "pressToStart": "Pulsa la tecla A o toca la pantalla para empezar",
   "wardrobe1": "Mi ropa está aquí, a ver si encuentro mi camiseta roja ...  ",
   "wardrobe2": "¡Aquí está la camiseta! Cojo también el resto de ropa ... ¡Ya lo tengo todo!",

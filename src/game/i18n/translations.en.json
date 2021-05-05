@@ -1,5 +1,7 @@
 {
   "loading": "Loading",
+  "howToPlay": "How to Play:",
+  "howToPlayControls": "- Arrows: Movement\n- A Key: Action",
   "pressToStart": "Press A or tap the screen to start",
   "wardrobe1": "My clothes are here, let's see if I can find my red t-shirt ...",
   "wardrobe2": "Here is the t-shirt! I also take the rest of the things ... I already have everything!",

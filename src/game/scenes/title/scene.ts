@@ -3,7 +3,12 @@ import { SCENE_1_KEY } from "../scene1/config";
 import { GameState, getState } from "../../state/state";
 import { INTRO_MUSIC, loadAudio } from "./audio";
 import { loadImages } from "./images";
-import { addPressToStartText, addTitleText, deleteLetters } from "./texts";
+import {
+  addPControlsTexts as addControlsTexts,
+  addPressToStartText,
+  addTitleText,
+  deleteLetters,
+} from "./texts";
 import { addParticleEmitters } from "./particles";
 import { addBackground } from "./background";
 import { playMusic } from "../common/audio";
@@ -34,6 +39,7 @@ export function create(this: Phaser.Scene): void {
     }
 
     addPressToStartText(this);
+    addControlsTexts(this);
     addParticleEmitters(this);
 
     playMusic(this, INTRO_MUSIC);

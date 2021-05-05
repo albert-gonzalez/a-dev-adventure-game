@@ -14,9 +14,14 @@ const TITLE_Y = 150;
 const TITLE_TOP_PADDING = 10;
 const HELP_FONT_SIZE = "16px";
 const HELP_X = 400;
-const HELP_Y = 480;
+const HELP_Y = 340;
 const TIME_BETWEEN_DELETIONS = 150;
 const BLINK_TIME = 2000;
+const KEYBOARD_CONTROLS_TEXT_X = 40;
+const CONTROLS_TITLE_TEXT_Y = 420;
+const CONTROLS_TEXT_Y = CONTROLS_TITLE_TEXT_Y + 30;
+const CONTROLS_FONT_SIZE = "14px";
+const CONTROLS_LINE_SPACING = 14;
 
 export const addTitleText = (scene: Phaser.Scene): Phaser.GameObjects.Text => {
   const titleText = scene.add.text(TITLE_X, TITLE_Y, "", {
@@ -74,6 +79,30 @@ export const addPressToStartText = (scene: Phaser.Scene): void => {
   startText.setOrigin(0.5);
 
   blinkText(startText, scene);
+};
+
+export const addPControlsTexts = (scene: Phaser.Scene): void => {
+  scene.add.text(
+    KEYBOARD_CONTROLS_TEXT_X,
+    CONTROLS_TITLE_TEXT_Y,
+    getText("howToPlay"),
+    {
+      fontFamily: TITLE_FONT_FAMILY,
+      fontSize: HELP_FONT_SIZE,
+    }
+  );
+
+  const controls = scene.add.text(
+    KEYBOARD_CONTROLS_TEXT_X,
+    CONTROLS_TEXT_Y,
+    getText("howToPlayControls"),
+    {
+      fontFamily: TITLE_FONT_FAMILY,
+      fontSize: CONTROLS_FONT_SIZE,
+    }
+  );
+
+  controls.setLineSpacing(CONTROLS_LINE_SPACING);
 };
 
 const blinkText = (text: Phaser.GameObjects.Text, scene: Phaser.Scene) => {
