@@ -1,4 +1,8 @@
-import { MENU_BOX_FONT_SIZE_XL } from "../../menus/style";
+import {
+  MENU_BOX_FONT_SIZE_M,
+  MENU_BOX_FONT_SIZE_S,
+  MENU_BOX_FONT_SIZE_XL,
+} from "../../menus/style";
 import { createMenuText } from "../../menus/texts";
 import { playMusic } from "../common/audio";
 import { GAME_OVER_KEY } from "../common/combat/images";
@@ -15,7 +19,9 @@ const IMAGE_FADE_IN_OUT_REPEAT_DELAY =
 const IMAGE_FADE_IN_OUT_DURATION = 2000;
 const REFRESH_TEXT_DELAY = IMAGE_FADE_IN_OUT_REPEAT_DELAY;
 const FIRED_TEXT_Y = 100;
-const REFRESH_TEXT_Y = 500;
+const REFRESH_TEXT_MARGIN = 20;
+const REFRESH_TEXT_Y = 470;
+const TIP_TEXT_Y = 510;
 
 export const createGameOverCutScene = (
   scene: Phaser.Scene
@@ -67,20 +73,29 @@ const createTexts = (scene: Phaser.Scene) => {
     duration: TITLE_FADE_IN_DURATION,
   });
 
-  const refreshText = createMenuText({
+  const refreshAndTipOptions = {
     scene,
     textKey: "refresh",
     x: scene.cameras.main.width / 2,
     y: REFRESH_TEXT_Y,
     visible: true,
-    width: scene.cameras.main.width,
+    width: scene.cameras.main.width - REFRESH_TEXT_MARGIN,
     alpha: 0,
     origin: { x: 0.5, y: 0 },
     align: "center",
+    fontSize: MENU_BOX_FONT_SIZE_M,
+  };
+
+  const refreshText = createMenuText(refreshAndTipOptions);
+  const tipText = createMenuText({
+    ...refreshAndTipOptions,
+    textKey: "tip",
+    y: TIP_TEXT_Y,
+    fontSize: MENU_BOX_FONT_SIZE_S,
   });
 
   scene.tweens.add({
-    targets: refreshText,
+    targets: [refreshText, tipText],
     alpha: 1,
     delay: REFRESH_TEXT_DELAY,
   });

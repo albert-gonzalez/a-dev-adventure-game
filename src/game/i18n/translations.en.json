@@ -165,6 +165,7 @@
   "extraTurnPowerUpDescription": "Doing refactoring and unit testing makes you detect uncontrolled cases, winning 2 extra turns!",
   "fired": "You are fired",
   "refresh": "Refresh the page if you want to play again!",
+  "tip": "Tip: Search for objects to use in the battle",
   "endingStory": "After defeating the dangerous bug, you realize that you are cut out for hunting down all these beasts that endanger the software of the whole world. Without hesitation, you get down to work fighting with all your might, even reaching hell itself, where these evil beings originate. The legend of the Bug Slayer has begun ...",
   "thankYou": "Thank you for playing!"
 }

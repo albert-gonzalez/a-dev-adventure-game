@@ -165,6 +165,7 @@
   "extraTurnPowerUpDescription": "Hacer refactoring y unit testing os hace detectar casos no controlados, ganando 2 turnos extra.",
   "fired": "Estás despedido",
   "refresh": "¡Refresca la página si quieres jugar de nuevo!",
+  "tip": "Consejo: Busca objetos para usar en la batalla",
   "endingStory": "Tras derrotar al peligroso bug, te das cuenta que estás hecho para cazar a todas estas bestias que hacen peligrar el software del mundo entero. Sin dudar, te pones manos a la obra luchando con todas tus fuerzas, llegando incluso al mismo infierno, donde se originan estos seres malignos. La leyenda del Bug Slayer ha comenzado ...",
   "thankYou": "¡Gracias por jugar!"
 }

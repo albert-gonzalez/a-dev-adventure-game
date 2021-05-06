@@ -165,6 +165,7 @@
   "extraTurnPowerUpDescription": "Fer refactoring i unit testing us fa detectar casos no controlats, guanyant 2 torns extra!",
   "fired": "Estàs acomiadat",
   "refresh": "Refresca la pàgina si vols jugar de nou!",
+  "tip": "Consell: Busca objectes per fer servir a la batalla",
   "endingStory": "Després de derrotar al perillós bug, t'adones que estàs fet per caçar a totes aquestes bèsties que fan perillar el software del món sencer. Sense dubtar, et poses mà a l'obra lluitant amb totes les teves forces, arribant fins i tot al mateix infern, on s'originen aquests éssers malignes. La llegenda del Bug Slayer ha començat...",
   "thankYou": "Gràcies per jugar!"
 }
