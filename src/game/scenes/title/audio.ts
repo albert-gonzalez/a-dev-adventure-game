@@ -12,10 +12,9 @@ export const INTRO_MUSIC = "intro";
 
 export const loadAudio = (scene: Phaser.Scene): void => {
   scene.load.audio(KEY_PRESS_EFFECT, [keyPressEffectOgg, keyPressEffectMp3]);
-  scene.load.audio(
-    BACKSPACE_PRESS_EFFECT,
+  scene.load.audio(BACKSPACE_PRESS_EFFECT, [
     backspacePressEffectOgg,
-    backspacePressEffectMp3
-  );
-  scene.load.audio(INTRO_MUSIC, introMusicOgg, introMusicMp3);
+    backspacePressEffectMp3,
+  ]);
+  scene.load.audio(INTRO_MUSIC, [introMusicOgg, introMusicMp3]);
 };
