@@ -1,6 +1,7 @@
 import { GameState } from "../state/state";
 import { createMenuText } from "../menus/texts";
 import { MENU_DEPTH } from "../scenes/common/constants";
+import { isIos } from "../utils/browser";
 
 const BUTTON_LINE_WIDTH = 2;
 const BUTTON_LINE_COLOR = 0x555555;
@@ -158,7 +159,9 @@ const pointerDown = (
   callback: (pointer: Phaser.Input.Pointer) => void
 ) => {
   if (pointer.isDown && button.alpha !== BUTTON_PRESSED_ALPHA) {
-    navigator.vibrate(50);
+    if (!isIos()) {
+      navigator.vibrate?.(50);
+    }
     button.alpha = BUTTON_PRESSED_ALPHA;
   }
   callback(pointer);

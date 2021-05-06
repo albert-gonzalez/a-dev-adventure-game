@@ -1,5 +1,6 @@
 import { Dialog } from "../../menus/dialog";
 import { getState } from "../../state/state";
+import { isIos } from "../../utils/browser";
 import { playMusic } from "../common/audio";
 import { BATTLE_MUSIC, EXPLOSION_EFFECT } from "./audio";
 
@@ -40,7 +41,9 @@ export const createInitScene = (): (() => boolean) => {
       );
 
       if (!explosionSoundPlayed) {
-        navigator.vibrate(FIRST_SHAKE_DURATION);
+        if (!isIos()) {
+          navigator.vibrate?.(FIRST_SHAKE_DURATION);
+        }
         scene.sound.play(EXPLOSION_EFFECT);
 
         explosionSoundPlayed = true;
@@ -59,7 +62,9 @@ export const createInitScene = (): (() => boolean) => {
 
     if (sceneState === 3) {
       scene.cameras.main.shake(SECOND_SHAKE_DURATION, 0.015);
-      navigator.vibrate(SECOND_SHAKE_DURATION);
+      if (!isIos()) {
+        navigator.vibrate?.(SECOND_SHAKE_DURATION);
+      }
 
       state.combat.enemy?.show().then(() => sceneState++);
       playMusic(scene, BATTLE_MUSIC);
