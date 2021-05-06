@@ -24,6 +24,16 @@ This game is possible thanks to all these resources and their creators:
     <a href="https://www.mapeditor.org/">Tiled Map Editor</a>
   </li>
   <li>
+    <a href="https://pipoya.itch.io/pipoya-rpg-tileset-32x32"
+      >RPG Tileset 32x32 - Pipoya</a
+    >
+  </li>
+  <li>
+    <a href="https://limezu.itch.io/moderninteriors"
+      >Modern Interiors Tileset - LimeZu</a
+    >
+  </li>
+  <li>
     <a href="https://opengameart.org/content/jrpg-town-music"
       >JRPG Town Music - Scott Elliott</a
     >
