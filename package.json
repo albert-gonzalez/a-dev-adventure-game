@@ -53,7 +53,7 @@
       "jest-canvas-mock"
     ],
     "moduleNameMapper": {
-      "\\.(ogg|png)$": "<rootDir>/test/__mocks__/fileMock.js",
+      "\\.(ogg|mp3|png)$": "<rootDir>/test/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/test/__mocks__/fileMock.js"
     }
   }

@@ -1,12 +1,15 @@
-import selectEffect from "../../assets/audio/effects/select.ogg";
-import coffeeEffect from "../../assets/audio/effects/coffee.ogg";
-import keyPressEffect from "../../assets/audio/effects/keyPress.ogg";
+import selectEffectOgg from "../../assets/audio/effects/select.ogg";
+import selectEffectMp3 from "../../assets/audio/effects/select.mp3";
+import coffeeEffectOgg from "../../assets/audio/effects/coffee.ogg";
+import coffeeEffectMp3 from "../../assets/audio/effects/coffee.mp3";
+import keyPressEffectOgg from "../../assets/audio/effects/keyPress.ogg";
+import keyPressEffectMp3 from "../../assets/audio/effects/keyPress.mp3";
 
 import { MUSIC_VOLUME } from "./constants";
 
 export interface Audio {
   key: string;
-  url: string;
+  url: string | string[];
 }
 
 interface MusicOptions {
@@ -21,9 +24,9 @@ export const KEY_PRESS_EFFECT = "keyPress";
 export const COFFEE_EFFECT = "coffee";
 
 export const COMMON_AUDIOS = [
-  { key: SELECT_EFFECT, url: selectEffect },
-  { key: KEY_PRESS_EFFECT, url: keyPressEffect },
-  { key: COFFEE_EFFECT, url: coffeeEffect },
+  { key: SELECT_EFFECT, url: [selectEffectOgg, selectEffectMp3] },
+  { key: KEY_PRESS_EFFECT, url: [keyPressEffectOgg, keyPressEffectMp3] },
+  { key: COFFEE_EFFECT, url: [coffeeEffectOgg, coffeeEffectMp3] },
 ];
 
 export const loadAudio = (scene: Phaser.Scene, audiosToLoad: Audio[]): void => {

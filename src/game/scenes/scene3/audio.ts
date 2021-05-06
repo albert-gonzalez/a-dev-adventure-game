@@ -1,14 +1,25 @@
-import hitEffect from "../../assets/audio/effects/hit.ogg";
-import monsterDeathEffect from "../../assets/audio/effects/monsterDeath.ogg";
-import monsterAttackEffect from "../../assets/audio/effects/monsterAttack.ogg";
-import replenishHpEffect from "../../assets/audio/effects/replenish.ogg";
-import explosionEffect from "../../assets/audio/effects/explosion.ogg";
-import bookEffect from "../../assets/audio/effects/book.ogg";
-import powerUpEffect from "../../assets/audio/effects/powerUp.ogg";
-import battleMusic from "../../assets/audio/music/battle.ogg";
-import gameOverMusic from "../../assets/audio/music/gameOver.ogg";
-import winMusic from "../../assets/audio/music/win.ogg";
-import endingMusic from "../../assets/audio/music/ending.ogg";
+import hitEffectOgg from "../../assets/audio/effects/hit.ogg";
+import monsterDeathEffectOgg from "../../assets/audio/effects/monsterDeath.ogg";
+import monsterAttackEffectOgg from "../../assets/audio/effects/monsterAttack.ogg";
+import replenishHpEffectOgg from "../../assets/audio/effects/replenish.ogg";
+import explosionEffectOgg from "../../assets/audio/effects/explosion.ogg";
+import bookEffectOgg from "../../assets/audio/effects/book.ogg";
+import powerUpEffectOgg from "../../assets/audio/effects/powerUp.ogg";
+import battleMusicOgg from "../../assets/audio/music/battle.ogg";
+import gameOverMusicOgg from "../../assets/audio/music/gameOver.ogg";
+import winMusicOgg from "../../assets/audio/music/win.ogg";
+import endingMusicOgg from "../../assets/audio/music/ending.ogg";
+import hitEffectMp3 from "../../assets/audio/effects/hit.ogg";
+import monsterDeathEffectMp3 from "../../assets/audio/effects/monsterDeath.mp3";
+import monsterAttackEffectMp3 from "../../assets/audio/effects/monsterAttack.mp3";
+import replenishHpEffectMp3 from "../../assets/audio/effects/replenish.mp3";
+import explosionEffectMp3 from "../../assets/audio/effects/explosion.mp3";
+import bookEffectMp3 from "../../assets/audio/effects/book.mp3";
+import powerUpEffectMp3 from "../../assets/audio/effects/powerUp.mp3";
+import battleMusicMp3 from "../../assets/audio/music/battle.mp3";
+import gameOverMusicMp3 from "../../assets/audio/music/gameOver.mp3";
+import winMusicMp3 from "../../assets/audio/music/win.mp3";
+import endingMusicMp3 from "../../assets/audio/music/ending.mp3";
 import { Audio, COMMON_AUDIOS } from "../common/audio";
 
 export const BATTLE_MUSIC = "battle";
@@ -26,17 +37,26 @@ export const EXPLOSION_EFFECT = "explosion";
 
 const AUDIOS: Audio[] = [
   ...COMMON_AUDIOS,
-  { key: BATTLE_MUSIC, url: battleMusic },
-  { key: GAME_OVER_MUSIC, url: gameOverMusic },
-  { key: ENDING_MUSIC, url: endingMusic },
-  { key: WIN_MUSIC, url: winMusic },
-  { key: HIT_EFFECT, url: hitEffect },
-  { key: MONSTER_DEATH_EFFECT, url: monsterDeathEffect },
-  { key: MONSTER_ATTACK_EFFECT, url: monsterAttackEffect },
-  { key: REPLENISH_HP_EFFECT, url: replenishHpEffect },
-  { key: BOOK_EFFECT, url: bookEffect },
-  { key: POWER_UP_EFFECT, url: powerUpEffect },
-  { key: EXPLOSION_EFFECT, url: explosionEffect },
+  { key: BATTLE_MUSIC, url: [battleMusicOgg, battleMusicMp3] },
+  { key: GAME_OVER_MUSIC, url: [gameOverMusicOgg, gameOverMusicMp3] },
+  { key: ENDING_MUSIC, url: [endingMusicOgg, endingMusicMp3] },
+  { key: WIN_MUSIC, url: [winMusicOgg, winMusicMp3] },
+  { key: HIT_EFFECT, url: [hitEffectOgg, hitEffectMp3] },
+  {
+    key: MONSTER_DEATH_EFFECT,
+    url: [monsterDeathEffectOgg, monsterDeathEffectMp3],
+  },
+  {
+    key: MONSTER_ATTACK_EFFECT,
+    url: [monsterAttackEffectOgg, monsterAttackEffectMp3],
+  },
+  {
+    key: REPLENISH_HP_EFFECT,
+    url: [replenishHpEffectOgg, replenishHpEffectMp3],
+  },
+  { key: BOOK_EFFECT, url: [bookEffectOgg, bookEffectMp3] },
+  { key: POWER_UP_EFFECT, url: [powerUpEffectOgg, powerUpEffectMp3] },
+  { key: EXPLOSION_EFFECT, url: [explosionEffectOgg, explosionEffectMp3] },
 ];
 
 export const getAudios = (): Audio[] => AUDIOS;

@@ -8,7 +8,6 @@ import { scene2Config, SCENE_2_KEY } from "./scenes/scene2/config";
 import { scene3Config, SCENE_3_KEY } from "./scenes/scene3/config";
 import { isSoundMuted } from "./scenes/common/audio";
 import { initState } from "./state/state";
-import { isIos } from "./utils/browser";
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -23,9 +22,6 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     expandParent: false,
     width: 800,
     height: 600,
-  },
-  audio: {
-    noAudio: isIos(),
   },
 };
 
