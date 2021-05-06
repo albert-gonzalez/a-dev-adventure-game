@@ -9,7 +9,7 @@ import battleMusicOgg from "../../assets/audio/music/battle.ogg";
 import gameOverMusicOgg from "../../assets/audio/music/gameOver.ogg";
 import winMusicOgg from "../../assets/audio/music/win.ogg";
 import endingMusicOgg from "../../assets/audio/music/ending.ogg";
-import hitEffectMp3 from "../../assets/audio/effects/hit.ogg";
+import hitEffectMp3 from "../../assets/audio/effects/hit.mp3";
 import monsterDeathEffectMp3 from "../../assets/audio/effects/monsterDeath.mp3";
 import monsterAttackEffectMp3 from "../../assets/audio/effects/monsterAttack.mp3";
 import replenishHpEffectMp3 from "../../assets/audio/effects/replenish.mp3";
