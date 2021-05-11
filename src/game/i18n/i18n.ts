@@ -14,7 +14,6 @@ export const init = (): void =>
         "localStorage",
         "sessionStorage",
         "navigator",
-        "htmlTag",
         "path",
         "subdomain",
       ],

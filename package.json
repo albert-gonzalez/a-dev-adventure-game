@@ -1,12 +1,12 @@
 {
-  "name": "rpcv",
+  "name": "a-dev-adventure",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.html",
   "scripts": {
     "test": "jest test",
     "dev": "parcel index.html",
-    "build": "parcel build index.html --public-url ./",
+    "build": "parcel build index.html game.html --public-url ./",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "check-ts": "tsc --noEmit"
