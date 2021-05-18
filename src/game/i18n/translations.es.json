@@ -74,7 +74,7 @@
   "sn1": "Buenos días, ¿cómo estás? Me has cogido priorizando las tareas que entrarán en los próximos sprints.",
   "sn2": "¡Ya verás que interesantes!",
   "se1": "Hola, buenos días. Estoy investigando unos bugs que tenemos al sistema. Es vital ofrecer un servicio fiable!",
-  "rm1": "¡Hola, chaval! Estoy mejorando el tiempo de ejecución de los tests automatizados. El feedback de los tests debe ser rápido!",
+  "rm1": "¡Hola, chaval! Estoy mejorando el tiempo de los tests automatizados. El feedback de los tests debe ser rápido!",
   "ef1": "¡Ei! Me han pasado el nuevo diseño de la página del perfil del usuario, y estoy mirando como adaptarlo a HTML.",
   "ef2": "¡La estructura de la página es crítica!",
   "ej1": "¿Que pasa noi? Estoy mejorando el sistema de logs para tener más información si el usuario tiene",
