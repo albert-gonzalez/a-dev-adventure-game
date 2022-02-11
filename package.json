@@ -2,7 +2,6 @@
   "name": "a-dev-adventure",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.html",
   "scripts": {
     "test": "jest test",
     "dev": "parcel index.html",
@@ -15,8 +14,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/preset-env": "^7.14.1",
-    "@babel/preset-typescript": "^7.13.0",
+    "@parcel/transformer-sass": "^2.3.1",
+    "@swc/core": "^1.2.138",
+    "@swc/jest": "^0.2.17",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
@@ -25,18 +25,21 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
-    "jest": "^26.6.3",
+    "jest": "^27.5.1",
     "jest-canvas-mock": "^2.3.1",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@parcel/config-default": "^2.3.1",
+    "@parcel/transformer-raw": "^2.3.1",
+    "@parcel/transformer-typescript-tsc": "^2.3.1",
     "assets": "^3.0.1",
     "i18next": "^20.2.2",
     "i18next-browser-languagedetector": "^6.1.0",
     "matter": "^0.2.0",
-    "parcel-bundler": "^1.12.5",
+    "parcel": "^2.3.1",
     "phaser": "^3.54.0",
     "posthtml-doctype": "^1.1.1",
     "posthtml-include": "^1.7.1",
@@ -47,14 +50,5 @@
       "prettier --write",
       "eslint --fix"
     ]
-  },
-  "jest": {
-    "setupFiles": [
-      "jest-canvas-mock"
-    ],
-    "moduleNameMapper": {
-      "\\.(ogg|mp3|png)$": "<rootDir>/test/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/test/__mocks__/fileMock.js"
-    }
   }
 }

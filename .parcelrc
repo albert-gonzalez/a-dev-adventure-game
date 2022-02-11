@@ -1,6 +1,7 @@
 {
   "extends": "@parcel/config-default",
   "transformers": {
-    "url:*.json": ["@parcel/transformer-raw"]
+    "*.{jsonc,mp3,ogg}": ["@parcel/transformer-raw"],
+    "*.{ts,tsx}": ["@parcel/transformer-typescript-tsc"]
   }
 }
